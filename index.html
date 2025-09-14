@@ -1,304 +1,449 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechPhone - 智能手机精品商城</title>
-    <meta name="description" content="最新智能手机、配件及智能穿戴设备，科技生活从这里开始">
-    <link rel="stylesheet" href="styles-apple-style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>NeoPorforlio3 - Portfolio</title>
+    <meta name="description" content="Welcome to my portfolio featuring web development projects including TechPhone e-commerce website">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #64748b;
+            --accent-color: #f59e0b;
+            --background: #ffffff;
+            --surface: #f8fafc;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--background);
+        }
+
+        /* Header */
+        header {
+            background: var(--background);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        /* Projects Section */
+        .projects {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--text-primary);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .project-card {
+            background: var(--surface);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--border);
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .techphone-project .project-image {
+            background: linear-gradient(135deg, #1d1d1f 0%, #86868b 100%);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: var(--surface);
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Featured Project */
+        .featured-project {
+            background: linear-gradient(135deg, #1d1d1f 0%, #f5f5f7 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+        }
+
+        .featured-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .featured-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .featured-text p {
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+            color: #a1a1a6;
+        }
+
+        .featured-image {
+            text-align: center;
+        }
+
+        .featured-image img {
+            max-width: 100%;
+            border-radius: 12px;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--surface);
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .about p {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-primary);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .featured-content {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- 顶部导航栏 -->
-    <header class="header" id="header">
-        <nav class="nav-container">
-            <div class="nav-logo">
-                <h1>TechPhone</h1>
-            </div>
-
-            <div class="nav-menu">
-                <a href="#" class="nav-link">首页</a>
-                <a href="#" class="nav-link">智能手机</a>
-                <a href="#" class="nav-link">配件</a>
-                <a href="#" class="nav-link">智能穿戴</a>
-                <a href="#" class="nav-link">服务</a>
-            </div>
-
-            <div class="nav-actions">
-                <div class="search-box">
-                    <input type="text" placeholder="搜索产品..." class="search-input">
-                    <span class="search-icon">🔍</span>
-                </div>
-
-                <div class="cart-icon">
-                    <span>🛒</span>
-                    <span class="cart-count">3</span>
-                </div>
-
-                <div class="user-avatar">
-                    <img src="https://picsum.photos/seed/user1/40/40.jpg" alt="用户头像">
-                </div>
-            </div>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="#" class="logo">NeoPorforlio3</a>
+            <ul class="nav-links">
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </nav>
     </header>
 
-    <!-- 主视觉横幅 -->
-    <section class="hero-banner">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h2 class="hero-title">iPhone 15 Pro Max</h2>
-                <p class="hero-subtitle">钛金属设计 · A17 Pro芯片</p>
-                <div class="hero-features">
-                    <div class="feature-item">
-                        <span class="feature-icon">📱</span>
-                        <span>6.7英寸 Super Retina XDR</span>
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">📸</span>
-                        <span>4800万像素主摄</span>
-                    </div>
-                    <div class="feature-item">
-                        <span class="feature-icon">🔋</span>
-                        <span>29小时视频播放</span>
-                    </div>
-                </div>
-                <div class="hero-buttons">
-                    <button class="btn-primary">立即购买</button>
-                    <button class="btn-secondary">了解更多</button>
-                </div>
-            </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Welcome to My Portfolio</h1>
+        <p>Discover my latest web development projects and creative solutions</p>
+    </section>
 
-            <div class="hero-image">
-                <div class="product-3d-container">
-                    <img src="https://picsum.photos/seed/iphone15/500/600.jpg" alt="iPhone 15 Pro Max" class="product-3d">
+    <!-- Featured Project -->
+    <section class="projects">
+        <div class="featured-project">
+            <div class="featured-content">
+                <div class="featured-text">
+                    <h2>🍎 TechPhone E-commerce</h2>
+                    <p>A premium Apple-style e-commerce website featuring modern design, overseas social media integration, and complete shopping functionality. Built with HTML, CSS, and JavaScript.</p>
+                    <div class="project-tags">
+                        <span class="tag">HTML5</span>
+                        <span class="tag">CSS3</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Responsive Design</span>
+                        <span class="tag">E-commerce</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="projects/techphone/index-apple-style.html" class="btn btn-primary">View Project</a>
+                        <a href="projects/techphone/demo-professional.html" class="btn btn-secondary">Demo</a>
+                    </div>
+                </div>
+                <div class="featured-image">
+                    <div style="font-size: 8rem;">📱</div>
                 </div>
             </div>
         </div>
 
-        <div class="hero-particles"></div>
-    </section>
-
-    <!-- 产品分类导航 -->
-    <section class="categories">
-        <div class="container">
-            <h3 class="section-title">产品分类</h3>
-            <div class="category-grid">
-                <div class="category-card">
-                    <div class="category-icon">📱</div>
-                    <h4>智能手机</h4>
-                    <p>最新款智能手机</p>
+        <h2 class="section-title" id="projects">All Projects</h2>
+        <div class="projects-grid">
+            <!-- TechPhone Project -->
+            <div class="project-card techphone-project">
+                <div class="project-image">
+                    <span>📱</span>
                 </div>
-                <div class="category-card">
-                    <div class="category-icon">🔌</div>
-                    <h4>手机配件</h4>
-                    <p>充电器、保护壳等</p>
-                </div>
-                <div class="category-card">
-                    <div class="category-icon">⌚</div>
-                    <h4>智能穿戴</h4>
-                    <p>智能手表、手环</p>
-                </div>
-                <div class="category-card">
-                    <div class="category-icon">🎧</div>
-                    <h4>音频产品</h4>
-                    <p>耳机、音箱</p>
-                </div>
-                <div class="category-card">
-                    <div class="category-icon">🔋</div>
-                    <h4>充电产品</h4>
-                    <p>移动电源、充电器</p>
-                </div>
-                <div class="category-card">
-                    <div class="category-icon">🔧</div>
-                    <h4>维修服务</h4>
-                    <p>专业维修服务</p>
+                <div class="project-content">
+                    <h3 class="project-title">TechPhone E-commerce</h3>
+                    <p class="project-description">Complete Apple-style e-commerce website with multi-page architecture, shopping cart, and overseas social media integration.</p>
+                    <div class="project-tags">
+                        <span class="tag">HTML/CSS</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Apple Design</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="projects/techphone/index-apple-style.html" class="btn btn-primary">Live Demo</a>
+                        <a href="projects/techphone/demo-professional.html" class="btn btn-secondary">Details</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- 产品展示区域 -->
-    <section class="products">
-        <div class="container">
-            <div class="section-header">
-                <h3 class="section-title">热门产品</h3>
-                <a href="#" class="view-all">查看全部 →</a>
+            <!-- Other Project Cards -->
+            <div class="project-card">
+                <div class="project-image">
+                    <span>💼</span>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Business Portfolio</h3>
+                    <p class="project-description">Professional portfolio website with modern design and responsive layout.</p>
+                    <div class="project-tags">
+                        <span class="tag">Web Design</span>
+                        <span class="tag">Portfolio</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn btn-primary">Coming Soon</a>
+                    </div>
+                </div>
             </div>
 
-            <div class="product-grid">
-                <!-- 大尺寸特色产品 -->
-                <div class="product-card product-card-large">
-                    <div class="product-badge">新品</div>
-                    <div class="product-image">
-                        <img src="https://picsum.photos/seed/iphone15pro/400/400.jpg" alt="iPhone 15 Pro">
-                        <div class="product-actions">
-                            <button class="action-btn">👁️</button>
-                            <button class="action-btn">❤️</button>
-                            <button class="action-btn">🛒</button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h4 class="product-name">iPhone 15 Pro</h4>
-                        <div class="product-price">
-                            <span class="current-price">¥7,999</span>
-                            <span class="original-price">¥8,999</span>
-                        </div>
-                        <div class="product-rating">
-                            <span class="stars">⭐⭐⭐⭐⭐</span>
-                            <span class="reviews">(128)</span>
-                        </div>
-                    </div>
+            <div class="project-card">
+                <div class="project-image">
+                    <span>🚀</span>
                 </div>
-
-                <!-- 标准产品卡片 -->
-                <div class="product-card">
-                    <div class="product-badge">热卖</div>
-                    <div class="product-image">
-                        <img src="https://picsum.photos/seed/airpods/300/300.jpg" alt="AirPods Pro">
-                        <div class="product-actions">
-                            <button class="action-btn">👁️</button>
-                            <button class="action-btn">❤️</button>
-                            <button class="action-btn">🛒</button>
-                        </div>
+                <div class="project-content">
+                    <h3 class="project-title">Startup Landing</h3>
+                    <p class="project-description">Modern startup landing page with animations and conversion optimization.</p>
+                    <div class="project-tags">
+                        <span class="tag">Landing Page</span>
+                        <span class="tag">Animation</span>
                     </div>
-                    <div class="product-info">
-                        <h4 class="product-name">AirPods Pro</h4>
-                        <div class="product-price">
-                            <span class="current-price">¥1,899</span>
-                            <span class="original-price">¥1,999</span>
-                        </div>
-                        <div class="product-rating">
-                            <span class="stars">⭐⭐⭐⭐⭐</span>
-                            <span class="reviews">(256)</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://picsum.photos/seed/applewatch/300/300.jpg" alt="Apple Watch">
-                        <div class="product-actions">
-                            <button class="action-btn">👁️</button>
-                            <button class="action-btn">❤️</button>
-                            <button class="action-btn">🛒</button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h4 class="product-name">Apple Watch Series 9</h4>
-                        <div class="product-price">
-                            <span class="current-price">¥2,999</span>
-                        </div>
-                        <div class="product-rating">
-                            <span class="stars">⭐⭐⭐⭐⭐</span>
-                            <span class="reviews">(89)</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-badge">限时</div>
-                    <div class="product-image">
-                        <img src="https://picsum.photos/seed/macbook/300/300.jpg" alt="MacBook Air">
-                        <div class="product-actions">
-                            <button class="action-btn">👁️</button>
-                            <button class="action-btn">❤️</button>
-                            <button class="action-btn">🛒</button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h4 class="product-name">MacBook Air M2</h4>
-                        <div class="product-price">
-                            <span class="current-price">¥8,999</span>
-                            <span class="original-price">¥9,499</span>
-                        </div>
-                        <div class="product-rating">
-                            <span class="stars">⭐⭐⭐⭐⭐</span>
-                            <span class="reviews">(167)</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://picsum.photos/seed/ipad/300/300.jpg" alt="iPad Air">
-                        <div class="product-actions">
-                            <button class="action-btn">👁️</button>
-                            <button class="action-btn">❤️</button>
-                            <button class="action-btn">🛒</button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h4 class="product-name">iPad Air</h4>
-                        <div class="product-price">
-                            <span class="current-price">¥4,399</span>
-                        </div>
-                        <div class="product-rating">
-                            <span class="stars">⭐⭐⭐⭐⭐</span>
-                            <span class="reviews">(203)</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-badge">新品</div>
-                    <div class="product-image">
-                        <img src="https://picsum.photos/seed/imac/300/300.jpg" alt="iMac">
-                        <div class="product-actions">
-                            <button class="action-btn">👁️</button>
-                            <button class="action-btn">❤️</button>
-                            <button class="action-btn">🛒</button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h4 class="product-name">iMac 24"</h4>
-                        <div class="product-price">
-                            <span class="current-price">¥9,999</span>
-                        </div>
-                        <div class="product-rating">
-                            <span class="stars">⭐⭐⭐⭐⭐</span>
-                            <span class="reviews">(45)</span>
-                        </div>
+                    <div class="project-links">
+                        <a href="#" class="btn btn-primary">Coming Soon</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 页脚 -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>关于我们</h4>
-                    <p>TechPhone致力于为用户提供最优质的智能产品和服务体验。</p>
-                </div>
-                <div class="footer-section">
-                    <h4>客户服务</h4>
-                    <ul>
-                        <li><a href="#">联系我们</a></li>
-                        <li><a href="#">退换货政策</a></li>
-                        <li><a href="#">保修服务</a></li>
-                        <li><a href="#">常见问题</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>关注我们</h4>
-                    <div class="social-links">
-                        <a href="#">微信</a>
-                        <a href="#">微博</a>
-                        <a href="#">抖音</a>
-                        <a href="#">小红书</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 TechPhone. 保留所有权利。</p>
-            </div>
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-content">
+            <h2>About Me</h2>
+            <p>I'm a passionate web developer focused on creating modern, user-friendly websites and applications. I specialize in responsive design, e-commerce solutions, and creating engaging user experiences.</p>
+            <p>My TechPhone project showcases my ability to create complete, production-ready websites with professional design patterns and functionality.</p>
         </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-links">
+            <a href="https://github.com/Gonzalezxxx" target="_blank">GitHub</a>
+            <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+            <a href="mailto:contact@example.com">Email</a>
+        </div>
+        <p>&copy; 2024 NeoPorforlio3. All rights reserved.</p>
     </footer>
-
-    <script src="script-apple-style.js"></script>
 </body>
 </html>
