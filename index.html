@@ -3,447 +3,267 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NeoPorforlio3 - Portfolio</title>
-    <meta name="description" content="Welcome to my portfolio featuring web development projects including TechPhone e-commerce website">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-color: #2563eb;
-            --secondary-color: #64748b;
-            --accent-color: #f59e0b;
-            --background: #ffffff;
-            --surface: #f8fafc;
-            --text-primary: #1e293b;
-            --text-secondary: #64748b;
-            --border: #e2e8f0;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: var(--text-primary);
-            background: var(--background);
-        }
-
-        /* Header */
-        header {
-            background: var(--background);
-            border-bottom: 1px solid var(--border);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.95);
-        }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-primary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
-
-        /* Hero Section */
-        .hero {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-        }
-
-        /* Projects Section */
-        .projects {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: var(--text-primary);
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-
-        .project-card {
-            background: var(--surface);
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid var(--border);
-        }
-
-        .project-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .project-image {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3rem;
-        }
-
-        .techphone-project .project-image {
-            background: linear-gradient(135deg, #1d1d1f 0%, #86868b 100%);
-        }
-
-        .project-content {
-            padding: 1.5rem;
-        }
-
-        .project-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: var(--text-primary);
-        }
-
-        .project-description {
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-            line-height: 1.6;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .tag {
-            background: var(--primary-color);
-            color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.875rem;
-            font-weight: 500;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .btn {
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: var(--primary-color);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #1d4ed8;
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            background: var(--surface);
-            color: var(--primary-color);
-            border: 2px solid var(--primary-color);
-        }
-
-        .btn-secondary:hover {
-            background: var(--primary-color);
-            color: white;
-        }
-
-        /* Featured Project */
-        .featured-project {
-            background: linear-gradient(135deg, #1d1d1f 0%, #f5f5f7 100%);
-            color: white;
-            padding: 3rem;
-            border-radius: 20px;
-            margin-bottom: 3rem;
-        }
-
-        .featured-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .featured-text h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: white;
-        }
-
-        .featured-text p {
-            font-size: 1.125rem;
-            margin-bottom: 2rem;
-            color: #a1a1a6;
-        }
-
-        .featured-image {
-            text-align: center;
-        }
-
-        .featured-image img {
-            max-width: 100%;
-            border-radius: 12px;
-        }
-
-        /* About Section */
-        .about {
-            background: var(--surface);
-            padding: 4rem 2rem;
-            margin: 4rem 0;
-        }
-
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .about h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .about p {
-            font-size: 1.125rem;
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--text-primary);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .footer-links a {
-            color: white;
-            text-decoration: none;
-            transition: opacity 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            opacity: 0.8;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .featured-content {
-                grid-template-columns: 1fr;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <title>TechPhone - Premium Smartphones & Accessories</title>
+    <meta name="description" content="Discover the latest iPhone, Apple Watch, and premium accessories. Shop now with free shipping.">
+    <link rel="stylesheet" href="projects/techphone/styles-apple-style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <nav>
-            <a href="#" class="logo">NeoPorforlio3</a>
-            <ul class="nav-links">
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">TechPhone</a>
+            </div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>Welcome to My Portfolio</h1>
-        <p>Discover my latest web development projects and creative solutions</p>
-    </section>
+            <div class="nav-links">
+                <a href="index.html#iphone" class="nav-link">iPhone</a>
+                <a href="index.html#watch" class="nav-link">Watch</a>
+                <a href="index.html#accessories" class="nav-link">Accessories</a>
+                <a href="projects/techphone/store.html" class="nav-link">Store</a>
+                <a href="projects/techphone/contact.html" class="nav-link">Support</a>
+            </div>
 
-    <!-- Featured Project -->
-    <section class="projects">
-        <div class="featured-project">
-            <div class="featured-content">
-                <div class="featured-text">
-                    <h2>🍎 TechPhone E-commerce</h2>
-                    <p>A premium Apple-style e-commerce website featuring modern design, overseas social media integration, and complete shopping functionality. Built with HTML, CSS, and JavaScript.</p>
-                    <div class="project-tags">
-                        <span class="tag">HTML5</span>
-                        <span class="tag">CSS3</span>
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">Responsive Design</span>
-                        <span class="tag">E-commerce</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="projects/techphone/index-apple-style.html" class="btn btn-primary">View Project</a>
-                        <a href="projects/techphone/demo-professional.html" class="btn btn-secondary">Demo</a>
-                    </div>
+            <div class="nav-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="Search techphone.com" class="search-input">
+                    <span class="search-icon">🔍</span>
                 </div>
-                <div class="featured-image">
-                    <div style="font-size: 8rem;">📱</div>
+
+                <div class="bag-icon" id="bag-icon">
+                    <span>🛍️</span>
+                    <span class="bag-count">0</span>
                 </div>
             </div>
         </div>
+    </nav>
 
-        <h2 class="section-title" id="projects">All Projects</h2>
-        <div class="projects-grid">
-            <!-- TechPhone Project -->
-            <div class="project-card techphone-project">
-                <div class="project-image">
-                    <span>📱</span>
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">TechPhone E-commerce</h3>
-                    <p class="project-description">Complete Apple-style e-commerce website with multi-page architecture, shopping cart, and overseas social media integration.</p>
-                    <div class="project-tags">
-                        <span class="tag">HTML/CSS</span>
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">Apple Design</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="projects/techphone/index-apple-style.html" class="btn btn-primary">Live Demo</a>
-                        <a href="projects/techphone/demo-professional.html" class="btn btn-secondary">Details</a>
-                    </div>
+    <!-- Hero Section - iPhone 15 Pro -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">iPhone 15 Pro</h1>
+                <p class="hero-subtitle">Titanium. So strong. So light. So Pro.</p>
+                <div class="hero-links">
+                    <a href="projects/techphone/product-detail.html?product=iPhone 15 Pro" class="link-primary">Learn more ></a>
+                    <a href="projects/techphone/checkout.html" class="link-secondary">Buy ></a>
                 </div>
             </div>
-
-            <!-- Other Project Cards -->
-            <div class="project-card">
-                <div class="project-image">
-                    <span>💼</span>
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">Business Portfolio</h3>
-                    <p class="project-description">Professional portfolio website with modern design and responsive layout.</p>
-                    <div class="project-tags">
-                        <span class="tag">Web Design</span>
-                        <span class="tag">Portfolio</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="btn btn-primary">Coming Soon</a>
-                    </div>
-                </div>
+            <div class="hero-image">
+                <img src="https://picsum.photos/seed/iphone15pro-titanium/600/400.jpg" alt="iPhone 15 Pro">
             </div>
+        </div>
+        <div class="hero-gradient"></div>
+    </section>
 
-            <div class="project-card">
-                <div class="project-image">
-                    <span>🚀</span>
-                </div>
-                <div class="project-content">
-                    <h3 class="project-title">Startup Landing</h3>
-                    <p class="project-description">Modern startup landing page with animations and conversion optimization.</p>
-                    <div class="project-tags">
-                        <span class="tag">Landing Page</span>
-                        <span class="tag">Animation</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="btn btn-primary">Coming Soon</a>
-                    </div>
+    <!-- iPhone 15 Section -->
+    <section class="product-section" id="iphone">
+        <div class="product-content reverse">
+            <div class="product-image">
+                <img src="https://picsum.photos/seed/iphone15-colors/500/600.jpg" alt="iPhone 15">
+            </div>
+            <div class="product-text">
+                <h2 class="product-title">iPhone 15</h2>
+                <p class="product-description">New camera. New design. Newphoria.</p>
+                <div class="product-links">
+                    <a href="projects/techphone/product-detail.html?product=iPhone 15" class="link-primary">Learn more ></a>
+                    <a href="projects/techphone/checkout.html" class="link-secondary">Buy ></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="about-content">
-            <h2>About Me</h2>
-            <p>I'm a passionate web developer focused on creating modern, user-friendly websites and applications. I specialize in responsive design, e-commerce solutions, and creating engaging user experiences.</p>
-            <p>My TechPhone project showcases my ability to create complete, production-ready websites with professional design patterns and functionality.</p>
+    <!-- Apple Watch Section -->
+    <section class="product-section watch-section" id="watch">
+        <div class="product-content">
+            <div class="product-image">
+                <img src="https://picsum.photos/seed/apple-watch-series9/500/400.jpg" alt="Apple Watch Series 9">
+            </div>
+            <div class="product-text">
+                <h2 class="product-title">Apple Watch Series 9</h2>
+                <p class="product-description">Smarter. Brighter. Mightier.</p>
+                <div class="product-links">
+                    <a href="projects/techphone/product-detail.html?product=Apple Watch Series 9" class="link-primary">Learn more ></a>
+                    <a href="projects/techphone/checkout.html" class="link-secondary">Buy ></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AirPods Section -->
+    <section class="product-section">
+        <div class="product-content reverse">
+            <div class="product-image">
+                <img src="https://picsum.photos/seed/airpods-pro-2nd-gen/500/400.jpg" alt="AirPods Pro">
+            </div>
+            <div class="product-text">
+                <h2 class="product-title">AirPods Pro (2nd generation)</h2>
+                <p class="product-description">Adaptive Audio. Now automatically.</p>
+                <div class="product-links">
+                    <a href="projects/techphone/product-detail.html?product=AirPods Pro" class="link-primary">Learn more ></a>
+                    <a href="projects/techphone/checkout.html" class="link-secondary">Buy ></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accessories Section -->
+    <section class="accessories-section" id="accessories">
+        <div class="section-header">
+            <h2 class="section-title">Essential accessories.</h2>
+            <p class="section-subtitle">Everything you need to elevate your experience.</p>
+        </div>
+
+        <div class="accessories-grid">
+            <div class="accessory-card">
+                <div class="accessory-image">
+                    <img src="https://picsum.photos/seed/airpods-pro/300/300.jpg" alt="AirPods Pro">
+                </div>
+                <h3 class="accessory-name">AirPods Pro</h3>
+                <p class="accessory-price">From $249</p>
+                <a href="projects/techphone/product-detail.html?product=AirPods Pro" class="accessory-link">Learn more ></a>
+            </div>
+
+            <div class="accessory-card">
+                <div class="accessory-image">
+                    <img src="https://picsum.photos/seed/mag-safe-charger/300/300.jpg" alt="MagSafe Charger">
+                </div>
+                <h3 class="accessory-name">MagSafe Charger</h3>
+                <p class="accessory-price">$39</p>
+                <a href="projects/techphone/product-detail.html?product=MagSafe Charger" class="accessory-link">Learn more ></a>
+            </div>
+
+            <div class="accessory-card">
+                <div class="accessory-image">
+                    <img src="https://picsum.photos/seed/iphone-case/300/300.jpg" alt="iPhone Case">
+                </div>
+                <h3 class="accessory-name">iPhone Cases</h3>
+                <p class="accessory-price">From $49</p>
+                <a href="projects/techphone/product-detail.html?product=iPhone Cases" class="accessory-link">Learn more ></a>
+            </div>
+
+            <div class="accessory-card">
+                <div class="accessory-image">
+                    <img src="https://picsum.photos/seed/lightning-cable/300/300.jpg" alt="Lightning Cable">
+                </div>
+                <h3 class="accessory-name">Lightning Cables</h3>
+                <p class="accessory-price">From $19</p>
+                <a href="projects/techphone/product-detail.html?product=Lightning Cables" class="accessory-link">Learn more ></a>
+            </div>
+        </div>
+
+        <div class="section-footer">
+            <a href="projects/techphone/store.html" class="link-primary">Shop all accessories ></a>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer id="contact">
-        <div class="footer-links">
-            <a href="https://github.com/Gonzalezxxx" target="_blank">GitHub</a>
-            <a href="https://linkedin.com" target="_blank">LinkedIn</a>
-            <a href="mailto:contact@example.com">Email</a>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3 class="footer-heading">Shop and Learn</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Store</a></li>
+                        <li><a href="#">Mac</a></li>
+                        <li><a href="#">iPad</a></li>
+                        <li><a href="#iphone">iPhone</a></li>
+                        <li><a href="#watch">Watch</a></li>
+                        <li><a href="#">AirPods</a></li>
+                        <li><a href="#accessories">Accessories</a></li>
+                        <li><a href="#">Gift Cards</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-heading">Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://music.apple.com" target="_blank">Apple Music</a></li>
+                        <li><a href="https://tv.apple.com" target="_blank">Apple TV+</a></li>
+                        <li><a href="https://fitness.apple.com" target="_blank">Apple Fitness+</a></li>
+                        <li><a href="https://news.apple.com" target="_blank">Apple News+</a></li>
+                        <li><a href="https://arcade.apple.com" target="_blank">Apple Arcade</a></li>
+                        <li><a href="https://icloud.com" target="_blank">iCloud</a></li>
+                        <li><a href="#">Apple One</a></li>
+                        <li><a href="https://books.apple.com" target="_blank">Apple Books</a></li>
+                        <li><a href="https://apps.apple.com" target="_blank">App Store</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-heading">TechPhone Store</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Find a Store</a></li>
+                        <li><a href="#">Genius Bar</a></li>
+                        <li><a href="#">Today at TechPhone</a></li>
+                        <li><a href="#">TechPhone Store App</a></li>
+                        <li><a href="#">Financing</a></li>
+                        <li><a href="#">TechPhone Trade In</a></li>
+                        <li><a href="projects/techphone/cart.html">View Cart</a></li>
+                        <li><a href="projects/techphone/checkout.html">Checkout</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-heading">Follow Us</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://twitter.com/techphone" target="_blank">Twitter/X</a></li>
+                        <li><a href="https://facebook.com/techphone" target="_blank">Facebook</a></li>
+                        <li><a href="https://instagram.com/techphone" target="_blank">Instagram</a></li>
+                        <li><a href="https://youtube.com/techphone" target="_blank">YouTube</a></li>
+                        <li><a href="https://linkedin.com/company/techphone" target="_blank">LinkedIn</a></li>
+                        <li><a href="https://tiktok.com/@techphone" target="_blank">TikTok</a></li>
+                    </ul>
+                    <h3 class="footer-heading">Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="projects/techphone/contact.html">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Warranty</a></li>
+                        <li><a href="#">Returns</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-heading">About TechPhone</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Newsroom</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="https://investors.techphone.com" target="_blank">Investors</a></li>
+                        <li><a href="#">Ethics & Compliance</a></li>
+                        <li><a href="#">Events</a></li>
+                    </ul>
+                    <h3 class="footer-heading">Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="projects/techphone/privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Accessibility</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>Copyright © 2024 TechPhone Inc. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="projects/techphone/privacy-policy.html">Privacy Policy</a>
+                    <a href="#">Terms of Use</a>
+                    <a href="#">Sales and Refunds</a>
+                    <a href="#">Legal</a>
+                    <a href="#">Site Map</a>
+                </div>
+                <div class="social-links">
+                    <a href="https://twitter.com/techphone" target="_blank" title="Twitter">🐦</a>
+                    <a href="https://facebook.com/techphone" target="_blank" title="Facebook">📘</a>
+                    <a href="https://instagram.com/techphone" target="_blank" title="Instagram">📷</a>
+                    <a href="https://youtube.com/techphone" target="_blank" title="YouTube">📺</a>
+                    <a href="https://linkedin.com/company/techphone" target="_blank" title="LinkedIn">💼</a>
+                </div>
+            </div>
         </div>
-        <p>&copy; 2024 NeoPorforlio3. All rights reserved.</p>
     </footer>
+
+    <script src="projects/techphone/script-apple-style.js"></script>
 </body>
 </html>
