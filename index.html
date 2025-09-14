@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechPhone - 智能手机精品商城</title>
+    <meta name="description" content="最新智能手机、配件及智能穿戴设备，科技生活从这里开始">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <header class="header" id="header">
+        <nav class="nav-container">
+            <div class="nav-logo">
+                <h1>TechPhone</h1>
+            </div>
+
+            <div class="nav-menu">
+                <a href="#" class="nav-link">首页</a>
+                <a href="#" class="nav-link">智能手机</a>
+                <a href="#" class="nav-link">配件</a>
+                <a href="#" class="nav-link">智能穿戴</a>
+                <a href="#" class="nav-link">服务</a>
+            </div>
+
+            <div class="nav-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="搜索产品..." class="search-input">
+                    <span class="search-icon">🔍</span>
+                </div>
+
+                <div class="cart-icon">
+                    <span>🛒</span>
+                    <span class="cart-count">3</span>
+                </div>
+
+                <div class="user-avatar">
+                    <img src="https://picsum.photos/seed/user1/40/40.jpg" alt="用户头像">
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 主视觉横幅 -->
+    <section class="hero-banner">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h2 class="hero-title">iPhone 15 Pro Max</h2>
+                <p class="hero-subtitle">钛金属设计 · A17 Pro芯片</p>
+                <div class="hero-features">
+                    <div class="feature-item">
+                        <span class="feature-icon">📱</span>
+                        <span>6.7英寸 Super Retina XDR</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">📸</span>
+                        <span>4800万像素主摄</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🔋</span>
+                        <span>29小时视频播放</span>
+                    </div>
+                </div>
+                <div class="hero-buttons">
+                    <button class="btn-primary">立即购买</button>
+                    <button class="btn-secondary">了解更多</button>
+                </div>
+            </div>
+
+            <div class="hero-image">
+                <div class="product-3d-container">
+                    <img src="https://picsum.photos/seed/iphone15/500/600.jpg" alt="iPhone 15 Pro Max" class="product-3d">
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-particles"></div>
+    </section>
+
+    <!-- 产品分类导航 -->
+    <section class="categories">
+        <div class="container">
+            <h3 class="section-title">产品分类</h3>
+            <div class="category-grid">
+                <div class="category-card">
+                    <div class="category-icon">📱</div>
+                    <h4>智能手机</h4>
+                    <p>最新款智能手机</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🔌</div>
+                    <h4>手机配件</h4>
+                    <p>充电器、保护壳等</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">⌚</div>
+                    <h4>智能穿戴</h4>
+                    <p>智能手表、手环</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🎧</div>
+                    <h4>音频产品</h4>
+                    <p>耳机、音箱</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🔋</div>
+                    <h4>充电产品</h4>
+                    <p>移动电源、充电器</p>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🔧</div>
+                    <h4>维修服务</h4>
+                    <p>专业维修服务</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 产品展示区域 -->
+    <section class="products">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">热门产品</h3>
+                <a href="#" class="view-all">查看全部 →</a>
+            </div>
+
+            <div class="product-grid">
+                <!-- 大尺寸特色产品 -->
+                <div class="product-card product-card-large">
+                    <div class="product-badge">新品</div>
+                    <div class="product-image">
+                        <img src="https://picsum.photos/seed/iphone15pro/400/400.jpg" alt="iPhone 15 Pro">
+                        <div class="product-actions">
+                            <button class="action-btn">👁️</button>
+                            <button class="action-btn">❤️</button>
+                            <button class="action-btn">🛒</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h4 class="product-name">iPhone 15 Pro</h4>
+                        <div class="product-price">
+                            <span class="current-price">¥7,999</span>
+                            <span class="original-price">¥8,999</span>
+                        </div>
+                        <div class="product-rating">
+                            <span class="stars">⭐⭐⭐⭐⭐</span>
+                            <span class="reviews">(128)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 标准产品卡片 -->
+                <div class="product-card">
+                    <div class="product-badge">热卖</div>
+                    <div class="product-image">
+                        <img src="https://picsum.photos/seed/airpods/300/300.jpg" alt="AirPods Pro">
+                        <div class="product-actions">
+                            <button class="action-btn">👁️</button>
+                            <button class="action-btn">❤️</button>
+                            <button class="action-btn">🛒</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h4 class="product-name">AirPods Pro</h4>
+                        <div class="product-price">
+                            <span class="current-price">¥1,899</span>
+                            <span class="original-price">¥1,999</span>
+                        </div>
+                        <div class="product-rating">
+                            <span class="stars">⭐⭐⭐⭐⭐</span>
+                            <span class="reviews">(256)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://picsum.photos/seed/applewatch/300/300.jpg" alt="Apple Watch">
+                        <div class="product-actions">
+                            <button class="action-btn">👁️</button>
+                            <button class="action-btn">❤️</button>
+                            <button class="action-btn">🛒</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h4 class="product-name">Apple Watch Series 9</h4>
+                        <div class="product-price">
+                            <span class="current-price">¥2,999</span>
+                        </div>
+                        <div class="product-rating">
+                            <span class="stars">⭐⭐⭐⭐⭐</span>
+                            <span class="reviews">(89)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-badge">限时</div>
+                    <div class="product-image">
+                        <img src="https://picsum.photos/seed/macbook/300/300.jpg" alt="MacBook Air">
+                        <div class="product-actions">
+                            <button class="action-btn">👁️</button>
+                            <button class="action-btn">❤️</button>
+                            <button class="action-btn">🛒</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h4 class="product-name">MacBook Air M2</h4>
+                        <div class="product-price">
+                            <span class="current-price">¥8,999</span>
+                            <span class="original-price">¥9,499</span>
+                        </div>
+                        <div class="product-rating">
+                            <span class="stars">⭐⭐⭐⭐⭐</span>
+                            <span class="reviews">(167)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://picsum.photos/seed/ipad/300/300.jpg" alt="iPad Air">
+                        <div class="product-actions">
+                            <button class="action-btn">👁️</button>
+                            <button class="action-btn">❤️</button>
+                            <button class="action-btn">🛒</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h4 class="product-name">iPad Air</h4>
+                        <div class="product-price">
+                            <span class="current-price">¥4,399</span>
+                        </div>
+                        <div class="product-rating">
+                            <span class="stars">⭐⭐⭐⭐⭐</span>
+                            <span class="reviews">(203)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-badge">新品</div>
+                    <div class="product-image">
+                        <img src="https://picsum.photos/seed/imac/300/300.jpg" alt="iMac">
+                        <div class="product-actions">
+                            <button class="action-btn">👁️</button>
+                            <button class="action-btn">❤️</button>
+                            <button class="action-btn">🛒</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h4 class="product-name">iMac 24"</h4>
+                        <div class="product-price">
+                            <span class="current-price">¥9,999</span>
+                        </div>
+                        <div class="product-rating">
+                            <span class="stars">⭐⭐⭐⭐⭐</span>
+                            <span class="reviews">(45)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>关于我们</h4>
+                    <p>TechPhone致力于为用户提供最优质的智能产品和服务体验。</p>
+                </div>
+                <div class="footer-section">
+                    <h4>客户服务</h4>
+                    <ul>
+                        <li><a href="#">联系我们</a></li>
+                        <li><a href="#">退换货政策</a></li>
+                        <li><a href="#">保修服务</a></li>
+                        <li><a href="#">常见问题</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>关注我们</h4>
+                    <div class="social-links">
+                        <a href="#">微信</a>
+                        <a href="#">微博</a>
+                        <a href="#">抖音</a>
+                        <a href="#">小红书</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 TechPhone. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

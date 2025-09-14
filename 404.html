@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - 页面未找到 | TechPhone</title>
+    <meta name="description" content="抱歉，您访问的页面不存在。">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .error-container {
+            text-align: center;
+            max-width: 600px;
+            padding: 2rem;
+        }
+
+        .error-code {
+            font-size: 8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .error-message {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .error-description {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .error-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #1a73e8;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #1a73e8;
+        }
+
+        .error-illustration {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-30px);
+            }
+            60% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .search-box {
+            margin: 2rem 0;
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .search-input {
+            padding: 0.8rem 1rem;
+            border: none;
+            border-radius: 8px;
+            width: 300px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .search-btn {
+            padding: 0.8rem 1.5rem;
+            background: white;
+            color: #1a73e8;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .search-btn:hover {
+            background: #f8f9fa;
+        }
+
+        .popular-links {
+            margin-top: 2rem;
+        }
+
+        .popular-links h4 {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .link-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.8rem;
+            border-radius: 8px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .link-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .error-code {
+                font-size: 6rem;
+            }
+
+            .error-message {
+                font-size: 1.5rem;
+            }
+
+            .error-description {
+                font-size: 1rem;
+            }
+
+            .search-input {
+                width: 250px;
+            }
+
+            .error-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-illustration">🚫</div>
+        <div class="error-code">404</div>
+        <h1 class="error-message">页面未找到</h1>
+        <p class="error-description">
+            抱歉，您访问的页面不存在或已被移除。<br>
+            请检查 URL 是否正确，或使用下面的搜索功能。
+        </p>
+
+        <div class="search-box">
+            <input type="text" class="search-input" placeholder="搜索产品..." id="searchInput">
+            <button class="search-btn" onclick="performSearch()">搜索</button>
+        </div>
+
+        <div class="error-actions">
+            <a href="index.html" class="btn btn-primary">🏠 返回首页</a>
+            <a href="demo.html" class="btn btn-secondary">🎨 查看演示</a>
+        </div>
+
+        <div class="popular-links">
+            <h4>🔥 热门页面</h4>
+            <div class="links-grid">
+                <a href="product-detail.html" class="link-item">📱 产品详情</a>
+                <a href="cart.html" class="link-item">🛒 购物车</a>
+                <a href="checkout.html" class="link-item">💳 去结算</a>
+                <a href="test-links.html" class="link-item">🔗 链接测试</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 搜索功能
+        function performSearch() {
+            const searchTerm = document.getElementById('searchInput').value;
+            if (searchTerm.trim()) {
+                // 这里可以集成实际的搜索功能
+                alert(`搜索 "${searchTerm}" 功能正在开发中`);
+            }
+        }
+
+        // 回车搜索
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+
+        // 页面访问统计（可选）
+        setTimeout(() => {
+            console.log('404 page visited');
+            // 可以在这里添加 Google Analytics 或其他统计代码
+        }, 1000);
+
+        // 自动跳转（可选）
+        let redirectTimeout = setTimeout(() => {
+            window.location.href = 'index.html';
+        }, 30000); // 30秒后自动跳转到首页
+
+        // 用户交互时取消自动跳转
+        document.addEventListener('click', () => {
+            clearTimeout(redirectTimeout);
+        });
+
+        document.addEventListener('keypress', () => {
+            clearTimeout(redirectTimeout);
+        });
+    </script>
+</body>
+</html>

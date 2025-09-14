@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPhone 15 Pro Max - 产品详情 | TechPhone</title>
+    <meta name="description" content="iPhone 15 Pro Max - 钛金属设计，A17 Pro芯片，4800万像素摄像系统">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="product-detail.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <header class="header" id="header">
+        <nav class="nav-container">
+            <div class="nav-logo">
+                <h1>TechPhone</h1>
+            </div>
+
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">首页</a>
+                <a href="#" class="nav-link">智能手机</a>
+                <a href="#" class="nav-link">配件</a>
+                <a href="#" class="nav-link">智能穿戴</a>
+                <a href="#" class="nav-link">服务</a>
+            </div>
+
+            <div class="nav-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="搜索产品..." class="search-input">
+                    <span class="search-icon">🔍</span>
+                </div>
+
+                <div class="cart-icon">
+                    <span>🛒</span>
+                    <span class="cart-count">3</span>
+                </div>
+
+                <div class="user-avatar">
+                    <img src="https://picsum.photos/seed/user1/40/40.jpg" alt="用户头像">
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 面包屑导航 -->
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="index.html">首页</a> /
+            <a href="#">智能手机</a> /
+            <span>iPhone 15 Pro Max</span>
+        </div>
+    </div>
+
+    <!-- 产品详情主体 -->
+    <main class="product-detail">
+        <div class="container">
+            <div class="product-layout">
+                <!-- 左侧图片展示区 -->
+                <div class="product-images">
+                    <div class="main-image-container">
+                        <img src="https://picsum.photos/seed/iphone15pro-max/600/600.jpg" alt="iPhone 15 Pro Max" class="main-image" id="mainImage">
+                        <div class="zoom-lens" id="zoomLens"></div>
+                    </div>
+
+                    <div class="thumbnail-container">
+                        <img src="https://picsum.photos/seed/iphone15pro-max-1/100/100.jpg" alt="iPhone 15 Pro Max 正面" class="thumbnail active" data-main="https://picsum.photos/seed/iphone15pro-max/600/600.jpg">
+                        <img src="https://picsum.photos/seed/iphone15pro-max-2/100/100.jpg" alt="iPhone 15 Pro Max 背面" class="thumbnail" data-main="https://picsum.photos/seed/iphone15pro-max-2/600/600.jpg">
+                        <img src="https://picsum.photos/seed/iphone15pro-max-3/100/100.jpg" alt="iPhone 15 Pro Max 侧面" class="thumbnail" data-main="https://picsum.photos/seed/iphone15pro-max-3/600/600.jpg">
+                        <img src="https://picsum.photos/seed/iphone15pro-max-4/100/100.jpg" alt="iPhone 15 Pro Max 包装" class="thumbnail" data-main="https://picsum.photos/seed/iphone15pro-max-4/600/600.jpg">
+                    </div>
+
+                    <!-- 360度展示按钮 -->
+                    <button class="view-360-btn" id="view360Btn">360° 查看</button>
+                </div>
+
+                <!-- 右侧产品信息区 -->
+                <div class="product-info">
+                    <div class="product-header">
+                        <h1 class="product-title">iPhone 15 Pro Max</h1>
+                        <p class="product-subtitle">钛金属设计 · A17 Pro芯片 · 4800万像素摄像系统</p>
+
+                        <div class="product-rating-large">
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                            <span class="rating-text">4.9分 (1,234条评价)</span>
+                        </div>
+                    </div>
+
+                    <div class="price-section">
+                        <div class="current-price">¥9,999</div>
+                        <div class="original-price">¥10,999</div>
+                        <div class="save-info">省¥1,000</div>
+                    </div>
+
+                    <div class="promo-badges">
+                        <span class="promo-badge">🚚 免费配送</span>
+                        <span class="promo-badge">🔧 一年保修</span>
+                        <span class="promo-badge">🔄 7天无理由退换</span>
+                    </div>
+
+                    <!-- 规格选择 -->
+                    <div class="spec-section">
+                        <div class="spec-group">
+                            <label>颜色</label>
+                            <div class="color-options">
+                                <button class="color-btn active" data-color="深空黑" style="background: #1a1a1a;"></button>
+                                <button class="color-btn" data-color="银色" style="background: #c0c0c0;"></button>
+                                <button class="color-btn" data-color="金色" style="background: #ffd700;"></button>
+                                <button class="color-btn" data-color="深紫色" style="background: #4b0082;"></button>
+                                <button class="color-btn" data-color="蓝色" style="background: #007aff;"></button>
+                            </div>
+                        </div>
+
+                        <div class="spec-group">
+                            <label>存储容量</label>
+                            <div class="storage-options">
+                                <button class="storage-btn">256GB</button>
+                                <button class="storage-btn active">512GB</button>
+                                <button class="storage-btn">1TB</button>
+                            </div>
+                        </div>
+
+                        <div class="spec-group">
+                            <label>数量</label>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn minus">-</button>
+                                <input type="number" value="1" min="1" max="10" class="quantity-input">
+                                <button class="quantity-btn plus">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 操作按钮 -->
+                    <div class="action-buttons">
+                        <button class="btn-buy-now">立即购买</button>
+                        <button class="btn-add-cart">加入购物车</button>
+                        <button class="btn-favorite">❤️ 收藏</button>
+                    </div>
+
+                    <!-- 服务保障 -->
+                    <div class="service-guarantee">
+                        <h3>服务保障</h3>
+                        <div class="service-items">
+                            <div class="service-item">
+                                <span class="service-icon">✅</span>
+                                <span>正品保证</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-icon">🚚</span>
+                                <span>顺丰包邮</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-icon">🔧</span>
+                                <span>官方保修</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-icon">💬</span>
+                                <span>7×24客服</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 产品规格详情 -->
+            <section class="product-specs">
+                <h2 class="section-title">产品规格</h2>
+
+                <div class="specs-tabs">
+                    <button class="tab-btn active" data-tab="overview">概述</button>
+                    <button class="tab-btn" data-tab="specs">技术规格</button>
+                    <button class="tab-btn" data-tab="reviews">用户评价</button>
+                    <button class="tab-btn" data-tab="support">售后支持</button>
+                </div>
+
+                <div class="tab-content">
+                    <div class="tab-pane active" id="overview">
+                        <div class="overview-grid">
+                            <div class="spec-card">
+                                <div class="spec-icon">📱</div>
+                                <h4>6.7英寸 Super Retina XDR 显示屏</h4>
+                                <p>ProMotion 自适应刷新率 (120Hz)，HDR 亮度峰值 2000 尼特</p>
+                            </div>
+                            <div class="spec-card">
+                                <div class="spec-icon">🎯</div>
+                                <h4>A17 Pro 芯片</h4>
+                                <p>6 核 CPU，6 核 GPU，16 核神经网络引擎</p>
+                            </div>
+                            <div class="spec-card">
+                                <div class="spec-icon">📸</div>
+                                <h4>专业摄像系统</h4>
+                                <p>4800 万像素主摄，1200 万像素超广角，1200 万像素长焦</p>
+                            </div>
+                            <div class="spec-card">
+                                <div class="spec-icon">🔋</div>
+                                <h4>全天候电池续航</h4>
+                                <p>视频播放最长可达 29 小时，支持快速充电和无线充电</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="specs">
+                        <div class="specs-table">
+                            <div class="spec-row">
+                                <span class="spec-label">显示屏</span>
+                                <span class="spec-value">6.7 英寸 (对角线) 全面屏，2796 x 1290 像素分辨率，460 ppi</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">芯片</span>
+                                <span class="spec-value">A17 Pro 芯片，6 核 CPU，6 核 GPU，16 核神经网络引擎</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">存储容量</span>
+                                <span class="spec-value">256GB、512GB、1TB</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">摄像头</span>
+                                <span class="spec-value">4800 万像素主摄，1200 万像素超广角，1200 万像素 5 倍长焦</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">电池续航</span>
+                                <span class="spec-value">视频播放最长可达 29 小时，流媒体视频播放最长可达 25 小时</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">操作系统</span>
+                                <span class="spec-value">iOS 17</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="reviews">
+                        <div class="reviews-summary">
+                            <div class="rating-breakdown">
+                                <div class="overall-rating">4.9<span>/5</span></div>
+                                <div class="rating-bars">
+                                    <div class="rating-bar">
+                                        <span>5⭐</span>
+                                        <div class="bar"><div style="width: 85%"></div></div>
+                                        <span>85%</span>
+                                    </div>
+                                    <div class="rating-bar">
+                                        <span>4⭐</span>
+                                        <div class="bar"><div style="width: 10%"></div></div>
+                                        <span>10%</span>
+                                    </div>
+                                    <div class="rating-bar">
+                                        <span>3⭐</span>
+                                        <div class="bar"><div style="width: 3%"></div></div>
+                                        <span>3%</span>
+                                    </div>
+                                    <div class="rating-bar">
+                                        <span>2⭐</span>
+                                        <div class="bar"><div style="width: 1%"></div></div>
+                                        <span>1%</span>
+                                    </div>
+                                    <div class="rating-bar">
+                                        <span>1⭐</span>
+                                        <div class="bar"><div style="width: 1%"></div></div>
+                                        <span>1%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="reviews-list">
+                            <div class="review-card">
+                                <div class="review-header">
+                                    <img src="https://picsum.photos/seed/user2/50/50.jpg" alt="用户头像" class="review-avatar">
+                                    <div class="review-info">
+                                        <div class="review-name">张三</div>
+                                        <div class="review-meta">512GB 深空黑 · 2024年1月15日</div>
+                                    </div>
+                                    <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                                </div>
+                                <div class="review-content">
+                                    <p>手机非常棒！钛金属质感很好，拿在手里很轻。A17 Pro芯片性能强劲，拍照效果也很出色。电池续航比上一代有明显提升。</p>
+                                </div>
+                                <div class="review-images">
+                                    <img src="https://picsum.photos/seed/review1/100/100.jpg" alt="用户图片">
+                                    <img src="https://picsum.photos/seed/review2/100/100.jpg" alt="用户图片">
+                                    <img src="https://picsum.photos/seed/review3/100/100.jpg" alt="用户图片">
+                                </div>
+                                <div class="review-actions">
+                                    <button class="helpful-btn">👍 有用 (23)</button>
+                                    <button class="comment-btn">💬 评论</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="support">
+                        <div class="support-content">
+                            <div class="support-section">
+                                <h3>保修政策</h3>
+                                <ul>
+                                    <li>整机保修1年</li>
+                                    <li>电池保修1年</li>
+                                    <li>主要部件保修2年</li>
+                                    <li>7天无理由退换货</li>
+                                </ul>
+                            </div>
+                            <div class="support-section">
+                                <h3>售后服务</h3>
+                                <ul>
+                                    <li>全国联保，支持官方授权维修点</li>
+                                    <li>提供上门维修服务</li>
+                                    <li>备用机服务</li>
+                                    <li>24小时客服热线</li>
+                                </ul>
+                            </div>
+                            <div class="support-section">
+                                <h3>常见问题</h3>
+                                <div class="faq-item">
+                                    <h4>如何激活新iPhone？</h4>
+                                    <p>开机后按照屏幕提示操作，需要连接Wi-Fi网络并登录Apple ID。</p>
+                                </div>
+                                <div class="faq-item">
+                                    <h4>如何备份数据？</h4>
+                                    <p>可以通过iCloud云备份或连接电脑使用iTunes备份。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>关于我们</h4>
+                    <p>TechPhone致力于为用户提供最优质的智能产品和服务体验。</p>
+                </div>
+                <div class="footer-section">
+                    <h4>客户服务</h4>
+                    <ul>
+                        <li><a href="#">联系我们</a></li>
+                        <li><a href="#">退换货政策</a></li>
+                        <li><a href="#">保修服务</a></li>
+                        <li><a href="#">常见问题</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>关注我们</h4>
+                    <div class="social-links">
+                        <a href="#">微信</a>
+                        <a href="#">微博</a>
+                        <a href="#">抖音</a>
+                        <a href="#">小红书</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 TechPhone. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="product-detail.js"></script>
+</body>
+</html>

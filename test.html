@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechPhone 交互功能测试</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .test-item {
+            margin: 10px 0;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 4px;
+        }
+        .status {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .warning {
+            background: #fff3cd;
+            color: #856404;
+        }
+        button {
+            padding: 8px 16px;
+            margin: 5px;
+            border: none;
+            border-radius: 4px;
+            background: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        #console-output {
+            background: #1e1e1e;
+            color: #ffffff;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔧 TechPhone 交互功能测试页面</h1>
+
+    <div class="test-container">
+        <h2>📋 测试项目</h2>
+        <div id="test-results"></div>
+    </div>
+
+    <div class="test-container">
+        <h2>🎮 手动测试</h2>
+        <button onclick="testNavigation()">测试导航栏滚动</button>
+        <button onclick="testSearch()">测试搜索框</button>
+        <button onclick="testCart()">测试购物车</button>
+        <button onclick="testProductCards()">测试产品卡片</button>
+        <button onclick="testCategoryCards()">测试分类卡片</button>
+        <button onclick="testNotifications()">测试通知系统</button>
+    </div>
+
+    <div class="test-container">
+        <h2>📝 控制台输出</h2>
+        <div id="console-output">等待测试开始...</div>
+    </div>
+
+    <script>
+        // 重写console.log来捕获输出
+        const originalLog = console.log;
+        const originalError = console.error;
+        const originalWarn = console.warn;
+
+        const consoleOutput = document.getElementById('console-output');
+
+        function addToConsole(message, type = 'log') {
+            const timestamp = new Date().toLocaleTimeString();
+            const prefix = type === 'error' ? '❌ ERROR' : type === 'warn' ? '⚠️  WARN' : 'ℹ️  INFO';
+            consoleOutput.textContent += `[${timestamp}] ${prefix}: ${message}\n`;
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+        }
+
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            addToConsole(args.join(' '), 'log');
+        };
+
+        console.error = function(...args) {
+            originalError.apply(console, args);
+            addToConsole(args.join(' '), 'error');
+        };
+
+        console.warn = function(...args) {
+            originalWarn.apply(console, args);
+            addToConsole(args.join(' '), 'warn');
+        };
+
+        // 测试函数
+        function testNavigation() {
+            console.log('=== 测试导航栏滚动效果 ===');
+            const header = document.getElementById('header');
+            if (header) {
+                console.log('✓ 找到导航栏元素');
+                header.classList.add('scrolled');
+                setTimeout(() => {
+                    header.classList.remove('scrolled');
+                    console.log('✓ 导航栏滚动效果测试完成');
+                }, 1000);
+            } else {
+                console.error('✗ 未找到导航栏元素');
+            }
+        }
+
+        function testSearch() {
+            console.log('=== 测试搜索框功能 ===');
+            const searchInput = document.querySelector('.search-input');
+            if (searchInput) {
+                console.log('✓ 找到搜索框');
+                searchInput.focus();
+                setTimeout(() => {
+                    searchInput.blur();
+                    console.log('✓ 搜索框焦点测试完成');
+                }, 1000);
+            } else {
+                console.error('✗ 未找到搜索框');
+            }
+        }
+
+        function testCart() {
+            console.log('=== 测试购物车功能 ===');
+            const cartIcon = document.querySelector('.cart-icon');
+            if (cartIcon) {
+                console.log('✓ 找到购物车图标');
+                cartIcon.click();
+                console.log('✓ 购物车点击测试完成');
+            } else {
+                console.error('✗ 未找到购物车图标');
+            }
+        }
+
+        function testProductCards() {
+            console.log('=== 测试产品卡片功能 ===');
+            const productCards = document.querySelectorAll('.product-card');
+            console.log(`找到 ${productCards.length} 个产品卡片`);
+
+            if (productCards.length > 0) {
+                const firstCard = productCards[0];
+                console.log('✓ 测试第一个产品卡片悬停效果');
+                firstCard.style.transform = 'translateY(-5px)';
+                setTimeout(() => {
+                    firstCard.style.transform = 'translateY(0)';
+                    console.log('✓ 产品卡片悬停测试完成');
+                }, 1000);
+            } else {
+                console.warn('⚠️  未找到产品卡片');
+            }
+        }
+
+        function testCategoryCards() {
+            console.log('=== 测试分类卡片功能 ===');
+            const categoryCards = document.querySelectorAll('.category-card');
+            console.log(`找到 ${categoryCards.length} 个分类卡片`);
+
+            if (categoryCards.length > 0) {
+                const firstCard = categoryCards[0];
+                console.log('✓ 测试第一个分类卡片点击');
+                firstCard.click();
+                console.log('✓ 分类卡片点击测试完成');
+            } else {
+                console.warn('⚠️  未找到分类卡片');
+            }
+        }
+
+        function testNotifications() {
+            console.log('=== 测试通知系统 ===');
+            if (typeof showNotification === 'function') {
+                showNotification('这是一条测试通知消息');
+                console.log('✓ 通知系统测试完成');
+            } else {
+                console.error('✗ showNotification 函数不存在');
+            }
+        }
+
+        // 自动运行初始检查
+        window.addEventListener('load', function() {
+            console.log('🚀 TechPhone 测试页面加载完成');
+
+            setTimeout(() => {
+                console.log('=== 开始自动检查 ===');
+
+                const checks = [
+                    { name: 'header', element: document.getElementById('header') },
+                    { name: 'searchInput', element: document.querySelector('.search-input') },
+                    { name: 'cartIcon', element: document.querySelector('.cart-icon') },
+                    { name: 'productCards', element: document.querySelectorAll('.product-card') },
+                    { name: 'categoryCards', element: document.querySelectorAll('.category-card') },
+                    { name: 'actionButtons', element: document.querySelectorAll('.action-btn') }
+                ];
+
+                const testResults = document.getElementById('test-results');
+                testResults.innerHTML = '';
+
+                checks.forEach(check => {
+                    const testItem = document.createElement('div');
+                    testItem.className = 'test-item';
+
+                    let status, count;
+                    if (check.name === 'productCards' || check.name === 'categoryCards' || check.name === 'actionButtons') {
+                        count = check.element.length;
+                        status = count > 0 ? 'success' : 'warning';
+                    } else {
+                        count = check.element ? 1 : 0;
+                        status = check.element ? 'success' : 'error';
+                    }
+
+                    testItem.innerHTML = `
+                        <strong>${check.name}:</strong>
+                        <span class="status ${status}">${count > 0 ? `✓ ${count}` : '✗ 0'}</span>
+                    `;
+
+                    testResults.appendChild(testItem);
+                    console.log(`${check.name}: ${count > 0 ? '✓' : '✗'} ${count}`);
+                });
+
+                console.log('=== 自动检查完成 ===');
+            }, 1000);
+        });
+    </script>
+
+    <!-- 加载主要的样式和脚本 -->
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>购物车 - TechPhone</title>
+    <meta name="description" content="查看您的购物车商品，享受便捷的购物体验">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="cart.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <header class="header" id="header">
+        <nav class="nav-container">
+            <div class="nav-logo">
+                <h1>TechPhone</h1>
+            </div>
+
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">首页</a>
+                <a href="#" class="nav-link">智能手机</a>
+                <a href="#" class="nav-link">配件</a>
+                <a href="#" class="nav-link">智能穿戴</a>
+                <a href="#" class="nav-link">服务</a>
+            </div>
+
+            <div class="nav-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="搜索产品..." class="search-input">
+                    <span class="search-icon">🔍</span>
+                </div>
+
+                <div class="cart-icon">
+                    <span>🛒</span>
+                    <span class="cart-count">3</span>
+                </div>
+
+                <div class="user-avatar">
+                    <img src="https://picsum.photos/seed/user1/40/40.jpg" alt="用户头像">
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 购物车主体 -->
+    <main class="cart-page">
+        <div class="container">
+            <div class="cart-header">
+                <h1>购物车</h1>
+                <div class="cart-steps">
+                    <div class="step active">
+                        <span class="step-number">1</span>
+                        <span class="step-text">购物车</span>
+                    </div>
+                    <div class="step-arrow">→</div>
+                    <div class="step">
+                        <span class="step-number">2</span>
+                        <span class="step-text">填写订单</span>
+                    </div>
+                    <div class="step-arrow">→</div>
+                    <div class="step">
+                        <span class="step-number">3</span>
+                        <span class="step-text">支付</span>
+                    </div>
+                    <div class="step-arrow">→</div>
+                    <div class="step">
+                        <span class="step-number">4</span>
+                        <span class="step-text">完成</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cart-layout">
+                <!-- 购物车商品列表 -->
+                <div class="cart-items">
+                    <div class="cart-item">
+                        <div class="item-checkbox">
+                            <input type="checkbox" class="item-select" checked>
+                        </div>
+                        <div class="item-image">
+                            <img src="https://picsum.photos/seed/iphone15pro/100/100.jpg" alt="iPhone 15 Pro">
+                        </div>
+                        <div class="item-details">
+                            <h3 class="item-name">iPhone 15 Pro</h3>
+                            <p class="item-spec">256GB 深空黑</p>
+                            <div class="item-warranty">一年保修</div>
+                        </div>
+                        <div class="item-price">
+                            <div class="current-price">¥7,999</div>
+                            <div class="original-price">¥8,999</div>
+                        </div>
+                        <div class="item-quantity">
+                            <div class="quantity-selector">
+                                <button class="quantity-btn minus">-</button>
+                                <input type="number" value="1" min="1" max="10" class="quantity-input">
+                                <button class="quantity-btn plus">+</button>
+                            </div>
+                        </div>
+                        <div class="item-subtotal">
+                            ¥7,999
+                        </div>
+                        <div class="item-actions">
+                            <button class="action-btn delete">🗑️</button>
+                            <button class="action-btn favorite">❤️</button>
+                        </div>
+                    </div>
+
+                    <div class="cart-item">
+                        <div class="item-checkbox">
+                            <input type="checkbox" class="item-select" checked>
+                        </div>
+                        <div class="item-image">
+                            <img src="https://picsum.photos/seed/airpods/100/100.jpg" alt="AirPods Pro">
+                        </div>
+                        <div class="item-details">
+                            <h3 class="item-name">AirPods Pro</h3>
+                            <p class="item-spec">第二代</p>
+                            <div class="item-warranty">一年保修</div>
+                        </div>
+                        <div class="item-price">
+                            <div class="current-price">¥1,899</div>
+                            <div class="original-price">¥1,999</div>
+                        </div>
+                        <div class="item-quantity">
+                            <div class="quantity-selector">
+                                <button class="quantity-btn minus">-</button>
+                                <input type="number" value="2" min="1" max="10" class="quantity-input">
+                                <button class="quantity-btn plus">+</button>
+                            </div>
+                        </div>
+                        <div class="item-subtotal">
+                            ¥3,798
+                        </div>
+                        <div class="item-actions">
+                            <button class="action-btn delete">🗑️</button>
+                            <button class="action-btn favorite">❤️</button>
+                        </div>
+                    </div>
+
+                    <div class="cart-item">
+                        <div class="item-checkbox">
+                            <input type="checkbox" class="item-select">
+                        </div>
+                        <div class="item-image">
+                            <img src="https://picsum.photos/seed/applewatch/100/100.jpg" alt="Apple Watch">
+                        </div>
+                        <div class="item-details">
+                            <h3 class="item-name">Apple Watch Series 9</h3>
+                            <p class="item-spec">45mm GPS版 午夜色铝金属表壳</p>
+                            <div class="item-warranty">一年保修</div>
+                        </div>
+                        <div class="item-price">
+                            <div class="current-price">¥2,999</div>
+                        </div>
+                        <div class="item-quantity">
+                            <div class="quantity-selector">
+                                <button class="quantity-btn minus">-</button>
+                                <input type="number" value="1" min="1" max="10" class="quantity-input">
+                                <button class="quantity-btn plus">+</button>
+                            </div>
+                        </div>
+                        <div class="item-subtotal">
+                            ¥2,999
+                        </div>
+                        <div class="item-actions">
+                            <button class="action-btn delete">🗑️</button>
+                            <button class="action-btn favorite">❤️</button>
+                        </div>
+                    </div>
+
+                    <!-- 推荐商品 -->
+                    <div class="recommendations">
+                        <h3>为您推荐</h3>
+                        <div class="recommendation-grid">
+                            <div class="recommendation-item">
+                                <img src="https://picsum.photos/seed/magcase/80/80.jpg" alt="MagSafe保护壳">
+                                <div class="recommendation-info">
+                                    <h4>MagSafe保护壳</h4>
+                                    <p>¥299</p>
+                                </div>
+                                <button class="add-recommendation">+</button>
+                            </div>
+                            <div class="recommendation-item">
+                                <img src="https://picsum.photos/seed/cable/80/80.jpg" alt="USB-C充电线">
+                                <div class="recommendation-info">
+                                    <h4>USB-C充电线</h4>
+                                    <p>¥145</p>
+                                </div>
+                                <button class="add-recommendation">+</button>
+                            </div>
+                            <div class="recommendation-item">
+                                <img src="https://picsum.photos/seed/charger/80/80.jpg" alt="20W充电器">
+                                <div class="recommendation-info">
+                                    <h4>20W充电器</h4>
+                                    <p>¥149</p>
+                                </div>
+                                <button class="add-recommendation">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 订单摘要 -->
+                <div class="cart-summary">
+                    <div class="summary-card">
+                        <h3>订单摘要</h3>
+
+                        <div class="summary-row">
+                            <span>商品总价</span>
+                            <span id="subtotal">¥11,797</span>
+                        </div>
+
+                        <div class="summary-row">
+                            <span>优惠折扣</span>
+                            <span class="discount">-¥1,000</span>
+                        </div>
+
+                        <div class="summary-row">
+                            <span>运费</span>
+                            <span class="free-shipping">免运费</span>
+                        </div>
+
+                        <div class="summary-row total">
+                            <span>总计</span>
+                            <span id="total">¥10,797</span>
+                        </div>
+
+                        <div class="coupon-section">
+                            <h4>优惠券</h4>
+                            <div class="coupon-input">
+                                <input type="text" placeholder="输入优惠券代码" class="coupon-code">
+                                <button class="apply-coupon">应用</button>
+                            </div>
+                            <div class="available-coupons">
+                                <div class="coupon-item">
+                                    <span class="coupon-code">NEWUSER100</span>
+                                    <span class="coupon-value">新用户立减100元</span>
+                                    <button class="use-coupon">使用</button>
+                                </div>
+                                <div class="coupon-item">
+                                    <span class="coupon-code">SAVE200</span>
+                                    <span class="coupon-value">满2000减200元</span>
+                                    <button class="use-coupon">使用</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="checkout-btn" id="checkoutBtn">去结算 (2件商品)</button>
+
+                        <div class="security-info">
+                            <div class="security-item">
+                                <span class="security-icon">🔒</span>
+                                <span>安全支付</span>
+                            </div>
+                            <div class="security-item">
+                                <span class="security-icon">🚚</span>
+                                <span>7天无理由退换</span>
+                            </div>
+                            <div class="security-item">
+                                <span class="security-icon">🔧</span>
+                                <span>官方保修</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 配送信息 -->
+                    <div class="delivery-info">
+                        <h3>配送信息</h3>
+                        <div class="delivery-address">
+                            <div class="address-header">
+                                <span>📍 配送至：北京市朝阳区建国路88号</span>
+                                <button class="change-address">修改</button>
+                            </div>
+                            <div class="delivery-time">
+                                <span>📅 预计送达：2024年1月18日</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>关于我们</h4>
+                    <p>TechPhone致力于为用户提供最优质的智能产品和服务体验。</p>
+                </div>
+                <div class="footer-section">
+                    <h4>客户服务</h4>
+                    <ul>
+                        <li><a href="#">联系我们</a></li>
+                        <li><a href="#">退换货政策</a></li>
+                        <li><a href="#">保修服务</a></li>
+                        <li><a href="#">常见问题</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>关注我们</h4>
+                    <div class="social-links">
+                        <a href="#">微信</a>
+                        <a href="#">微博</a>
+                        <a href="#">抖音</a>
+                        <a href="#">小红书</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 TechPhone. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="cart.js"></script>
+</body>
+</html>

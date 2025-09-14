@@ -1,0 +1,29 @@
+# Robots.txt for TechPhone Website
+# https://www.robotstxt.org/robotstxt.html
+
+User-agent: *
+Allow: /
+Allow: /images/
+
+# Sitemap location
+Sitemap: https://yourusername.github.io/TechPhone/sitemap.xml
+
+# Crawl delay (optional)
+Crawl-delay: 1
+
+# Block common bot paths
+Disallow: /temp/
+Disallow: /tmp/
+Disallow: /private/
+Disallow: /admin/
+Disallow: /api/
+
+# Allow search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /

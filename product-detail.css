@@ -1,0 +1,823 @@
+/* 面包屑导航 */
+.breadcrumb {
+    background: white;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--light-gray);
+    margin-top: 80px;
+}
+
+.breadcrumb .container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 14px;
+}
+
+.breadcrumb a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.breadcrumb a:hover {
+    color: var(--primary-dark);
+}
+
+.breadcrumb span {
+    color: var(--medium-gray);
+}
+
+/* 产品详情主体 */
+.product-detail {
+    padding: 2rem 0;
+    background: white;
+}
+
+.product-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 4rem;
+}
+
+/* 产品图片展示区 */
+.product-images {
+    position: relative;
+}
+
+.main-image-container {
+    position: relative;
+    background: var(--bg-gray);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.main-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.zoom-lens {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    background: rgba(26, 115, 232, 0.1);
+}
+
+.thumbnail-container {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.thumbnail {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.thumbnail:hover {
+    border-color: var(--primary-color);
+    transform: scale(1.05);
+}
+
+.thumbnail.active {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+}
+
+.view-360-btn {
+    width: 100%;
+    padding: 0.8rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.view-360-btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+/* 产品信息区 */
+.product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.product-header {
+    border-bottom: 1px solid var(--light-gray);
+    padding-bottom: 1rem;
+}
+
+.product-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--dark-gray);
+    margin-bottom: 0.5rem;
+}
+
+.product-subtitle {
+    font-size: 16px;
+    color: var(--medium-gray);
+    margin-bottom: 1rem;
+}
+
+.product-rating-large {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.product-rating-large .stars {
+    font-size: 18px;
+}
+
+.rating-text {
+    color: var(--medium-gray);
+    font-size: 14px;
+}
+
+/* 价格区域 */
+.price-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.current-price {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--error-color);
+}
+
+.original-price {
+    font-size: 20px;
+    color: var(--medium-gray);
+    text-decoration: line-through;
+}
+
+.save-info {
+    background: var(--success-color);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* 促销标签 */
+.promo-badges {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.promo-badge {
+    background: var(--bg-gray);
+    color: var(--medium-gray);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    border: 1px solid var(--light-gray);
+}
+
+/* 规格选择 */
+.spec-section {
+    background: var(--bg-gray);
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+}
+
+.spec-group {
+    margin-bottom: 1.5rem;
+}
+
+.spec-group:last-child {
+    margin-bottom: 0;
+}
+
+.spec-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    color: var(--dark-gray);
+}
+
+/* 颜色选择 */
+.color-options {
+    display: flex;
+    gap: 0.8rem;
+}
+
+.color-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.color-btn:hover {
+    transform: scale(1.1);
+}
+
+.color-btn.active {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+}
+
+.color-btn::after {
+    content: attr(data-color);
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--dark-gray);
+    color: white;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.color-btn:hover::after {
+    opacity: 1;
+}
+
+/* 存储容量选择 */
+.storage-options {
+    display: flex;
+    gap: 0.8rem;
+}
+
+.storage-btn {
+    padding: 0.8rem 1.5rem;
+    border: 2px solid var(--light-gray);
+    background: white;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.storage-btn:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.storage-btn.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+/* 数量选择器 */
+.quantity-selector {
+    display: flex;
+    align-items: center;
+    border: 2px solid var(--light-gray);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    width: fit-content;
+}
+
+.quantity-btn {
+    background: var(--bg-gray);
+    border: none;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.quantity-btn:hover {
+    background: var(--light-gray);
+}
+
+.quantity-input {
+    border: none;
+    width: 60px;
+    height: 40px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.quantity-input::-webkit-inner-spin-button,
+.quantity-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* 操作按钮 */
+.action-buttons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.btn-buy-now, .btn-add-cart, .btn-favorite {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btn-buy-now {
+    background: var(--primary-color);
+    color: white;
+    flex: 2;
+}
+
+.btn-buy-now:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.btn-add-cart {
+    background: var(--success-color);
+    color: white;
+    flex: 2;
+}
+
+.btn-add-cart:hover {
+    background: #2d8e47;
+    transform: translateY(-2px);
+}
+
+.btn-favorite {
+    background: var(--bg-gray);
+    color: var(--medium-gray);
+    border: 2px solid var(--light-gray);
+    padding: 1rem;
+    font-size: 1.2rem;
+}
+
+.btn-favorite:hover {
+    background: var(--error-color);
+    color: white;
+    border-color: var(--error-color);
+}
+
+/* 服务保障 */
+.service-guarantee {
+    background: var(--bg-gray);
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+}
+
+.service-guarantee h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--dark-gray);
+}
+
+.service-items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.service-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 14px;
+    color: var(--medium-gray);
+}
+
+.service-icon {
+    font-size: 16px;
+}
+
+/* 产品规格详情 */
+.product-specs {
+    margin-top: 4rem;
+}
+
+.specs-tabs {
+    display: flex;
+    border-bottom: 2px solid var(--light-gray);
+    margin-bottom: 2rem;
+    gap: 2rem;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    padding: 1rem 0;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--medium-gray);
+    cursor: pointer;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.tab-btn::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.tab-btn:hover {
+    color: var(--dark-gray);
+}
+
+.tab-btn.active {
+    color: var(--primary-color);
+}
+
+.tab-btn.active::after {
+    width: 100%;
+}
+
+.tab-content {
+    min-height: 400px;
+}
+
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 概述标签页 */
+.overview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.spec-card {
+    background: var(--bg-gray);
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.spec-card:hover {
+    transform: translateY(-3px);
+}
+
+.spec-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.spec-card h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--dark-gray);
+}
+
+.spec-card p {
+    font-size: 14px;
+    color: var(--medium-gray);
+    line-height: 1.5;
+}
+
+/* 技术规格标签页 */
+.specs-table {
+    background: var(--bg-gray);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.spec-row {
+    display: flex;
+    border-bottom: 1px solid var(--light-gray);
+}
+
+.spec-row:last-child {
+    border-bottom: none;
+}
+
+.spec-label {
+    flex: 0 0 200px;
+    padding: 1rem 1.5rem;
+    background: white;
+    font-weight: 600;
+    color: var(--dark-gray);
+    border-right: 1px solid var(--light-gray);
+}
+
+.spec-value {
+    flex: 1;
+    padding: 1rem 1.5rem;
+    color: var(--medium-gray);
+}
+
+/* 用户评价标签页 */
+.reviews-summary {
+    background: var(--bg-gray);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    margin-bottom: 2rem;
+}
+
+.rating-breakdown {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.overall-rating {
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--dark-gray);
+}
+
+.overall-rating span {
+    font-size: 24px;
+    color: var(--medium-gray);
+}
+
+.rating-bars {
+    flex: 1;
+}
+
+.rating-bar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.bar {
+    flex: 1;
+    height: 8px;
+    background: var(--light-gray);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.bar div {
+    height: 100%;
+    background: var(--primary-color);
+    transition: width 0.5s ease;
+}
+
+.reviews-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.review-card {
+    background: var(--bg-gray);
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+}
+
+.review-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.review-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.review-info {
+    flex: 1;
+}
+
+.review-name {
+    font-weight: 600;
+    color: var(--dark-gray);
+}
+
+.review-meta {
+    font-size: 14px;
+    color: var(--medium-gray);
+}
+
+.review-rating {
+    color: #ffc107;
+}
+
+.review-content {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    color: var(--dark-gray);
+}
+
+.review-images {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.review-images img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.review-images img:hover {
+    transform: scale(1.05);
+}
+
+.review-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.helpful-btn, .comment-btn {
+    background: none;
+    border: 1px solid var(--light-gray);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+.helpful-btn:hover, .comment-btn:hover {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+/* 售后支持标签页 */
+.support-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.support-section {
+    background: var(--bg-gray);
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+}
+
+.support-section h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--dark-gray);
+}
+
+.support-section ul {
+    list-style: none;
+}
+
+.support-section ul li {
+    padding: 0.5rem 0;
+    color: var(--medium-gray);
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.support-section ul li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--success-color);
+    font-weight: bold;
+}
+
+.faq-item {
+    margin-bottom: 1rem;
+}
+
+.faq-item h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--dark-gray);
+}
+
+.faq-item p {
+    color: var(--medium-gray);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .product-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .product-title {
+        font-size: 24px;
+    }
+
+    .current-price {
+        font-size: 28px;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    .btn-buy-now, .btn-add-cart {
+        width: 100%;
+    }
+
+    .specs-tabs {
+        overflow-x: auto;
+        white-space: nowrap;
+        gap: 1rem;
+    }
+
+    .service-items {
+        grid-template-columns: 1fr;
+    }
+
+    .rating-breakdown {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .support-content {
+        grid-template-columns: 1fr;
+    }
+
+    .spec-label {
+        flex: 0 0 120px;
+    }
+
+    .overview-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .product-layout {
+        gap: 2rem;
+    }
+
+    .support-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .overview-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

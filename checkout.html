@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>订单结算 - TechPhone</title>
+    <meta name="description" content="完成您的订单信息，安全便捷的支付体验">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="checkout.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <header class="header" id="header">
+        <nav class="nav-container">
+            <div class="nav-logo">
+                <h1>TechPhone</h1>
+            </div>
+
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">首页</a>
+                <a href="#" class="nav-link">智能手机</a>
+                <a href="#" class="nav-link">配件</a>
+                <a href="#" class="nav-link">智能穿戴</a>
+                <a href="#" class="nav-link">服务</a>
+            </div>
+
+            <div class="nav-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="搜索产品..." class="search-input">
+                    <span class="search-icon">🔍</span>
+                </div>
+
+                <div class="cart-icon">
+                    <span>🛒</span>
+                    <span class="cart-count">3</span>
+                </div>
+
+                <div class="user-avatar">
+                    <img src="https://picsum.photos/seed/user1/40/40.jpg" alt="用户头像">
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 结算页面主体 -->
+    <main class="checkout-page">
+        <div class="container">
+            <!-- 进度指示器 -->
+            <div class="checkout-progress">
+                <div class="progress-steps">
+                    <div class="progress-step completed">
+                        <div class="step-icon">✓</div>
+                        <div class="step-text">购物车</div>
+                    </div>
+                    <div class="progress-line completed"></div>
+                    <div class="progress-step active">
+                        <div class="step-icon">2</div>
+                        <div class="step-text">订单信息</div>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step">
+                        <div class="step-icon">3</div>
+                        <div class="step-text">支付</div>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="progress-step">
+                        <div class="step-icon">4</div>
+                        <div class="step-text">完成</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="checkout-layout">
+                <!-- 左侧订单信息表单 -->
+                <div class="checkout-form">
+                    <!-- 收货地址 -->
+                    <section class="form-section">
+                        <h2 class="section-title">
+                            <span class="section-icon">📍</span>
+                            收货地址
+                        </h2>
+
+                        <div class="address-list">
+                            <div class="address-item selected">
+                                <div class="address-radio">
+                                    <input type="radio" name="address" value="1" checked>
+                                </div>
+                                <div class="address-info">
+                                    <div class="address-header">
+                                        <span class="address-name">张三</span>
+                                        <span class="address-phone">138****8888</span>
+                                        <span class="address-default">默认</span>
+                                    </div>
+                                    <div class="address-detail">
+                                        北京市朝阳区建国路88号SOHO现代城A座2801室
+                                    </div>
+                                </div>
+                                <div class="address-actions">
+                                    <button class="btn-edit">编辑</button>
+                                    <button class="btn-delete">删除</button>
+                                </div>
+                            </div>
+
+                            <div class="address-item">
+                                <div class="address-radio">
+                                    <input type="radio" name="address" value="2">
+                                </div>
+                                <div class="address-info">
+                                    <div class="address-header">
+                                        <span class="address-name">李四</span>
+                                        <span class="address-phone">139****9999</span>
+                                    </div>
+                                    <div class="address-detail">
+                                        上海市浦东新区陆家嘴环路1000号恒生银行大厦36楼
+                                    </div>
+                                </div>
+                                <div class="address-actions">
+                                    <button class="btn-edit">编辑</button>
+                                    <button class="btn-delete">删除</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="btn-add-address" id="addAddressBtn">
+                            <span>+</span> 添加新地址
+                        </button>
+                    </section>
+
+                    <!-- 配送方式 -->
+                    <section class="form-section">
+                        <h2 class="section-title">
+                            <span class="section-icon">🚚</span>
+                            配送方式
+                        </h2>
+
+                        <div class="shipping-options">
+                            <label class="shipping-option">
+                                <input type="radio" name="shipping" value="standard" checked>
+                                <div class="shipping-content">
+                                    <div class="shipping-header">
+                                        <span class="shipping-name">标准配送</span>
+                                        <span class="shipping-price">免费</span>
+                                    </div>
+                                    <div class="shipping-desc">预计3-5个工作日送达</div>
+                                </div>
+                            </label>
+
+                            <label class="shipping-option">
+                                <input type="radio" name="shipping" value="express">
+                                <div class="shipping-content">
+                                    <div class="shipping-header">
+                                        <span class="shipping-name">快速配送</span>
+                                        <span class="shipping-price">¥15</span>
+                                    </div>
+                                    <div class="shipping-desc">预计1-2个工作日送达</div>
+                                </div>
+                            </label>
+
+                            <label class="shipping-option">
+                                <input type="radio" name="shipping" value="same-day">
+                                <div class="shipping-content">
+                                    <div class="shipping-header">
+                                        <span class="shipping-name">当日达</span>
+                                        <span class="shipping-price">¥30</span>
+                                    </div>
+                                    <div class="shipping-desc">当日送达（限部分地区）</div>
+                                </div>
+                            </label>
+                        </div>
+                    </section>
+
+                    <!-- 支付方式 -->
+                    <section class="form-section">
+                        <h2 class="section-title">
+                            <span class="section-icon">💳</span>
+                            支付方式
+                        </h2>
+
+                        <div class="payment-options">
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="alipay" checked>
+                                <div class="payment-content">
+                                    <div class="payment-icon">
+                                        <span class="icon-text">支</span>
+                                    </div>
+                                    <div class="payment-info">
+                                        <div class="payment-name">支付宝</div>
+                                        <div class="payment-desc">推荐使用支付宝支付</div>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="wechat">
+                                <div class="payment-content">
+                                    <div class="payment-icon">
+                                        <span class="icon-text">微</span>
+                                    </div>
+                                    <div class="payment-info">
+                                        <div class="payment-name">微信支付</div>
+                                        <div class="payment-desc">使用微信扫码支付</div>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="unionpay">
+                                <div class="payment-content">
+                                    <div class="payment-icon">
+                                        <span class="icon-text">银</span>
+                                    </div>
+                                    <div class="payment-info">
+                                        <div class="payment-name">银联支付</div>
+                                        <div class="payment-desc">支持各大银行储蓄卡/信用卡</div>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="cod">
+                                <div class="payment-content">
+                                    <div class="payment-icon">
+                                        <span class="icon-text">货</span>
+                                    </div>
+                                    <div class="payment-info">
+                                        <div class="payment-name">货到付款</div>
+                                        <div class="payment-desc">收到商品后再付款</div>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </section>
+
+                    <!-- 发票信息 -->
+                    <section class="form-section">
+                        <h2 class="section-title">
+                            <span class="section-icon">📄</span>
+                            发票信息
+                        </h2>
+
+                        <div class="invoice-options">
+                            <label class="invoice-option">
+                                <input type="radio" name="invoice" value="none" checked>
+                                <span>不开发票</span>
+                            </label>
+
+                            <label class="invoice-option">
+                                <input type="radio" name="invoice" value="electronic">
+                                <span>电子发票</span>
+                            </label>
+
+                            <label class="invoice-option">
+                                <input type="radio" name="invoice" value="paper">
+                                <span>纸质发票</span>
+                            </label>
+                        </div>
+
+                        <div class="invoice-form" id="invoiceForm" style="display: none;">
+                            <div class="form-group">
+                                <label>发票抬头</label>
+                                <input type="text" class="form-input" placeholder="请输入发票抬头">
+                            </div>
+
+                            <div class="form-group">
+                                <label>纳税人识别号</label>
+                                <input type="text" class="form-input" placeholder="请输入纳税人识别号">
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 订单备注 -->
+                    <section class="form-section">
+                        <h2 class="section-title">
+                            <span class="section-icon">📝</span>
+                            订单备注
+                        </h2>
+
+                        <div class="form-group">
+                            <textarea class="form-textarea" rows="3" placeholder="如有特殊要求，请在此备注（选填）"></textarea>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- 右侧订单摘要 -->
+                <div class="checkout-sidebar">
+                    <!-- 订单商品 -->
+                    <div class="order-summary">
+                        <h3 class="summary-title">订单商品</h3>
+
+                        <div class="order-items">
+                            <div class="order-item">
+                                <img src="https://picsum.photos/seed/iphone15pro/60/60.jpg" alt="iPhone 15 Pro">
+                                <div class="order-item-info">
+                                    <div class="order-item-name">iPhone 15 Pro</div>
+                                    <div class="order-item-spec">256GB 深空黑</div>
+                                    <div class="order-item-quantity">x1</div>
+                                </div>
+                                <div class="order-item-price">¥7,999</div>
+                            </div>
+
+                            <div class="order-item">
+                                <img src="https://picsum.photos/seed/airpods/60/60.jpg" alt="AirPods Pro">
+                                <div class="order-item-info">
+                                    <div class="order-item-name">AirPods Pro</div>
+                                    <div class="order-item-spec">第二代</div>
+                                    <div class="order-item-quantity">x2</div>
+                                </div>
+                                <div class="order-item-price">¥3,798</div>
+                            </div>
+                        </div>
+
+                        <div class="order-details">
+                            <div class="detail-row">
+                                <span>商品总价</span>
+                                <span>¥11,797</span>
+                            </div>
+                            <div class="detail-row">
+                                <span>优惠折扣</span>
+                                <span class="discount">-¥1,000</span>
+                            </div>
+                            <div class="detail-row">
+                                <span>运费</span>
+                                <span id="shippingFee">免费</span>
+                            </div>
+                            <div class="detail-row total">
+                                <span>应付金额</span>
+                                <span id="totalAmount">¥10,797</span>
+                            </div>
+                        </div>
+
+                        <div class="price-guarantee">
+                            <span class="guarantee-icon">🛡️</span>
+                            <span>价格保护，30天内发现降价可退差价</span>
+                        </div>
+                    </div>
+
+                    <!-- 提交订单 -->
+                    <div class="checkout-actions">
+                        <div class="total-section">
+                            <div class="total-label">应付金额：</div>
+                            <div class="total-amount" id="finalTotal">¥10,797</div>
+                        </div>
+
+                        <button class="submit-order" id="submitOrderBtn">
+                            提交订单
+                        </button>
+
+                        <div class="agreement">
+                            <label class="agreement-label">
+                                <input type="checkbox" checked>
+                                <span>我已阅读并同意</span>
+                                <a href="#">《购买协议》</a>
+                                <span>和</span>
+                                <a href="#">《隐私政策》</a>
+                            </label>
+                        </div>
+
+                        <div class="security-badges">
+                            <div class="security-badge">
+                                <span class="badge-icon">🔒</span>
+                                <span>安全支付</span>
+                            </div>
+                            <div class="security-badge">
+                                <span class="badge-icon">🔧</span>
+                                <span>官方保修</span>
+                            </div>
+                            <div class="security-badge">
+                                <span class="badge-icon">🚚</span>
+                                <span>7天无理由退换</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 地址编辑模态框 -->
+    <div class="modal" id="addressModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>添加收货地址</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>收货人姓名 *</label>
+                    <input type="text" class="form-input" placeholder="请输入收货人姓名">
+                </div>
+
+                <div class="form-group">
+                    <label>手机号码 *</label>
+                    <input type="tel" class="form-input" placeholder="请输入手机号码">
+                </div>
+
+                <div class="form-group">
+                    <label>详细地址 *</label>
+                    <div class="address-selector">
+                        <select class="form-select">
+                            <option>请选择省份</option>
+                            <option>北京市</option>
+                            <option>上海市</option>
+                            <option>广东省</option>
+                        </select>
+                        <select class="form-select">
+                            <option>请选择城市</option>
+                            <option>北京市</option>
+                            <option>上海市</option>
+                            <option>广州市</option>
+                        </select>
+                        <select class="form-select">
+                            <option>请选择区县</option>
+                            <option>朝阳区</option>
+                            <option>海淀区</option>
+                            <option>东城区</option>
+                        </select>
+                    </div>
+                    <input type="text" class="form-input" placeholder="请输入详细地址（街道、门牌号等）">
+                </div>
+
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox">
+                        <span>设为默认地址</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn-cancel">取消</button>
+                <button class="btn-save">保存</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>关于我们</h4>
+                    <p>TechPhone致力于为用户提供最优质的智能产品和服务体验。</p>
+                </div>
+                <div class="footer-section">
+                    <h4>客户服务</h4>
+                    <ul>
+                        <li><a href="#">联系我们</a></li>
+                        <li><a href="#">退换货政策</a></li>
+                        <li><a href="#">保修服务</a></li>
+                        <li><a href="#">常见问题</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>关注我们</h4>
+                    <div class="social-links">
+                        <a href="#">微信</a>
+                        <a href="#">微博</a>
+                        <a href="#">抖音</a>
+                        <a href="#">小红书</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 TechPhone. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="checkout.js"></script>
+</body>
+</html>

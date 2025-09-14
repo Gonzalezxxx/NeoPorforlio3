@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Pages 部署状态检查</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+        }
+
+        .input-group {
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #1a73e8;
+        }
+
+        .btn {
+            background: #1a73e8;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-right: 10px;
+        }
+
+        .btn:hover {
+            background: #1557b0;
+            transform: translateY(-2px);
+        }
+
+        .btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #1a73e8;
+            border: 2px solid #1a73e8;
+        }
+
+        .btn-secondary:hover {
+            background: #1a73e8;
+            color: white;
+        }
+
+        .results {
+            margin-top: 30px;
+            display: none;
+        }
+
+        .result-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid #ddd;
+        }
+
+        .result-item.success {
+            border-left-color: #28a745;
+            background: #d4edda;
+        }
+
+        .result-item.error {
+            border-left-color: #dc3545;
+            background: #f8d7da;
+        }
+
+        .result-item.warning {
+            border-left-color: #ffc107;
+            background: #fff3cd;
+        }
+
+        .result-item.info {
+            border-left-color: #17a2b8;
+            background: #d1ecf1;
+        }
+
+        .result-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .result-content {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            display: none;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #1a73e8;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .links {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .links a {
+            color: #1a73e8;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+
+        .tips {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+
+        .tips h3 {
+            color: #1a73e8;
+            margin-bottom: 15px;
+        }
+
+        .tips ul {
+            margin-left: 20px;
+            color: #666;
+        }
+
+        .tips li {
+            margin-bottom: 8px;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-badge.success {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-badge.error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .status-badge.warning {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status-badge.info {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 GitHub Pages 部署状态检查</h1>
+
+        <div class="input-group">
+            <label for="username">GitHub 用户名：</label>
+            <input type="text" id="username" placeholder="请输入您的 GitHub 用户名">
+        </div>
+
+        <div style="text-align: center;">
+            <button class="btn" onclick="checkDeployment()">开始检查</button>
+            <button class="btn btn-secondary" onclick="openGitHub()">打开 GitHub</button>
+        </div>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>正在检查部署状态...</p>
+        </div>
+
+        <div class="results" id="results"></div>
+
+        <div class="links">
+            <a href="#" onclick="openRepo()">GitHub 仓库</a>
+            <a href="#" onclick="openPages()">GitHub Pages 设置</a>
+            <a href="#" onclick="openActions()">GitHub Actions</a>
+        </div>
+
+        <div class="tips">
+            <h3>💡 提示</h3>
+            <ul>
+                <li>首次部署通常需要 1-5 分钟时间</li>
+                <li>确保您的仓库设置为 Public（免费账户必需）</li>
+                <li>检查文件名大小写（GitHub Pages 区分大小写）</li>
+                <li>清除浏览器缓存后重试</li>
+                <li>查看 GitHub Actions 获取详细错误信息</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        let currentUsername = '';
+
+        function checkDeployment() {
+            const username = document.getElementById('username').value.trim();
+
+            if (!username) {
+                alert('请输入 GitHub 用户名');
+                return;
+            }
+
+            currentUsername = username;
+
+            // 显示加载状态
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('results').style.display = 'none';
+
+            // 模拟检查过程
+            setTimeout(() => {
+                performChecks(username);
+            }, 1000);
+        }
+
+        async function performChecks(username) {
+            const results = [];
+            const repoUrl = `https://github.com/${username}/TechPhone`;
+            const pagesUrl = `https://${username}.github.io/TechPhone/`;
+            const apiUrl = `https://api.github.com/repos/${username}/TechPhone/pages`;
+
+            try {
+                // 检查仓库是否存在
+                results.push({
+                    type: 'info',
+                    title: '📁 检查 GitHub 仓库',
+                    content: `仓库地址: <a href="${repoUrl}" target="_blank">${repoUrl}</a>`
+                });
+
+                const repoResponse = await fetch(repoUrl);
+                if (repoResponse.ok) {
+                    results.push({
+                        type: 'success',
+                        title: '✅ GitHub 仓库存在',
+                        content: '仓库可以正常访问'
+                    });
+                } else {
+                    results.push({
+                        type: 'error',
+                        title: '❌ GitHub 仓库不存在',
+                        content: '请检查用户名和仓库名是否正确，仓库是否设置为 Public'
+                    });
+                    displayResults(results);
+                    return;
+                }
+
+                // 检查 GitHub Pages 状态
+                try {
+                    const pagesResponse = await fetch(apiUrl);
+                    if (pagesResponse.ok) {
+                        const pagesData = await pagesResponse.json();
+                        const status = pagesData.status;
+
+                        results.push({
+                            type: 'info',
+                            title: '📊 GitHub Pages 状态',
+                            content: `当前状态: <span class="status-badge info">${status}</span>`
+                        });
+
+                        if (status === 'built') {
+                            results.push({
+                                type: 'success',
+                                title: '✅ GitHub Pages 已构建完成',
+                                content: '网站已成功部署'
+                            });
+                        } else if (status === 'building') {
+                            results.push({
+                                type: 'warning',
+                                title: '⏳ GitHub Pages 正在构建',
+                                content: '请等待 1-5 分钟后重试'
+                            });
+                        } else if (status === 'queued') {
+                            results.push({
+                                type: 'warning',
+                                title: '⏳ GitHub Pages 已排队',
+                                content: '正在等待构建，请稍后'
+                            });
+                        }
+                    } else {
+                        results.push({
+                            type: 'warning',
+                            title: '⚠️ GitHub Pages 可能未启用',
+                            content: '请在仓库设置中启用 GitHub Pages'
+                        });
+                    }
+                } catch (error) {
+                    results.push({
+                        type: 'warning',
+                        title: '⚠️ 无法获取 Pages 状态',
+                        content: '请手动检查仓库设置'
+                    });
+                }
+
+                // 检查网站是否可以访问
+                try {
+                    const siteResponse = await fetch(pagesUrl);
+                    if (siteResponse.ok) {
+                        results.push({
+                            type: 'success',
+                            title: '🌍 网站可以正常访问',
+                            content: `访问地址: <a href="${pagesUrl}" target="_blank">${pagesUrl}</a>`
+                        });
+                    } else {
+                        results.push({
+                            type: 'error',
+                            title: '❌ 网站无法访问',
+                            content: `HTTP 状态: ${siteResponse.status} ${siteResponse.statusText}`
+                        });
+                    }
+                } catch (error) {
+                    results.push({
+                        type: 'error',
+                        title: '❌ 网站访问失败',
+                        content: '可能是网络问题或网站尚未部署完成'
+                    });
+                }
+
+                // 检查关键文件
+                const files = ['index.html', 'styles.css', 'script.js', 'demo.html'];
+                for (const file of files) {
+                    try {
+                        const fileResponse = await fetch(`${pagesUrl}${file}`);
+                        if (fileResponse.ok) {
+                            results.push({
+                                type: 'success',
+                                title: `✅ ${file} 存在`,
+                                content: '文件可以正常访问'
+                            });
+                        } else {
+                            results.push({
+                                type: 'error',
+                                title: `❌ ${file} 不存在`,
+                                content: `HTTP ${fileResponse.status}`
+                            });
+                        }
+                    } catch (error) {
+                        results.push({
+                            type: 'warning',
+                            title: `⚠️ ${file} 检查失败`,
+                            content: '可能是网络问题'
+                        });
+                    }
+                }
+
+            } catch (error) {
+                results.push({
+                    type: 'error',
+                    title: '❌ 检查过程中出现错误',
+                    content: error.message
+                });
+            }
+
+            displayResults(results);
+        }
+
+        function displayResults(results) {
+            document.getElementById('loading').style.display = 'none';
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '';
+            resultsDiv.style.display = 'block';
+
+            results.forEach(result => {
+                const resultItem = document.createElement('div');
+                resultItem.className = `result-item ${result.type}`;
+                resultItem.innerHTML = `
+                    <div class="result-title">${result.title}</div>
+                    <div class="result-content">${result.content}</div>
+                `;
+                resultsDiv.appendChild(resultItem);
+            });
+
+            // 添加重新检查按钮
+            const recheckBtn = document.createElement('div');
+            recheckBtn.style.textAlign = 'center';
+            recheckBtn.style.marginTop = '20px';
+            recheckBtn.innerHTML = '<button class="btn" onclick="checkDeployment()">重新检查</button>';
+            resultsDiv.appendChild(recheckBtn);
+        }
+
+        function openGitHub() {
+            const username = document.getElementById('username').value.trim();
+            if (username) {
+                window.open(`https://github.com/${username}`, '_blank');
+            } else {
+                window.open('https://github.com', '_blank');
+            }
+        }
+
+        function openRepo() {
+            const username = document.getElementById('username').value.trim();
+            if (username) {
+                window.open(`https://github.com/${username}/TechPhone`, '_blank');
+            }
+        }
+
+        function openPages() {
+            const username = document.getElementById('username').value.trim();
+            if (username) {
+                window.open(`https://github.com/${username}/TechPhone/settings/pages`, '_blank');
+            }
+        }
+
+        function openActions() {
+            const username = document.getElementById('username').value.trim();
+            if (username) {
+                window.open(`https://github.com/${username}/TechPhone/actions`, '_blank');
+            }
+        }
+
+        // 回车键触发检查
+        document.getElementById('username').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkDeployment();
+            }
+        });
+    </script>
+</body>
+</html>
