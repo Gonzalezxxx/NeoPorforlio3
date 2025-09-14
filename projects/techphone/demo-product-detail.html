@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechPhone Product Detail Demo - Apple Style</title>
+    <meta name="description" content="Demo of TechPhone product detail page with Apple design patterns">
+    <link rel="stylesheet" href="styles-apple-style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .demo-banner {
+            background: linear-gradient(135deg, #007aff 0%, #5856d6 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .demo-banner h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .demo-banner p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        .demo-features {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem 3rem;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        .feature-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1d1d1f;
+        }
+        .feature-description {
+            color: #6e6e73;
+            line-height: 1.5;
+        }
+        .demo-nav {
+            background: #f5f5f7;
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+        }
+        .demo-nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+        .demo-nav a {
+            color: #007aff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+        .demo-nav a:hover {
+            background: rgba(0, 122, 255, 0.1);
+        }
+        .demo-section {
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+            padding: 0 2rem;
+        }
+        .demo-section h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #1d1d1f;
+        }
+        .demo-section p {
+            color: #6e6e73;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        .preview-image {
+            width: 100%;
+            max-width: 800px;
+            height: 400px;
+            background: linear-gradient(135deg, #f5f5f7 0%, #e8e8ed 100%);
+            border-radius: 12px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #6e6e73;
+            border: 2px dashed #d2d2d7;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index-apple-style.html">TechPhone</a>
+            </div>
+
+            <div class="nav-links">
+                <a href="index-apple-style.html#iphone" class="nav-link">iPhone</a>
+                <a href="index-apple-style.html#watch" class="nav-link">Watch</a>
+                <a href="index-apple-style.html#accessories" class="nav-link">Accessories</a>
+                <a href="store.html" class="nav-link">Store</a>
+                <a href="contact.html" class="nav-link">Support</a>
+            </div>
+
+            <div class="nav-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="Search techphone.com" class="search-input">
+                    <span class="search-icon">🔍</span>
+                </div>
+
+                <div class="bag-icon" id="bag-icon">
+                    <span>🛍️</span>
+                    <span class="bag-count">0</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Demo Banner -->
+    <div class="demo-banner">
+        <h1>🛍️ Product Detail Page Demo</h1>
+        <p>Experience the Apple-style product detail page design</p>
+    </div>
+
+    <!-- Demo Navigation -->
+    <div class="demo-nav">
+        <div class="demo-nav-container">
+            <a href="index-apple-style.html">← Back to Home</a>
+            <a href="product-detail.html">View Product Detail</a>
+            <a href="store.html">View Store</a>
+        </div>
+    </div>
+
+    <!-- Demo Content -->
+    <div class="demo-features">
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3 class="feature-title">Apple Design Language</h3>
+                <p class="feature-description">Clean typography, generous spacing, and minimalist design following Apple's Human Interface Guidelines</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3 class="feature-title">Responsive Layout</h3>
+                <p class="feature-description">Perfectly adapted for all devices from mobile phones to desktop computers</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🛒</div>
+                <h3 class="feature-title">E-commerce Features</h3>
+                <p class="feature-description">Product gallery, configuration options, and seamless shopping cart integration</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🌍</div>
+                <h3 class="feature-title">Global Ready</h3>
+                <p class="feature-description">Multi-language support and international social media integration</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3 class="feature-title">Fast Performance</h3>
+                <p class="feature-description">Optimized code structure and efficient loading for smooth user experience</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔧</div>
+                <h3 class="feature-title">Professional Code</h3>
+                <p class="feature-description">Well-structured HTML, CSS, and JavaScript following best practices</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Key Features Section -->
+    <div class="demo-section">
+        <h2>Key Features Implemented</h2>
+        <p>The product detail page includes all essential e-commerce features with Apple's signature design approach:</p>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🖼️</div>
+                <h3 class="feature-title">Product Gallery</h3>
+                <p class="feature-description">Interactive image gallery with thumbnail navigation and zoom functionality</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3 class="feature-title">Product Configuration</h3>
+                <p class="feature-description">Finish selection, storage options, and connectivity choices with visual feedback</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <h3 class="feature-title">Pricing Display</h3>
+                <p class="feature-description">Clear pricing with financing options and promotional information</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📋</div>
+                <h3 class="feature-title">Technical Specifications</h3>
+                <p class="feature-description">Comprehensive specs with tabbed interface for easy navigation</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔄</div>
+                <h3 class="feature-title">Product Comparison</h3>
+                <p class="feature-description">Side-by-side comparison with other iPhone models</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🛍️</div>
+                <h3 class="feature-title">Shopping Integration</h3>
+                <p class="feature-description">Add to cart functionality with bag icon updates</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Design Elements Section -->
+    <div class="demo-section">
+        <h2>Apple Design Elements</h2>
+        <p>Every detail follows Apple's design principles:</p>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">✨</div>
+                <h3 class="feature-title">San Francisco Typography</h3>
+                <p class="feature-description">Clean, modern typography using Inter font (SF Pro alternative)</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3 class="feature-title">Apple Color Palette</h3>
+                <p class="feature-description">Carefully selected colors matching Apple's design language</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📐</div>
+                <h3 class="feature-title">Precise Spacing</h3>
+                <p class="feature-description">Consistent spacing and alignment throughout the interface</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🌊</div>
+                <h3 class="feature-title">Smooth Animations</h3>
+                <p class="feature-description">Subtle transitions and hover effects for enhanced UX</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3 class="feature-title">Mobile-First Design</h3>
+                <p class="feature-description">Optimized for mobile devices with responsive breakpoints</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">♿</div>
+                <h3 class="feature-title">Accessibility</h3>
+                <p class="feature-description">WCAG compliant with proper contrast and semantic HTML</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3 class="footer-heading">Shop and Learn</h3>
+                    <ul class="footer-links">
+                        <li><a href="index-apple-style.html">Store</a></li>
+                        <li><a href="#">Mac</a></li>
+                        <li><a href="#">iPad</a></li>
+                        <li><a href="index-apple-style.html#iphone">iPhone</a></li>
+                        <li><a href="index-apple-style.html#watch">Watch</a></li>
+                        <li><a href="#">AirPods</a></li>
+                        <li><a href="index-apple-style.html#accessories">Accessories</a></li>
+                        <li><a href="#">Gift Cards</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-heading">Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://music.apple.com" target="_blank">Apple Music</a></li>
+                        <li><a href="https://tv.apple.com" target="_blank">Apple TV+</a></li>
+                        <li><a href="https://fitness.apple.com" target="_blank">Apple Fitness+</a></li>
+                        <li><a href="https://news.apple.com" target="_blank">Apple News+</a></li>
+                        <li><a href="https://arcade.apple.com" target="_blank">Apple Arcade</a></li>
+                        <li><a href="https://icloud.com" target="_blank">iCloud</a></li>
+                        <li><a href="#">Apple One</a></li>
+                        <li><a href="https://books.apple.com" target="_blank">Apple Books</a></li>
+                        <li><a href="https://apps.apple.com" target="_blank">App Store</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-heading">TechPhone Store</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Find a Store</a></li>
+                        <li><a href="#">Genius Bar</a></li>
+                        <li><a href="#">Today at TechPhone</a></li>
+                        <li><a href="#">TechPhone Store App</a></li>
+                        <li><a href="#">Financing</a></li>
+                        <li><a href="#">TechPhone Trade In</a></li>
+                        <li><a href="cart.html">View Cart</a></li>
+                        <li><a href="checkout.html">Checkout</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-heading">Follow Us</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://twitter.com/techphone" target="_blank">Twitter/X</a></li>
+                        <li><a href="https://facebook.com/techphone" target="_blank">Facebook</a></li>
+                        <li><a href="https://instagram.com/techphone" target="_blank">Instagram</a></li>
+                        <li><a href="https://youtube.com/techphone" target="_blank">YouTube</a></li>
+                        <li><a href="https://linkedin.com/company/techphone" target="_blank">LinkedIn</a></li>
+                        <li><a href="https://tiktok.com/@techphone" target="_blank">TikTok</a></li>
+                    </ul>
+                    <h3 class="footer-heading">Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Warranty</a></li>
+                        <li><a href="#">Returns</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-heading">About TechPhone</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Newsroom</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="https://investors.techphone.com" target="_blank">Investors</a></li>
+                        <li><a href="#">Ethics & Compliance</a></li>
+                        <li><a href="#">Events</a></li>
+                    </ul>
+                    <h3 class="footer-heading">Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Accessibility</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>Copyright © 2024 TechPhone Inc. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="#">Terms of Use</a>
+                    <a href="#">Sales and Refunds</a>
+                    <a href="#">Legal</a>
+                    <a href="#">Site Map</a>
+                </div>
+                <div class="social-links">
+                    <a href="https://twitter.com/techphone" target="_blank" title="Twitter">🐦</a>
+                    <a href="https://facebook.com/techphone" target="_blank" title="Facebook">📘</a>
+                    <a href="https://instagram.com/techphone" target="_blank" title="Instagram">📷</a>
+                    <a href="https://youtube.com/techphone" target="_blank" title="YouTube">📺</a>
+                    <a href="https://linkedin.com/company/techphone" target="_blank" title="LinkedIn">💼</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script-apple-style.js"></script>
+</body>
+</html>

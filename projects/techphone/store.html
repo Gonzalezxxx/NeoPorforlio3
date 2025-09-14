@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Store - TechPhone</title>
     <meta name="description" content="Shop the latest iPhone, Apple Watch, AirPods, and accessories at the official TechPhone Store.">
-    <link rel="stylesheet" href="styles-pro.css">
+    <link rel="stylesheet" href="styles-apple-style.css">
     <style>
         .store-hero {
             background: linear-gradient(135deg, #f5f5f7 0%, #ffffff 100%);
@@ -302,20 +302,19 @@
     </style>
 </head>
 <body>
-    <!-- Professional Navigation -->
+    <!-- Navigation -->
     <nav class="nav" id="nav">
         <div class="nav-container">
             <div class="nav-logo">
-                <a href="index-pro.html">TechPhone</a>
+                <a href="../index.html">TechPhone</a>
             </div>
 
             <div class="nav-links">
+                <a href="../index.html#iphone" class="nav-link">iPhone</a>
+                <a href="../index.html#watch" class="nav-link">Watch</a>
+                <a href="../index.html#accessories" class="nav-link">Accessories</a>
                 <a href="store.html" class="nav-link active">Store</a>
-                <a href="iphone.html" class="nav-link">iPhone</a>
-                <a href="watch.html" class="nav-link">Watch</a>
-                <a href="airpods.html" class="nav-link">AirPods</a>
-                <a href="accessories.html" class="nav-link">Accessories</a>
-                <a href="support.html" class="nav-link">Support</a>
+                <a href="contact.html" class="nav-link">Support</a>
             </div>
 
             <div class="nav-actions">
@@ -342,47 +341,47 @@
 
             <!-- Product Categories -->
             <div class="product-categories">
-                <div class="category-card" onclick="navigateToPage('iphone.html')">
+                <div class="category-card" onclick="navigateToPage('product-detail.html?product=iPhone 15 Pro')">
                     <div class="category-image">
                         <img src="https://picsum.photos/seed/iphone15family/400/300.jpg" alt="iPhone">
                     </div>
                     <div class="category-content">
                         <h2 class="category-name">iPhone</h2>
                         <p class="category-description">The ultimate iPhone experience</p>
-                        <a href="iphone.html" class="category-link">Shop iPhone →</a>
+                        <a href="product-detail.html?product=iPhone 15 Pro" class="category-link">Shop iPhone →</a>
                     </div>
                 </div>
 
-                <div class="category-card" onclick="navigateToPage('watch.html')">
+                <div class="category-card" onclick="navigateToPage('product-detail.html?product=Apple Watch Series 9')">
                     <div class="category-image">
                         <img src="https://picsum.photos/seed/applewatchfamily/400/300.jpg" alt="Apple Watch">
                     </div>
                     <div class="category-content">
                         <h2 class="category-name">Apple Watch</h2>
                         <p class="category-description">Your essential companion</p>
-                        <a href="watch.html" class="category-link">Shop Watch →</a>
+                        <a href="product-detail.html?product=Apple Watch Series 9" class="category-link">Shop Watch →</a>
                     </div>
                 </div>
 
-                <div class="category-card" onclick="navigateToPage('airpods.html')">
+                <div class="category-card" onclick="navigateToPage('product-detail.html?product=AirPods Pro')">
                     <div class="category-image">
                         <img src="https://picsum.photos/seed/airpodsfamily/400/300.jpg" alt="AirPods">
                     </div>
                     <div class="category-content">
                         <h2 class="category-name">AirPods</h2>
                         <p class="category-description">Wireless. Effortless. Magical.</p>
-                        <a href="airpods.html" class="category-link">Shop AirPods →</a>
+                        <a href="product-detail.html?product=AirPods Pro" class="category-link">Shop AirPods →</a>
                     </div>
                 </div>
 
-                <div class="category-card" onclick="navigateToPage('accessories.html')">
+                <div class="category-card" onclick="navigateToPage('../index.html#accessories')">
                     <div class="category-image">
                         <img src="https://picsum.photos/seed/accessoriesfamily/400/300.jpg" alt="Accessories">
                     </div>
                     <div class="category-content">
                         <h2 class="category-name">Accessories</h2>
                         <p class="category-description">Everything you need</p>
-                        <a href="accessories.html" class="category-link">Shop Accessories →</a>
+                        <a href="../index.html#accessories" class="category-link">Shop Accessories →</a>
                     </div>
                 </div>
             </div>
@@ -405,7 +404,7 @@
                             <p class="product-description">Titanium design with A17 Pro chip. The ultimate iPhone experience.</p>
                             <div class="product-actions">
                                 <button class="btn-primary" onclick="addToCart('iPhone 15 Pro', 999)">Add to Cart</button>
-                                <button class="btn-secondary" onclick="navigateToPage('iphone-15-pro.html')">Learn More</button>
+                                <button class="btn-secondary" onclick="navigateToPage('product-detail.html?product=iPhone 15 Pro')">Learn More</button>
                             </div>
                         </div>
                     </div>

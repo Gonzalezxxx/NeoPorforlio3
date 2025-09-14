@@ -1,326 +1,292 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iPhone 15 Pro Max - 产品详情 | TechPhone</title>
-    <meta name="description" content="iPhone 15 Pro Max - 钛金属设计，A17 Pro芯片，4800万像素摄像系统">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="product-detail.css">
+    <title>iPhone 15 Pro Max - Product Details | TechPhone</title>
+    <meta name="description" content="iPhone 15 Pro Max - Titanium design, A17 Pro chip, 48MP camera system">
+    <link rel="stylesheet" href="styles-apple-style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- 顶部导航栏 -->
-    <header class="header" id="header">
-        <nav class="nav-container">
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
             <div class="nav-logo">
-                <h1>TechPhone</h1>
+                <a href="../index.html">TechPhone</a>
             </div>
 
-            <div class="nav-menu">
-                <a href="index.html" class="nav-link">首页</a>
-                <a href="#" class="nav-link">智能手机</a>
-                <a href="#" class="nav-link">配件</a>
-                <a href="#" class="nav-link">智能穿戴</a>
-                <a href="#" class="nav-link">服务</a>
+            <div class="nav-links">
+                <a href="../index.html#iphone" class="nav-link">iPhone</a>
+                <a href="../index.html#watch" class="nav-link">Watch</a>
+                <a href="../index.html#accessories" class="nav-link">Accessories</a>
+                <a href="store.html" class="nav-link">Store</a>
+                <a href="contact.html" class="nav-link">Support</a>
             </div>
 
             <div class="nav-actions">
                 <div class="search-box">
-                    <input type="text" placeholder="搜索产品..." class="search-input">
+                    <input type="text" placeholder="Search techphone.com" class="search-input">
                     <span class="search-icon">🔍</span>
                 </div>
 
-                <div class="cart-icon">
-                    <span>🛒</span>
-                    <span class="cart-count">3</span>
-                </div>
-
-                <div class="user-avatar">
-                    <img src="https://picsum.photos/seed/user1/40/40.jpg" alt="用户头像">
+                <div class="bag-icon" id="bag-icon">
+                    <span>🛍️</span>
+                    <span class="bag-count">0</span>
                 </div>
             </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
 
-    <!-- 面包屑导航 -->
-    <div class="breadcrumb">
+    <!-- Breadcrumb Navigation -->
+    <div class="breadcrumb-nav">
         <div class="container">
-            <a href="index.html">首页</a> /
-            <a href="#">智能手机</a> /
+            <a href="../index.html">Home</a> /
+            <a href="../index.html#iphone">iPhone</a> /
             <span>iPhone 15 Pro Max</span>
         </div>
     </div>
 
-    <!-- 产品详情主体 -->
-    <main class="product-detail">
+    <!-- Product Detail Section -->
+    <section class="product-detail-section">
         <div class="container">
-            <div class="product-layout">
-                <!-- 左侧图片展示区 -->
-                <div class="product-images">
-                    <div class="main-image-container">
-                        <img src="https://picsum.photos/seed/iphone15pro-max/600/600.jpg" alt="iPhone 15 Pro Max" class="main-image" id="mainImage">
-                        <div class="zoom-lens" id="zoomLens"></div>
+            <div class="product-detail-content">
+                <!-- Left: Product Gallery -->
+                <div class="product-gallery">
+                    <div class="main-image-wrapper">
+                        <img src="https://picsum.photos/seed/iphone15pro-max/600/600.jpg" alt="iPhone 15 Pro Max" class="main-product-image" id="mainProductImage">
                     </div>
 
-                    <div class="thumbnail-container">
-                        <img src="https://picsum.photos/seed/iphone15pro-max-1/100/100.jpg" alt="iPhone 15 Pro Max 正面" class="thumbnail active" data-main="https://picsum.photos/seed/iphone15pro-max/600/600.jpg">
-                        <img src="https://picsum.photos/seed/iphone15pro-max-2/100/100.jpg" alt="iPhone 15 Pro Max 背面" class="thumbnail" data-main="https://picsum.photos/seed/iphone15pro-max-2/600/600.jpg">
-                        <img src="https://picsum.photos/seed/iphone15pro-max-3/100/100.jpg" alt="iPhone 15 Pro Max 侧面" class="thumbnail" data-main="https://picsum.photos/seed/iphone15pro-max-3/600/600.jpg">
-                        <img src="https://picsum.photos/seed/iphone15pro-max-4/100/100.jpg" alt="iPhone 15 Pro Max 包装" class="thumbnail" data-main="https://picsum.photos/seed/iphone15pro-max-4/600/600.jpg">
+                    <div class="thumbnail-grid">
+                        <img src="https://picsum.photos/seed/iphone15pro-max-1/100/100.jpg" alt="iPhone 15 Pro Max Front" class="thumbnail-image active" data-main="https://picsum.photos/seed/iphone15pro-max/600/600.jpg">
+                        <img src="https://picsum.photos/seed/iphone15pro-max-2/100/100.jpg" alt="iPhone 15 Pro Max Back" class="thumbnail-image" data-main="https://picsum.photos/seed/iphone15pro-max-2/600/600.jpg">
+                        <img src="https://picsum.photos/seed/iphone15pro-max-3/100/100.jpg" alt="iPhone 15 Pro Max Side" class="thumbnail-image" data-main="https://picsum.photos/seed/iphone15pro-max-3/600/600.jpg">
+                        <img src="https://picsum.photos/seed/iphone15pro-max-4/100/100.jpg" alt="iPhone 15 Pro Max Packaging" class="thumbnail-image" data-main="https://picsum.photos/seed/iphone15pro-max-4/600/600.jpg">
                     </div>
-
-                    <!-- 360度展示按钮 -->
-                    <button class="view-360-btn" id="view360Btn">360° 查看</button>
                 </div>
 
-                <!-- 右侧产品信息区 -->
+                <!-- Right: Product Information -->
                 <div class="product-info">
                     <div class="product-header">
                         <h1 class="product-title">iPhone 15 Pro Max</h1>
-                        <p class="product-subtitle">钛金属设计 · A17 Pro芯片 · 4800万像素摄像系统</p>
-
-                        <div class="product-rating-large">
-                            <div class="stars">⭐⭐⭐⭐⭐</div>
-                            <span class="rating-text">4.9分 (1,234条评价)</span>
-                        </div>
+                        <p class="product-subtitle">Titanium. So strong. So light. So Pro.</p>
                     </div>
 
                     <div class="price-section">
-                        <div class="current-price">¥9,999</div>
-                        <div class="original-price">¥10,999</div>
-                        <div class="save-info">省¥1,000</div>
+                        <div class="price-from">From</div>
+                        <div class="current-price">$1,199</div>
+                        <div class="price-info">Or $99.91/mo. for 12 mo. *</div>
                     </div>
 
-                    <div class="promo-badges">
-                        <span class="promo-badge">🚚 免费配送</span>
-                        <span class="promo-badge">🔧 一年保修</span>
-                        <span class="promo-badge">🔄 7天无理由退换</span>
+                    <div class="product-highlights">
+                        <div class="highlight-item">
+                            <span class="highlight-icon">🚚</span>
+                            <span class="highlight-text">Free delivery</span>
+                        </div>
+                        <div class="highlight-item">
+                            <span class="highlight-icon">🔧</span>
+                            <span class="highlight-text">AppleCare+ available</span>
+                        </div>
+                        <div class="highlight-item">
+                            <span class="highlight-icon">🔄</span>
+                            <span class="highlight-text">14-day returns</span>
+                        </div>
                     </div>
 
-                    <!-- 规格选择 -->
-                    <div class="spec-section">
-                        <div class="spec-group">
-                            <label>颜色</label>
-                            <div class="color-options">
-                                <button class="color-btn active" data-color="深空黑" style="background: #1a1a1a;"></button>
-                                <button class="color-btn" data-color="银色" style="background: #c0c0c0;"></button>
-                                <button class="color-btn" data-color="金色" style="background: #ffd700;"></button>
-                                <button class="color-btn" data-color="深紫色" style="background: #4b0082;"></button>
-                                <button class="color-btn" data-color="蓝色" style="background: #007aff;"></button>
+                    <!-- Product Configuration -->
+                    <div class="product-config">
+                        <div class="config-group">
+                            <h3>Finish</h3>
+                            <div class="finish-options">
+                                <button class="finish-option active" data-finish="Natural Titanium">
+                                    <span class="finish-color" style="background: #d4c4b0;"></span>
+                                    <span class="finish-name">Natural Titanium</span>
+                                </button>
+                                <button class="finish-option" data-finish="Blue Titanium">
+                                    <span class="finish-color" style="background: #4b8bbe;"></span>
+                                    <span class="finish-name">Blue Titanium</span>
+                                </button>
+                                <button class="finish-option" data-finish="White Titanium">
+                                    <span class="finish-color" style="background: #f5f5f3;"></span>
+                                    <span class="finish-name">White Titanium</span>
+                                </button>
+                                <button class="finish-option" data-finish="Black Titanium">
+                                    <span class="finish-color" style="background: #424242;"></span>
+                                    <span class="finish-name">Black Titanium</span>
+                                </button>
                             </div>
                         </div>
 
-                        <div class="spec-group">
-                            <label>存储容量</label>
+                        <div class="config-group">
+                            <h3>Storage</h3>
                             <div class="storage-options">
-                                <button class="storage-btn">256GB</button>
-                                <button class="storage-btn active">512GB</button>
-                                <button class="storage-btn">1TB</button>
+                                <button class="storage-option">256GB</button>
+                                <button class="storage-option active">512GB</button>
+                                <button class="storage-option">1TB</button>
                             </div>
                         </div>
 
-                        <div class="spec-group">
-                            <label>数量</label>
-                            <div class="quantity-selector">
-                                <button class="quantity-btn minus">-</button>
-                                <input type="number" value="1" min="1" max="10" class="quantity-input">
-                                <button class="quantity-btn plus">+</button>
+                        <div class="config-group">
+                            <h3>Connectivity</h3>
+                            <div class="connectivity-options">
+                                <button class="connectivity-option active">Wi-Fi</button>
+                                <button class="connectivity-option">Wi-Fi + Cellular</button>
                             </div>
                         </div>
                     </div>
 
-                    <!-- 操作按钮 -->
-                    <div class="action-buttons">
-                        <button class="btn-buy-now">立即购买</button>
-                        <button class="btn-add-cart">加入购物车</button>
-                        <button class="btn-favorite">❤️ 收藏</button>
+                    <!-- Action Buttons -->
+                    <div class="product-actions">
+                        <a href="checkout.html?product=iPhone 15 Pro Max" class="btn-buy">Buy</a>
+                        <button class="btn-add-to-cart" onclick="addToCart('iPhone 15 Pro Max')">Add to Bag</button>
                     </div>
 
-                    <!-- 服务保障 -->
-                    <div class="service-guarantee">
-                        <h3>服务保障</h3>
-                        <div class="service-items">
-                            <div class="service-item">
-                                <span class="service-icon">✅</span>
-                                <span>正品保证</span>
-                            </div>
-                            <div class="service-item">
-                                <span class="service-icon">🚚</span>
-                                <span>顺丰包邮</span>
-                            </div>
-                            <div class="service-item">
-                                <span class="service-icon">🔧</span>
-                                <span>官方保修</span>
-                            </div>
-                            <div class="service-item">
-                                <span class="service-icon">💬</span>
-                                <span>7×24客服</span>
-                            </div>
-                        </div>
+                    <!-- Apple Trade In -->
+                    <div class="trade-in-section">
+                        <h4>Need a new iPhone?</h4>
+                        <p>Get credit toward a new iPhone when you trade in your current smartphone.</p>
+                        <a href="#" class="trade-in-link">Learn more about iPhone trade-in ></a>
                     </div>
                 </div>
             </div>
 
-            <!-- 产品规格详情 -->
+            <!-- Product Features Section -->
+            <section class="product-features">
+                <div class="section-header">
+                    <h2 class="section-title">iPhone 15 Pro Max</h2>
+                    <p class="section-subtitle">The ultimate iPhone experience.</p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">💎</div>
+                        <h3 class="feature-title">Titanium Design</h3>
+                        <p class="feature-description">Aerospace-grade titanium. The strongest and lightest Pro design ever.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🚀</div>
+                        <h3 class="feature-title">A17 Pro Chip</h3>
+                        <p class="feature-description">The first 3-nanometer chip. Game-changing performance.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📸</div>
+                        <h3 class="feature-title">Pro Camera System</h3>
+                        <p class="feature-description">48MP main camera with 2x telephoto option.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔋</div>
+                        <h3 class="feature-title">All-Day Battery</h3>
+                        <p class="feature-description">Up to 29 hours of video playback. Longer battery life.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Product Specifications -->
             <section class="product-specs">
-                <h2 class="section-title">产品规格</h2>
+                <div class="section-header">
+                    <h2 class="section-title">Technical Specifications</h2>
+                </div>
 
                 <div class="specs-tabs">
-                    <button class="tab-btn active" data-tab="overview">概述</button>
-                    <button class="tab-btn" data-tab="specs">技术规格</button>
-                    <button class="tab-btn" data-tab="reviews">用户评价</button>
-                    <button class="tab-btn" data-tab="support">售后支持</button>
+                    <button class="tab-btn active" data-tab="overview">Overview</button>
+                    <button class="tab-btn" data-tab="tech-specs">Tech Specs</button>
+                    <button class="tab-btn" data-tab="compare">Compare</button>
                 </div>
 
                 <div class="tab-content">
                     <div class="tab-pane active" id="overview">
-                        <div class="overview-grid">
-                            <div class="spec-card">
-                                <div class="spec-icon">📱</div>
-                                <h4>6.7英寸 Super Retina XDR 显示屏</h4>
-                                <p>ProMotion 自适应刷新率 (120Hz)，HDR 亮度峰值 2000 尼特</p>
+                        <div class="tech-specs-grid">
+                            <div class="spec-row">
+                                <span class="spec-label">Display</span>
+                                <span class="spec-value">6.7-inch Super Retina XDR display</span>
                             </div>
-                            <div class="spec-card">
-                                <div class="spec-icon">🎯</div>
-                                <h4>A17 Pro 芯片</h4>
-                                <p>6 核 CPU，6 核 GPU，16 核神经网络引擎</p>
+                            <div class="spec-row">
+                                <span class="spec-label">Chip</span>
+                                <span class="spec-value">A17 Pro chip with 6-core CPU and 6-core GPU</span>
                             </div>
-                            <div class="spec-card">
-                                <div class="spec-icon">📸</div>
-                                <h4>专业摄像系统</h4>
-                                <p>4800 万像素主摄，1200 万像素超广角，1200 万像素长焦</p>
+                            <div class="spec-row">
+                                <span class="spec-label">Storage</span>
+                                <span class="spec-value">256GB, 512GB, 1TB</span>
                             </div>
-                            <div class="spec-card">
-                                <div class="spec-icon">🔋</div>
-                                <h4>全天候电池续航</h4>
-                                <p>视频播放最长可达 29 小时，支持快速充电和无线充电</p>
+                            <div class="spec-row">
+                                <span class="spec-label">Camera</span>
+                                <span class="spec-value">48MP Main, 12MP Ultra Wide, 12MP Telephoto</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label">Battery Life</span>
+                                <span class="spec-value">Up to 29 hours video playback</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="tab-pane" id="specs">
-                        <div class="specs-table">
-                            <div class="spec-row">
-                                <span class="spec-label">显示屏</span>
-                                <span class="spec-value">6.7 英寸 (对角线) 全面屏，2796 x 1290 像素分辨率，460 ppi</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">芯片</span>
-                                <span class="spec-value">A17 Pro 芯片，6 核 CPU，6 核 GPU，16 核神经网络引擎</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">存储容量</span>
-                                <span class="spec-value">256GB、512GB、1TB</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">摄像头</span>
-                                <span class="spec-value">4800 万像素主摄，1200 万像素超广角，1200 万像素 5 倍长焦</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">电池续航</span>
-                                <span class="spec-value">视频播放最长可达 29 小时，流媒体视频播放最长可达 25 小时</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">操作系统</span>
-                                <span class="spec-value">iOS 17</span>
-                            </div>
+                    <div class="tab-pane" id="tech-specs">
+                        <div class="detailed-specs">
+                            <h4>Display and Performance</h4>
+                            <ul>
+                                <li>6.7-inch (diagonal) all-screen OLED display</li>
+                                <li>2796 x 1290 pixel resolution at 460 ppi</li>
+                                <li>A17 Pro chip with 6-core CPU and 6-core GPU</li>
+                                <li>16-core Neural Engine</li>
+                            </ul>
+
+                            <h4>Camera System</h4>
+                            <ul>
+                                <li>48MP Main: ƒ/1.78 aperture</li>
+                                <li>12MP Ultra Wide: ƒ/2.2 aperture</li>
+                                <li>12MP Telephoto: ƒ/2.8 aperture</li>
+                                <li>3x optical zoom in, 2x optical zoom out</li>
+                            </ul>
+
+                            <h4>Power and Battery</h4>
+                            <ul>
+                                <li>Built-in rechargeable lithium-ion battery</li>
+                                <li>Up to 29 hours video playback</li>
+                                <li>Fast-charge capable</li>
+                                <li>MagSafe wireless charging up to 15W</li>
+                            </ul>
                         </div>
                     </div>
 
-                    <div class="tab-pane" id="reviews">
-                        <div class="reviews-summary">
-                            <div class="rating-breakdown">
-                                <div class="overall-rating">4.9<span>/5</span></div>
-                                <div class="rating-bars">
-                                    <div class="rating-bar">
-                                        <span>5⭐</span>
-                                        <div class="bar"><div style="width: 85%"></div></div>
-                                        <span>85%</span>
-                                    </div>
-                                    <div class="rating-bar">
-                                        <span>4⭐</span>
-                                        <div class="bar"><div style="width: 10%"></div></div>
-                                        <span>10%</span>
-                                    </div>
-                                    <div class="rating-bar">
-                                        <span>3⭐</span>
-                                        <div class="bar"><div style="width: 3%"></div></div>
-                                        <span>3%</span>
-                                    </div>
-                                    <div class="rating-bar">
-                                        <span>2⭐</span>
-                                        <div class="bar"><div style="width: 1%"></div></div>
-                                        <span>1%</span>
-                                    </div>
-                                    <div class="rating-bar">
-                                        <span>1⭐</span>
-                                        <div class="bar"><div style="width: 1%"></div></div>
-                                        <span>1%</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="reviews-list">
-                            <div class="review-card">
-                                <div class="review-header">
-                                    <img src="https://picsum.photos/seed/user2/50/50.jpg" alt="用户头像" class="review-avatar">
-                                    <div class="review-info">
-                                        <div class="review-name">张三</div>
-                                        <div class="review-meta">512GB 深空黑 · 2024年1月15日</div>
-                                    </div>
-                                    <div class="review-rating">⭐⭐⭐⭐⭐</div>
-                                </div>
-                                <div class="review-content">
-                                    <p>手机非常棒！钛金属质感很好，拿在手里很轻。A17 Pro芯片性能强劲，拍照效果也很出色。电池续航比上一代有明显提升。</p>
-                                </div>
-                                <div class="review-images">
-                                    <img src="https://picsum.photos/seed/review1/100/100.jpg" alt="用户图片">
-                                    <img src="https://picsum.photos/seed/review2/100/100.jpg" alt="用户图片">
-                                    <img src="https://picsum.photos/seed/review3/100/100.jpg" alt="用户图片">
-                                </div>
-                                <div class="review-actions">
-                                    <button class="helpful-btn">👍 有用 (23)</button>
-                                    <button class="comment-btn">💬 评论</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="tab-pane" id="support">
-                        <div class="support-content">
-                            <div class="support-section">
-                                <h3>保修政策</h3>
-                                <ul>
-                                    <li>整机保修1年</li>
-                                    <li>电池保修1年</li>
-                                    <li>主要部件保修2年</li>
-                                    <li>7天无理由退换货</li>
-                                </ul>
-                            </div>
-                            <div class="support-section">
-                                <h3>售后服务</h3>
-                                <ul>
-                                    <li>全国联保，支持官方授权维修点</li>
-                                    <li>提供上门维修服务</li>
-                                    <li>备用机服务</li>
-                                    <li>24小时客服热线</li>
-                                </ul>
-                            </div>
-                            <div class="support-section">
-                                <h3>常见问题</h3>
-                                <div class="faq-item">
-                                    <h4>如何激活新iPhone？</h4>
-                                    <p>开机后按照屏幕提示操作，需要连接Wi-Fi网络并登录Apple ID。</p>
-                                </div>
-                                <div class="faq-item">
-                                    <h4>如何备份数据？</h4>
-                                    <p>可以通过iCloud云备份或连接电脑使用iTunes备份。</p>
-                                </div>
-                            </div>
+                    <div class="tab-pane" id="compare">
+                        <div class="compare-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Feature</th>
+                                        <th>iPhone 15 Pro Max</th>
+                                        <th>iPhone 15 Pro</th>
+                                        <th>iPhone 15 Plus</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Display</td>
+                                        <td>6.7"</td>
+                                        <td>6.1"</td>
+                                        <td>6.7"</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Chip</td>
+                                        <td>A17 Pro</td>
+                                        <td>A17 Pro</td>
+                                        <td>A16 Bionic</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Main Camera</td>
+                                        <td>48MP</td>
+                                        <td>48MP</td>
+                                        <td>48MP</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Telephoto</td>
+                                        <td>5x</td>
+                                        <td>3x</td>
+                                        <td>2x</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -328,40 +294,111 @@
         </div>
     </main>
 
-    <!-- 页脚 -->
+    <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
+        <div class="footer-content">
+            <div class="footer-grid">
                 <div class="footer-section">
-                    <h4>关于我们</h4>
-                    <p>TechPhone致力于为用户提供最优质的智能产品和服务体验。</p>
-                </div>
-                <div class="footer-section">
-                    <h4>客户服务</h4>
-                    <ul>
-                        <li><a href="#">联系我们</a></li>
-                        <li><a href="#">退换货政策</a></li>
-                        <li><a href="#">保修服务</a></li>
-                        <li><a href="#">常见问题</a></li>
+                    <h3 class="footer-heading">Shop and Learn</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Store</a></li>
+                        <li><a href="#">Mac</a></li>
+                        <li><a href="#">iPad</a></li>
+                        <li><a href="../index.html#iphone">iPhone</a></li>
+                        <li><a href="../index.html#watch">Watch</a></li>
+                        <li><a href="#">AirPods</a></li>
+                        <li><a href="../index.html#accessories">Accessories</a></li>
+                        <li><a href="#">Gift Cards</a></li>
                     </ul>
                 </div>
+
                 <div class="footer-section">
-                    <h4>关注我们</h4>
-                    <div class="social-links">
-                        <a href="#">微信</a>
-                        <a href="#">微博</a>
-                        <a href="#">抖音</a>
-                        <a href="#">小红书</a>
-                    </div>
+                    <h3 class="footer-heading">Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://music.apple.com" target="_blank">Apple Music</a></li>
+                        <li><a href="https://tv.apple.com" target="_blank">Apple TV+</a></li>
+                        <li><a href="https://fitness.apple.com" target="_blank">Apple Fitness+</a></li>
+                        <li><a href="https://news.apple.com" target="_blank">Apple News+</a></li>
+                        <li><a href="https://arcade.apple.com" target="_blank">Apple Arcade</a></li>
+                        <li><a href="https://icloud.com" target="_blank">iCloud</a></li>
+                        <li><a href="#">Apple One</a></li>
+                        <li><a href="https://books.apple.com" target="_blank">Apple Books</a></li>
+                        <li><a href="https://apps.apple.com" target="_blank">App Store</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-heading">TechPhone Store</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Find a Store</a></li>
+                        <li><a href="#">Genius Bar</a></li>
+                        <li><a href="#">Today at TechPhone</a></li>
+                        <li><a href="#">TechPhone Store App</a></li>
+                        <li><a href="#">Financing</a></li>
+                        <li><a href="#">TechPhone Trade In</a></li>
+                        <li><a href="cart.html">View Cart</a></li>
+                        <li><a href="checkout.html">Checkout</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-heading">Follow Us</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://twitter.com/techphone" target="_blank">Twitter/X</a></li>
+                        <li><a href="https://facebook.com/techphone" target="_blank">Facebook</a></li>
+                        <li><a href="https://instagram.com/techphone" target="_blank">Instagram</a></li>
+                        <li><a href="https://youtube.com/techphone" target="_blank">YouTube</a></li>
+                        <li><a href="https://linkedin.com/company/techphone" target="_blank">LinkedIn</a></li>
+                        <li><a href="https://tiktok.com/@techphone" target="_blank">TikTok</a></li>
+                    </ul>
+                    <h3 class="footer-heading">Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Warranty</a></li>
+                        <li><a href="#">Returns</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-heading">About TechPhone</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Newsroom</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="https://investors.techphone.com" target="_blank">Investors</a></li>
+                        <li><a href="#">Ethics & Compliance</a></li>
+                        <li><a href="#">Events</a></li>
+                    </ul>
+                    <h3 class="footer-heading">Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Accessibility</a></li>
+                    </ul>
                 </div>
             </div>
+
             <div class="footer-bottom">
-                <p>&copy; 2024 TechPhone. 保留所有权利。</p>
+                <p>Copyright © 2024 TechPhone Inc. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="#">Terms of Use</a>
+                    <a href="#">Sales and Refunds</a>
+                    <a href="#">Legal</a>
+                    <a href="#">Site Map</a>
+                </div>
+                <div class="social-links">
+                    <a href="https://twitter.com/techphone" target="_blank" title="Twitter">🐦</a>
+                    <a href="https://facebook.com/techphone" target="_blank" title="Facebook">📘</a>
+                    <a href="https://instagram.com/techphone" target="_blank" title="Instagram">📷</a>
+                    <a href="https://youtube.com/techphone" target="_blank" title="YouTube">📺</a>
+                    <a href="https://linkedin.com/company/techphone" target="_blank" title="LinkedIn">💼</a>
+                </div>
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
-    <script src="product-detail.js"></script>
+    <script src="script-apple-style.js"></script>
 </body>
 </html>

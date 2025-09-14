@@ -1,323 +1,1065 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>购物车 - TechPhone</title>
-    <meta name="description" content="查看您的购物车商品，享受便捷的购物体验">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="cart.css">
+    <title>Shopping Cart - TechPhone</title>
+    <meta name="description" content="Review your cart items and enjoy a seamless shopping experience">
+    <link rel="stylesheet" href="styles-apple-style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .cart-page {
+            background: #f5f5f7;
+            min-height: 100vh;
+            padding-top: 48px;
+        }
+
+        .cart-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .cart-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .cart-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 1rem;
+        }
+
+        .cart-steps {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+        }
+
+        .step.active {
+            opacity: 1;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #007aff;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-text {
+            font-size: 0.875rem;
+            color: #6e6e73;
+        }
+
+        .step.active .step-text {
+            color: #1d1d1f;
+        }
+
+        .step-arrow {
+            color: #6e6e73;
+            font-size: 1.5rem;
+        }
+
+        .cart-layout {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .cart-items {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .cart-item {
+            display: grid;
+            grid-template-columns: 40px 100px 1fr auto auto auto auto;
+            gap: 1rem;
+            align-items: center;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid #e5e5e7;
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .item-checkbox input {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .item-image img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .item-details h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 0.25rem;
+        }
+
+        .item-spec {
+            font-size: 0.875rem;
+            color: #6e6e73;
+            margin-bottom: 0.25rem;
+        }
+
+        .item-warranty {
+            font-size: 0.75rem;
+            color: #007aff;
+        }
+
+        .item-price {
+            text-align: right;
+        }
+
+        .current-price {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1d1d1f;
+        }
+
+        .original-price {
+            font-size: 0.875rem;
+            color: #6e6e73;
+            text-decoration: line-through;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            border: 1px solid #d2d2d7;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .quantity-btn {
+            background: none;
+            border: none;
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.2s ease;
+        }
+
+        .quantity-btn:hover {
+            background: #f5f5f7;
+        }
+
+        .quantity-input {
+            width: 50px;
+            height: 32px;
+            border: none;
+            text-align: center;
+            font-size: 0.875rem;
+        }
+
+        .item-subtotal {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1d1d1f;
+        }
+
+        .item-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .action-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.25rem;
+            padding: 0.5rem;
+            border-radius: 6px;
+            transition: background 0.2s ease;
+        }
+
+        .action-btn:hover {
+            background: #f5f5f7;
+        }
+
+        .recommendations {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e5e5e7;
+        }
+
+        .recommendations h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 1rem;
+        }
+
+        .recommendation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .recommendation-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border: 1px solid #e5e5e7;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .recommendation-item:hover {
+            border-color: #007aff;
+            transform: translateY(-2px);
+        }
+
+        .recommendation-item img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+
+        .recommendation-info h4 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 0.25rem;
+        }
+
+        .recommendation-info p {
+            font-size: 0.875rem;
+            color: #007aff;
+            font-weight: 600;
+        }
+
+        .add-recommendation {
+            background: #007aff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-left: auto;
+        }
+
+        .cart-sidebar {
+            position: sticky;
+            top: 80px;
+        }
+
+        .summary-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+        }
+
+        .summary-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 1rem;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+            font-size: 0.875rem;
+        }
+
+        .summary-row.total {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            padding-top: 0.75rem;
+            border-top: 1px solid #e5e5e7;
+        }
+
+        .discount {
+            color: #34c759;
+        }
+
+        .free-shipping {
+            color: #34c759;
+        }
+
+        .coupon-section {
+            margin: 1.5rem 0;
+        }
+
+        .coupon-section h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 1rem;
+        }
+
+        .coupon-input {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .coupon-input input {
+            flex: 1;
+            padding: 0.75rem;
+            border: 1px solid #d2d2d7;
+            border-radius: 8px;
+            font-size: 0.875rem;
+        }
+
+        .apply-coupon {
+            background: #007aff;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .apply-coupon:hover {
+            background: #0056b3;
+        }
+
+        .available-coupons {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .coupon-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem;
+            background: #f5f5f7;
+            border-radius: 8px;
+            font-size: 0.875rem;
+        }
+
+        .coupon-code {
+            font-weight: 600;
+            color: #1d1d1f;
+        }
+
+        .coupon-value {
+            color: #6e6e73;
+            font-size: 0.75rem;
+        }
+
+        .use-coupon {
+            background: #007aff;
+            color: white;
+            border: none;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            cursor: pointer;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            background: #007aff;
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            margin-bottom: 1rem;
+        }
+
+        .checkout-btn:hover {
+            background: #0056b3;
+        }
+
+        .security-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .security-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            color: #6e6e73;
+        }
+
+        .delivery-info {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .delivery-info h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 1rem;
+        }
+
+        .delivery-address {
+            padding: 1rem;
+            background: #f5f5f7;
+            border-radius: 8px;
+        }
+
+        .address-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .change-address {
+            background: none;
+            border: none;
+            color: #007aff;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .delivery-time {
+            font-size: 0.875rem;
+            color: #6e6e73;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .empty-cart-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .empty-cart h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 1rem;
+        }
+
+        .empty-cart p {
+            color: #6e6e73;
+            margin-bottom: 2rem;
+        }
+
+        .continue-shopping {
+            background: #007aff;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.2s ease;
+        }
+
+        .continue-shopping:hover {
+            background: #0056b3;
+        }
+
+        @media (max-width: 768px) {
+            .cart-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .cart-item {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .cart-sidebar {
+                position: static;
+            }
+
+            .cart-steps {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .step-arrow {
+                transform: rotate(90deg);
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- 顶部导航栏 -->
-    <header class="header" id="header">
-        <nav class="nav-container">
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
             <div class="nav-logo">
-                <h1>TechPhone</h1>
+                <a href="../index.html">TechPhone</a>
             </div>
 
-            <div class="nav-menu">
-                <a href="index.html" class="nav-link">首页</a>
-                <a href="#" class="nav-link">智能手机</a>
-                <a href="#" class="nav-link">配件</a>
-                <a href="#" class="nav-link">智能穿戴</a>
-                <a href="#" class="nav-link">服务</a>
+            <div class="nav-links">
+                <a href="../index.html#iphone" class="nav-link">iPhone</a>
+                <a href="../index.html#watch" class="nav-link">Watch</a>
+                <a href="../index.html#accessories" class="nav-link">Accessories</a>
+                <a href="store.html" class="nav-link">Store</a>
+                <a href="contact.html" class="nav-link">Support</a>
             </div>
 
             <div class="nav-actions">
                 <div class="search-box">
-                    <input type="text" placeholder="搜索产品..." class="search-input">
+                    <input type="text" placeholder="Search techphone.com" class="search-input">
                     <span class="search-icon">🔍</span>
                 </div>
 
-                <div class="cart-icon">
-                    <span>🛒</span>
-                    <span class="cart-count">3</span>
-                </div>
-
-                <div class="user-avatar">
-                    <img src="https://picsum.photos/seed/user1/40/40.jpg" alt="用户头像">
+                <div class="bag-icon" id="bag-icon">
+                    <span>🛍️</span>
+                    <span class="bag-count">0</span>
                 </div>
             </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
 
-    <!-- 购物车主体 -->
-    <main class="cart-page">
-        <div class="container">
+    <!-- Cart Page -->
+    <div class="cart-page">
+        <div class="cart-container">
             <div class="cart-header">
-                <h1>购物车</h1>
+                <h1 class="cart-title">Your Bag</h1>
                 <div class="cart-steps">
                     <div class="step active">
-                        <span class="step-number">1</span>
-                        <span class="step-text">购物车</span>
+                        <div class="step-number">1</div>
+                        <div class="step-text">Bag</div>
                     </div>
                     <div class="step-arrow">→</div>
                     <div class="step">
-                        <span class="step-number">2</span>
-                        <span class="step-text">填写订单</span>
+                        <div class="step-number">2</div>
+                        <div class="step-text">Shipping</div>
                     </div>
                     <div class="step-arrow">→</div>
                     <div class="step">
-                        <span class="step-number">3</span>
-                        <span class="step-text">支付</span>
+                        <div class="step-number">3</div>
+                        <div class="step-text">Payment</div>
                     </div>
                     <div class="step-arrow">→</div>
                     <div class="step">
-                        <span class="step-number">4</span>
-                        <span class="step-text">完成</span>
+                        <div class="step-number">4</div>
+                        <div class="step-text">Complete</div>
                     </div>
                 </div>
             </div>
 
-            <div class="cart-layout">
-                <!-- 购物车商品列表 -->
-                <div class="cart-items">
-                    <div class="cart-item">
-                        <div class="item-checkbox">
-                            <input type="checkbox" class="item-select" checked>
-                        </div>
-                        <div class="item-image">
-                            <img src="https://picsum.photos/seed/iphone15pro/100/100.jpg" alt="iPhone 15 Pro">
-                        </div>
-                        <div class="item-details">
-                            <h3 class="item-name">iPhone 15 Pro</h3>
-                            <p class="item-spec">256GB 深空黑</p>
-                            <div class="item-warranty">一年保修</div>
-                        </div>
-                        <div class="item-price">
-                            <div class="current-price">¥7,999</div>
-                            <div class="original-price">¥8,999</div>
-                        </div>
-                        <div class="item-quantity">
-                            <div class="quantity-selector">
-                                <button class="quantity-btn minus">-</button>
-                                <input type="number" value="1" min="1" max="10" class="quantity-input">
-                                <button class="quantity-btn plus">+</button>
-                            </div>
-                        </div>
-                        <div class="item-subtotal">
-                            ¥7,999
-                        </div>
-                        <div class="item-actions">
-                            <button class="action-btn delete">🗑️</button>
-                            <button class="action-btn favorite">❤️</button>
-                        </div>
-                    </div>
-
-                    <div class="cart-item">
-                        <div class="item-checkbox">
-                            <input type="checkbox" class="item-select" checked>
-                        </div>
-                        <div class="item-image">
-                            <img src="https://picsum.photos/seed/airpods/100/100.jpg" alt="AirPods Pro">
-                        </div>
-                        <div class="item-details">
-                            <h3 class="item-name">AirPods Pro</h3>
-                            <p class="item-spec">第二代</p>
-                            <div class="item-warranty">一年保修</div>
-                        </div>
-                        <div class="item-price">
-                            <div class="current-price">¥1,899</div>
-                            <div class="original-price">¥1,999</div>
-                        </div>
-                        <div class="item-quantity">
-                            <div class="quantity-selector">
-                                <button class="quantity-btn minus">-</button>
-                                <input type="number" value="2" min="1" max="10" class="quantity-input">
-                                <button class="quantity-btn plus">+</button>
-                            </div>
-                        </div>
-                        <div class="item-subtotal">
-                            ¥3,798
-                        </div>
-                        <div class="item-actions">
-                            <button class="action-btn delete">🗑️</button>
-                            <button class="action-btn favorite">❤️</button>
-                        </div>
-                    </div>
-
-                    <div class="cart-item">
-                        <div class="item-checkbox">
-                            <input type="checkbox" class="item-select">
-                        </div>
-                        <div class="item-image">
-                            <img src="https://picsum.photos/seed/applewatch/100/100.jpg" alt="Apple Watch">
-                        </div>
-                        <div class="item-details">
-                            <h3 class="item-name">Apple Watch Series 9</h3>
-                            <p class="item-spec">45mm GPS版 午夜色铝金属表壳</p>
-                            <div class="item-warranty">一年保修</div>
-                        </div>
-                        <div class="item-price">
-                            <div class="current-price">¥2,999</div>
-                        </div>
-                        <div class="item-quantity">
-                            <div class="quantity-selector">
-                                <button class="quantity-btn minus">-</button>
-                                <input type="number" value="1" min="1" max="10" class="quantity-input">
-                                <button class="quantity-btn plus">+</button>
-                            </div>
-                        </div>
-                        <div class="item-subtotal">
-                            ¥2,999
-                        </div>
-                        <div class="item-actions">
-                            <button class="action-btn delete">🗑️</button>
-                            <button class="action-btn favorite">❤️</button>
-                        </div>
-                    </div>
-
-                    <!-- 推荐商品 -->
-                    <div class="recommendations">
-                        <h3>为您推荐</h3>
-                        <div class="recommendation-grid">
-                            <div class="recommendation-item">
-                                <img src="https://picsum.photos/seed/magcase/80/80.jpg" alt="MagSafe保护壳">
-                                <div class="recommendation-info">
-                                    <h4>MagSafe保护壳</h4>
-                                    <p>¥299</p>
-                                </div>
-                                <button class="add-recommendation">+</button>
-                            </div>
-                            <div class="recommendation-item">
-                                <img src="https://picsum.photos/seed/cable/80/80.jpg" alt="USB-C充电线">
-                                <div class="recommendation-info">
-                                    <h4>USB-C充电线</h4>
-                                    <p>¥145</p>
-                                </div>
-                                <button class="add-recommendation">+</button>
-                            </div>
-                            <div class="recommendation-item">
-                                <img src="https://picsum.photos/seed/charger/80/80.jpg" alt="20W充电器">
-                                <div class="recommendation-info">
-                                    <h4>20W充电器</h4>
-                                    <p>¥149</p>
-                                </div>
-                                <button class="add-recommendation">+</button>
-                            </div>
-                        </div>
-                    </div>
+            <div class="cart-layout" id="cartLayout">
+                <!-- Cart Items -->
+                <div class="cart-items" id="cartItems">
+                    <!-- Cart items will be dynamically loaded here -->
                 </div>
 
-                <!-- 订单摘要 -->
-                <div class="cart-summary">
+                <!-- Cart Sidebar -->
+                <div class="cart-sidebar">
+                    <!-- Order Summary -->
                     <div class="summary-card">
-                        <h3>订单摘要</h3>
-
+                        <h3>Order Summary</h3>
                         <div class="summary-row">
-                            <span>商品总价</span>
-                            <span id="subtotal">¥11,797</span>
+                            <span>Subtotal</span>
+                            <span id="subtotal">$0.00</span>
                         </div>
-
                         <div class="summary-row">
-                            <span>优惠折扣</span>
-                            <span class="discount">-¥1,000</span>
+                            <span>Discount</span>
+                            <span class="discount" id="discount">-$0.00</span>
                         </div>
-
                         <div class="summary-row">
-                            <span>运费</span>
-                            <span class="free-shipping">免运费</span>
+                            <span>Shipping</span>
+                            <span class="free-shipping">Free</span>
                         </div>
-
                         <div class="summary-row total">
-                            <span>总计</span>
-                            <span id="total">¥10,797</span>
+                            <span>Total</span>
+                            <span id="total">$0.00</span>
                         </div>
 
                         <div class="coupon-section">
-                            <h4>优惠券</h4>
+                            <h4>Have a coupon?</h4>
                             <div class="coupon-input">
-                                <input type="text" placeholder="输入优惠券代码" class="coupon-code">
-                                <button class="apply-coupon">应用</button>
+                                <input type="text" placeholder="Enter coupon code" class="coupon-code" id="couponCode">
+                                <button class="apply-coupon" onclick="applyCoupon()">Apply</button>
                             </div>
                             <div class="available-coupons">
                                 <div class="coupon-item">
-                                    <span class="coupon-code">NEWUSER100</span>
-                                    <span class="coupon-value">新用户立减100元</span>
-                                    <button class="use-coupon">使用</button>
+                                    <div>
+                                        <span class="coupon-code">WELCOME10</span>
+                                        <span class="coupon-value">10% off first order</span>
+                                    </div>
+                                    <button class="use-coupon" onclick="useCoupon('WELCOME10')">Use</button>
                                 </div>
                                 <div class="coupon-item">
-                                    <span class="coupon-code">SAVE200</span>
-                                    <span class="coupon-value">满2000减200元</span>
-                                    <button class="use-coupon">使用</button>
+                                    <div>
+                                        <span class="coupon-code">SAVE50</span>
+                                        <span class="coupon-value">$50 off orders over $500</span>
+                                    </div>
+                                    <button class="use-coupon" onclick="useCoupon('SAVE50')">Use</button>
                                 </div>
                             </div>
                         </div>
 
-                        <button class="checkout-btn" id="checkoutBtn">去结算 (2件商品)</button>
+                        <button class="checkout-btn" id="checkoutBtn" onclick="proceedToCheckout()">
+                            Checkout (<span id="itemCount">0</span> items)
+                        </button>
 
                         <div class="security-info">
                             <div class="security-item">
                                 <span class="security-icon">🔒</span>
-                                <span>安全支付</span>
+                                <span>Secure Payment</span>
                             </div>
                             <div class="security-item">
                                 <span class="security-icon">🚚</span>
-                                <span>7天无理由退换</span>
+                                <span>Free Returns</span>
                             </div>
                             <div class="security-item">
                                 <span class="security-icon">🔧</span>
-                                <span>官方保修</span>
+                                <span>1-Year Warranty</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- 配送信息 -->
+                    <!-- Delivery Info -->
                     <div class="delivery-info">
-                        <h3>配送信息</h3>
+                        <h3>Delivery Information</h3>
                         <div class="delivery-address">
                             <div class="address-header">
-                                <span>📍 配送至：北京市朝阳区建国路88号</span>
-                                <button class="change-address">修改</button>
+                                <span>📍 Delivering to: United States</span>
+                                <button class="change-address" onclick="changeAddress()">Change</button>
                             </div>
                             <div class="delivery-time">
-                                <span>📅 预计送达：2024年1月18日</span>
+                                <span>📅 Estimated delivery: 3-5 business days</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </main>
+    </div>
 
-    <!-- 页脚 -->
+    <!-- Professional Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
+        <div class="footer-content">
+            <div class="footer-grid">
                 <div class="footer-section">
-                    <h4>关于我们</h4>
-                    <p>TechPhone致力于为用户提供最优质的智能产品和服务体验。</p>
-                </div>
-                <div class="footer-section">
-                    <h4>客户服务</h4>
-                    <ul>
-                        <li><a href="#">联系我们</a></li>
-                        <li><a href="#">退换货政策</a></li>
-                        <li><a href="#">保修服务</a></li>
-                        <li><a href="#">常见问题</a></li>
+                    <h3 class="footer-heading">Shop and Learn</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html">Store</a></li>
+                        <li><a href="#">Mac</a></li>
+                        <li><a href="#">iPad</a></li>
+                        <li><a href="../index.html#iphone">iPhone</a></li>
+                        <li><a href="../index.html#watch">Watch</a></li>
+                        <li><a href="#">AirPods</a></li>
+                        <li><a href="../index.html#accessories">Accessories</a></li>
+                        <li><a href="#">Gift Cards</a></li>
                     </ul>
                 </div>
+
                 <div class="footer-section">
-                    <h4>关注我们</h4>
-                    <div class="social-links">
-                        <a href="#">微信</a>
-                        <a href="#">微博</a>
-                        <a href="#">抖音</a>
-                        <a href="#">小红书</a>
-                    </div>
+                    <h3 class="footer-heading">Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://music.apple.com" target="_blank">Apple Music</a></li>
+                        <li><a href="https://tv.apple.com" target="_blank">Apple TV+</a></li>
+                        <li><a href="https://fitness.apple.com" target="_blank">Apple Fitness+</a></li>
+                        <li><a href="https://news.apple.com" target="_blank">Apple News+</a></li>
+                        <li><a href="https://arcade.apple.com" target="_blank">Apple Arcade</a></li>
+                        <li><a href="https://icloud.com" target="_blank">iCloud</a></li>
+                        <li><a href="#">Apple One</a></li>
+                        <li><a href="https://books.apple.com" target="_blank">Apple Books</a></li>
+                        <li><a href="https://apps.apple.com" target="_blank">App Store</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-heading">TechPhone Store</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Find a Store</a></li>
+                        <li><a href="#">Genius Bar</a></li>
+                        <li><a href="#">Today at TechPhone</a></li>
+                        <li><a href="#">TechPhone Store App</a></li>
+                        <li><a href="#">Financing</a></li>
+                        <li><a href="#">TechPhone Trade In</a></li>
+                        <li><a href="cart.html">View Cart</a></li>
+                        <li><a href="checkout.html">Checkout</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-heading">Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">Get Help</a></li>
+                        <li><a href="#">Warranty</a></li>
+                        <li><a href="#">Returns & Exchanges</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                    </ul>
+                    <h3 class="footer-heading">Follow Us</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://twitter.com/techphone" target="_blank">Twitter/X</a></li>
+                        <li><a href="https://facebook.com/techphone" target="_blank">Facebook</a></li>
+                        <li><a href="https://instagram.com/techphone" target="_blank">Instagram</a></li>
+                        <li><a href="https://youtube.com/techphone" target="_blank">YouTube</a></li>
+                        <li><a href="https://linkedin.com/company/techphone" target="_blank">LinkedIn</a></li>
+                        <li><a href="https://tiktok.com/@techphone" target="_blank">TikTok</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-heading">About TechPhone</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Newsroom</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="https://investors.techphone.com" target="_blank">Investors</a></li>
+                        <li><a href="#">Ethics & Compliance</a></li>
+                        <li><a href="#">Events</a></li>
+                    </ul>
+                    <h3 class="footer-heading">Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Accessibility</a></li>
+                    </ul>
                 </div>
             </div>
+
             <div class="footer-bottom">
-                <p>&copy; 2024 TechPhone. 保留所有权利。</p>
+                <p>Copyright © 2024 TechPhone Inc. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="#">Terms of Use</a>
+                    <a href="#">Sales and Refunds</a>
+                    <a href="#">Legal</a>
+                    <a href="#">Site Map</a>
+                </div>
+                <div class="social-links">
+                    <a href="https://twitter.com/techphone" target="_blank" title="Twitter">🐦</a>
+                    <a href="https://facebook.com/techphone" target="_blank" title="Facebook">📘</a>
+                    <a href="https://instagram.com/techphone" target="_blank" title="Instagram">📷</a>
+                    <a href="https://youtube.com/techphone" target="_blank" title="YouTube">📺</a>
+                    <a href="https://linkedin.com/company/techphone" target="_blank" title="LinkedIn">💼</a>
+                </div>
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
-    <script src="cart.js"></script>
+    <script src="script-apple-style.js"></script>
+    <script>
+        // Cart functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeCart();
+        });
+
+        function initializeCart() {
+            loadCartItems();
+            updateCartCount();
+            setupNavigation();
+        }
+
+        function loadCartItems() {
+            const cartItems = JSON.parse(localStorage.getItem('techphone-cart') || '[]');
+            const cartItemsContainer = document.getElementById('cartItems');
+
+            if (cartItems.length === 0) {
+                cartItemsContainer.innerHTML = `
+                    <div class="empty-cart">
+                        <div class="empty-cart-icon">🛍️</div>
+                        <h3>Your bag is empty</h3>
+                        <p>Looks like you haven't added any items to your cart yet.</p>
+                        <a href="../index.html" class="continue-shopping">Continue Shopping</a>
+                    </div>
+                `;
+                document.getElementById('cartLayout').style.gridTemplateColumns = '1fr';
+                return;
+            }
+
+            let cartHTML = '';
+            let subtotal = 0;
+
+            cartItems.forEach((item, index) => {
+                const itemTotal = item.price * (item.quantity || 1);
+                subtotal += itemTotal;
+
+                cartHTML += `
+                    <div class="cart-item">
+                        <div class="item-checkbox">
+                            <input type="checkbox" class="item-select" checked onchange="updateItemSelection(${index})">
+                        </div>
+                        <div class="item-image">
+                            <img src="https://picsum.photos/seed/${item.name.replace(/\s+/g, '')}/100/100.jpg" alt="${item.name}">
+                        </div>
+                        <div class="item-details">
+                            <h3 class="item-name">${item.name}</h3>
+                            <p class="item-spec">${item.spec || 'Standard'}</p>
+                            <div class="item-warranty">1-Year Warranty</div>
+                        </div>
+                        <div class="item-price">
+                            <div class="current-price">$${item.price.toLocaleString()}</div>
+                            ${item.originalPrice ? `<div class="original-price">$${item.originalPrice.toLocaleString()}</div>` : ''}
+                        </div>
+                        <div class="item-quantity">
+                            <div class="quantity-selector">
+                                <button class="quantity-btn minus" onclick="updateQuantity(${index}, -1)">-</button>
+                                <input type="number" value="${item.quantity || 1}" min="1" max="10" class="quantity-input" onchange="setQuantity(${index}, this.value)">
+                                <button class="quantity-btn plus" onclick="updateQuantity(${index}, 1)">+</button>
+                            </div>
+                        </div>
+                        <div class="item-subtotal">
+                            $${itemTotal.toLocaleString()}
+                        </div>
+                        <div class="item-actions">
+                            <button class="action-btn delete" onclick="removeItem(${index})">🗑️</button>
+                            <button class="action-btn favorite" onclick="toggleFavorite(${index})">❤️</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            cartItemsContainer.innerHTML = cartHTML;
+
+            // Add recommendations
+            cartHTML += `
+                <div class="recommendations">
+                    <h3>You might also like</h3>
+                    <div class="recommendation-grid">
+                        <div class="recommendation-item" onclick="addToCart('MagSafe Case', 29)">
+                            <img src="https://picsum.photos/seed/magcase/80/80.jpg" alt="MagSafe Case">
+                            <div class="recommendation-info">
+                                <h4>MagSafe Case</h4>
+                                <p>$29</p>
+                            </div>
+                            <button class="add-recommendation">+</button>
+                        </div>
+                        <div class="recommendation-item" onclick="addToCart('USB-C Cable', 19)">
+                            <img src="https://picsum.photos/seed/cable/80/80.jpg" alt="USB-C Cable">
+                            <div class="recommendation-info">
+                                <h4>USB-C Cable</h4>
+                                <p>$19</p>
+                            </div>
+                            <button class="add-recommendation">+</button>
+                        </div>
+                        <div class="recommendation-item" onclick="addToCart('20W Charger', 19)">
+                            <img src="https://picsum.photos/seed/charger/80/80.jpg" alt="20W Charger">
+                            <div class="recommendation-info">
+                                <h4>20W Charger</h4>
+                                <p>$19</p>
+                            </div>
+                            <button class="add-recommendation">+</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            updateOrderSummary(subtotal);
+        }
+
+        function updateOrderSummary(subtotal) {
+            const discount = 0; // Could be calculated based on coupons
+            const shipping = 0; // Free shipping
+            const total = subtotal - discount + shipping;
+
+            document.getElementById('subtotal').textContent = `$${subtotal.toLocaleString()}`;
+            document.getElementById('discount').textContent = `-$${discount.toLocaleString()}`;
+            document.getElementById('total').textContent = `$${total.toLocaleString()}`;
+            document.getElementById('itemCount').textContent = document.querySelectorAll('.item-select:checked').length;
+        }
+
+        function updateQuantity(index, change) {
+            const cartItems = JSON.parse(localStorage.getItem('techphone-cart') || '[]');
+            if (cartItems[index]) {
+                cartItems[index].quantity = Math.max(1, (cartItems[index].quantity || 1) + change);
+                localStorage.setItem('techphone-cart', JSON.stringify(cartItems));
+                loadCartItems();
+            }
+        }
+
+        function setQuantity(index, value) {
+            const cartItems = JSON.parse(localStorage.getItem('techphone-cart') || '[]');
+            if (cartItems[index]) {
+                cartItems[index].quantity = Math.max(1, parseInt(value) || 1);
+                localStorage.setItem('techphone-cart', JSON.stringify(cartItems));
+                loadCartItems();
+            }
+        }
+
+        function removeItem(index) {
+            const cartItems = JSON.parse(localStorage.getItem('techphone-cart') || '[]');
+            cartItems.splice(index, 1);
+            localStorage.setItem('techphone-cart', JSON.stringify(cartItems));
+            loadCartItems();
+            updateCartCount();
+            showNotification('Item removed from cart', 'info');
+        }
+
+        function toggleFavorite(index) {
+            // Implement favorite functionality
+            showNotification('Added to favorites', 'success');
+        }
+
+        function updateItemSelection(index) {
+            const selectedItems = document.querySelectorAll('.item-select:checked').length;
+            document.getElementById('itemCount').textContent = selectedItems;
+        }
+
+        function applyCoupon() {
+            const couponCode = document.getElementById('couponCode').value.trim();
+            if (couponCode) {
+                showNotification(`Coupon "${couponCode}" applied!`, 'success');
+                document.getElementById('couponCode').value = '';
+                loadCartItems(); // Reload to update pricing
+            }
+        }
+
+        function useCoupon(code) {
+            document.getElementById('couponCode').value = code;
+            applyCoupon();
+        }
+
+        function proceedToCheckout() {
+            const cartItems = JSON.parse(localStorage.getItem('techphone-cart') || '[]');
+            if (cartItems.length === 0) {
+                showNotification('Your cart is empty', 'error');
+                return;
+            }
+            navigateToPage('checkout.html');
+        }
+
+        function changeAddress() {
+            showNotification('Address change functionality coming soon', 'info');
+        }
+
+        function addToCart(productName, price) {
+            const cartItems = JSON.parse(localStorage.getItem('techphone-cart') || '[]');
+
+            cartItems.push({
+                name: productName,
+                price: price,
+                added: new Date().toISOString()
+            });
+
+            localStorage.setItem('techphone-cart', JSON.stringify(cartItems));
+            updateCartCount();
+            loadCartItems();
+            showNotification(`${productName} added to cart!`, 'success');
+        }
+
+        function setupNavigation() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const bagIcon = document.querySelector('.bag-icon');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href && !href.startsWith('#') && !href.startsWith('http')) {
+                        e.preventDefault();
+                        navigateToPage(href);
+                    }
+                });
+            });
+
+            if (bagIcon) {
+                bagIcon.addEventListener('click', function() {
+                    navigateToPage('cart.html');
+                });
+            }
+        }
+
+        function navigateToPage(url) {
+            document.body.style.opacity = '0.7';
+            document.body.style.transform = 'translateY(10px)';
+
+            setTimeout(() => {
+                window.location.href = url;
+            }, 200);
+        }
+
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 80px;
+                right: 20px;
+                background: ${type === 'success' ? '#34c759' : type === 'error' ? '#ff3b30' : '#007aff'};
+                color: white;
+                padding: 16px 24px;
+                border-radius: 12px;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+                z-index: 10000;
+                font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+                font-size: 14px;
+                max-width: 300px;
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+            `;
+
+            notification.textContent = message;
+            document.body.appendChild(notification);
+
+            // Animate in
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    if (document.body.contains(notification)) {
+                        document.body.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
+        }
+    </script>
 </body>
 </html>
