@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简单测试 - 确认点击功能</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            text-align: center;
+        }
+        .test-btn {
+            padding: 15px 30px;
+            margin: 10px;
+            border: none;
+            border-radius: 8px;
+            background: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .test-btn:hover {
+            background: #0056b3;
+        }
+        .test-card {
+            padding: 20px;
+            margin: 20px auto;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            width: 200px;
+            cursor: pointer;
+            background: #f8f9fa;
+        }
+        .test-card:hover {
+            background: #e9ecef;
+        }
+        .result {
+            margin: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 简单点击功能测试</h1>
+    <p>如果下面的元素都能正常点击并显示提示，说明修复成功！</p>
+
+    <button class="test-btn" onclick="testClick('普通按钮')">点击测试按钮</button>
+    <button class="test-btn" onclick="testClick('另一个按钮')">另一个按钮</button>
+
+    <div class="test-card" onclick="testClick('卡片')">
+        <h3>测试卡片</h3>
+        <p>点击这个卡片</p>
+    </div>
+
+    <div class="test-card" onclick="testClick('第二个卡片')">
+        <h3>第二个卡片</h3>
+        <p>也试试这个</p>
+    </div>
+
+    <div id="result" class="result" style="display: none;"></div>
+
+    <script>
+        function testClick(elementName) {
+            console.log('点击了: ' + elementName);
+            alert('✅ 成功！您点击了: ' + elementName);
+
+            const result = document.getElementById('result');
+            result.textContent = '✅ ' + elementName + ' 点击成功！';
+            result.className = 'result success';
+            result.style.display = 'block';
+
+            setTimeout(() => {
+                result.style.display = 'none';
+            }, 3000);
+        }
+
+        // 页面加载时提示
+        window.addEventListener('load', function() {
+            console.log('测试页面加载完成');
+            alert('🧪 测试页面已加载！请点击上面的按钮和卡片进行测试。');
+        });
+
+        // 为所有元素添加点击事件（测试我们的修复方法）
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM加载完成，添加事件监听器');
+
+            // 为所有按钮添加额外的事件监听器
+            const buttons = document.querySelectorAll('.test-btn');
+            buttons.forEach((btn, index) => {
+                btn.addEventListener('click', function(e) {
+                    console.log('事件监听器触发: 按钮 ' + index);
+                });
+            });
+
+            // 为所有卡片添加额外的事件监听器
+            const cards = document.querySelectorAll('.test-card');
+            cards.forEach((card, index) => {
+                card.addEventListener('click', function(e) {
+                    console.log('事件监听器触发: 卡片 ' + index);
+                });
+            });
+
+            console.log('所有事件监听器已添加');
+        });
+    </script>
+</body>
+</html>

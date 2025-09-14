@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>页面跳转功能测试 | TechPhone</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-btn {
+            display: inline-block;
+            padding: 12px 24px;
+            margin: 8px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+        .test-btn:hover {
+            background: #0056b3;
+        }
+        .nav-link {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            background: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        .nav-link:hover {
+            background: #218838;
+        }
+        .category-card {
+            display: inline-block;
+            width: 150px;
+            height: 100px;
+            margin: 10px;
+            background: #17a2b8;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .category-card:hover {
+            transform: translateY(-5px);
+        }
+        .result {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧭 页面跳转功能测试</h1>
+    <p>测试所有跳转功能是否正常工作</p>
+
+    <div class="test-container">
+        <h2>🛒 购物车功能测试</h2>
+        <div class="category-card" onclick="testCart()">
+            <h3>购物车</h3>
+            <p>点击跳转</p>
+        </div>
+        <button class="test-btn" onclick="testCart()">测试购物车跳转</button>
+    </div>
+
+    <div class="test-container">
+        <h2>📱 产品详情页面测试</h2>
+        <button class="test-btn" onclick="testProductDetail('iPhone 15 Pro')">测试iPhone跳转</button>
+        <button class="test-btn" onclick="testProductDetail('AirPods Pro')">测试AirPods跳转</button>
+        <button class="test-btn" onclick="testProductDetail('Apple Watch')">测试Watch跳转</button>
+    </div>
+
+    <div class="test-container">
+        <h2>📋 分类页面测试</h2>
+        <div class="category-card" onclick="testCategory('智能手机')">
+            <h3>📱 智能手机</h3>
+        </div>
+        <div class="category-card" onclick="testCategory('手机配件')">
+            <h3>🔌 手机配件</h3>
+        </div>
+        <div class="category-card" onclick="testCategory('智能穿戴')">
+            <h3>⌚ 智能穿戴</h3>
+        </div>
+    </div>
+
+    <div class="test-container">
+        <h2>🔗 导航链接测试</h2>
+        <a href="#" class="nav-link" onclick="testNav('首页')">首页</a>
+        <a href="#" class="nav-link" onclick="testNav('智能手机')">智能手机</a>
+        <a href="#" class="nav-link" onclick="testNav('配件')">配件</a>
+        <a href="#" class="nav-link" onclick="testNav('智能穿戴')">智能穿戴</a>
+    </div>
+
+    <div class="test-container">
+        <h2>🛍️ 购买流程测试</h2>
+        <button class="test-btn" onclick="testPurchase()">立即购买</button>
+        <button class="test-btn" onclick="testLearnMore()">了解更多</button>
+    </div>
+
+    <div id="result" class="result info">
+        点击上面的按钮测试跳转功能。每次点击都会显示提示并尝试跳转到相应页面。
+    </div>
+
+    <script>
+        // 购物车跳转测试
+        function testCart() {
+            console.log('测试购物车跳转');
+            alert('🛒 即将跳转到购物车页面...');
+            window.location.href = 'cart.html';
+        }
+
+        // 产品详情跳转测试
+        function testProductDetail(productName) {
+            console.log('测试产品详情跳转：' + productName);
+            alert('📱 即将跳转到 ' + productName + ' 详情页...');
+            window.location.href = 'product-detail.html?product=' + encodeURIComponent(productName);
+        }
+
+        // 分类页面跳转测试
+        function testCategory(categoryName) {
+            console.log('测试分类跳转：' + categoryName);
+            alert('📱 即将跳转到 ' + categoryName + ' 分类页面...');
+
+            if (categoryName.includes('手机') || categoryName.includes('智能')) {
+                window.location.href = 'index.html#products';
+            } else if (categoryName.includes('配件')) {
+                window.location.href = 'index.html#accessories';
+            } else if (categoryName.includes('穿戴')) {
+                window.location.href = 'index.html#wearables';
+            } else {
+                window.location.href = 'index.html#categories';
+            }
+        }
+
+        // 导航链接测试
+        function testNav(pageName) {
+            console.log('测试导航跳转：' + pageName);
+            alert('🔗 即将跳转到：' + pageName);
+
+            if (pageName === '首页') {
+                window.location.href = 'index.html';
+            } else if (pageName === '智能手机') {
+                window.location.href = 'index.html#products';
+            } else if (pageName === '配件') {
+                window.location.href = 'index.html#accessories';
+            } else if (pageName === '智能穿戴') {
+                window.location.href = 'index.html#wearables';
+            } else if (pageName === '服务') {
+                window.location.href = 'index.html#services';
+            }
+        }
+
+        // 购买流程测试
+        function testPurchase() {
+            console.log('测试购买流程');
+            alert('🛒 即将跳转到结账页面...');
+            window.location.href = 'checkout.html';
+        }
+
+        // 了解更多测试
+        function testLearnMore() {
+            console.log('测试了解更多');
+            alert('📱 即将跳转到产品详情页...');
+            window.location.href = 'product-detail.html';
+        }
+
+        // 页面加载时提示
+        window.addEventListener('load', function() {
+            console.log('导航测试页面加载完成');
+            const result = document.getElementById('result');
+            result.innerHTML = `
+                <h3>🧭 页面跳转测试已就绪！</h3>
+                <p>请点击上面的各个按钮测试跳转功能：</p>
+                <ul>
+                    <li>🛒 购物车 - 应跳转到 cart.html</li>
+                    <li>📱 产品详情 - 应跳转到 product-detail.html</li>
+                    <li>📋 分类页面 - 应跳转到主页对应区域</li>
+                    <li>🔗 导航链接 - 应跳转到相应页面</li>
+                    <li>🛍️ 购买流程 - 应跳转到结账页面</li>
+                </ul>
+                <p><strong>注意：</strong>如果页面不存在，跳转会失败。请确保所有页面文件都已创建。</p>
+            `;
+            result.className = 'result success';
+        });
+
+        // 添加错误处理
+        window.addEventListener('error', function(e) {
+            console.error('页面跳转错误：', e.error);
+            alert('❌ 页面跳转失败：' + e.message);
+        });
+    </script>
+</body>
+</html>
