@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store - TechPhone</title>
+    <meta name="description" content="Shop the latest iPhone, Apple Watch, AirPods, and accessories at the official TechPhone Store.">
+    <link rel="stylesheet" href="styles-pro.css">
+    <style>
+        .store-hero {
+            background: linear-gradient(135deg, #f5f5f7 0%, #ffffff 100%);
+            padding: var(--spacing-4xl) 0 var(--spacing-3xl);
+            margin-top: 48px;
+        }
+
+        .store-header {
+            text-align: center;
+            margin-bottom: var(--spacing-4xl);
+        }
+
+        .store-title {
+            font-size: var(--font-size-6xl);
+            font-weight: 600;
+            margin-bottom: var(--spacing-lg);
+            color: var(--primary-text);
+        }
+
+        .store-subtitle {
+            font-size: var(--font-size-xl);
+            color: var(--secondary-text);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .product-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-2xl);
+            margin-bottom: var(--spacing-5xl);
+        }
+
+        .category-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: all var(--transition-normal);
+            cursor: pointer;
+            border: 1px solid var(--border-gray);
+            position: relative;
+        }
+
+        .category-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .category-image {
+            width: 100%;
+            height: 200px;
+            background: var(--gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .category-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .category-content {
+            padding: var(--spacing-lg);
+            text-align: center;
+        }
+
+        .category-name {
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+            color: var(--primary-text);
+        }
+
+        .category-description {
+            font-size: var(--font-size-base);
+            color: var(--secondary-text);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .category-link {
+            color: var(--link-blue);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color var(--transition-fast);
+        }
+
+        .category-link:hover {
+            color: var(--link-hover);
+            text-decoration: underline;
+        }
+
+        .featured-products {
+            margin-bottom: var(--spacing-5xl);
+        }
+
+        .featured-header {
+            text-align: center;
+            margin-bottom: var(--spacing-3xl);
+        }
+
+        .featured-title {
+            font-size: var(--font-size-4xl);
+            font-weight: 600;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-xl);
+            max-width: var(--container-xl);
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: all var(--transition-normal);
+            cursor: pointer;
+            border: 1px solid var(--border-gray);
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            background: var(--gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-content {
+            padding: var(--spacing-lg);
+        }
+
+        .product-name {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+            color: var(--primary-text);
+        }
+
+        .product-price {
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            color: var(--link-blue);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .product-description {
+            font-size: var(--font-size-base);
+            color: var(--secondary-text);
+            margin-bottom: var(--spacing-lg);
+            line-height: 1.5;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: var(--spacing-sm);
+        }
+
+        .btn-primary {
+            background: var(--link-blue);
+            color: var(--white);
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: var(--font-size-base);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            flex: 1;
+        }
+
+        .btn-primary:hover {
+            background: var(--link-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--link-blue);
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border: 1px solid var(--link-blue);
+            border-radius: var(--radius-md);
+            font-size: var(--font-size-base);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            flex: 1;
+        }
+
+        .btn-secondary:hover {
+            background: var(--link-blue);
+            color: var(--white);
+        }
+
+        .store-benefits {
+            background: var(--gray);
+            padding: var(--spacing-4xl) 0;
+            margin-bottom: var(--spacing-5xl);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-xl);
+            max-width: var(--container-xl);
+            margin: 0 auto;
+        }
+
+        .benefit-item {
+            text-align: center;
+            padding: var(--spacing-lg);
+        }
+
+        .benefit-icon {
+            font-size: 48px;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .benefit-title {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+            color: var(--primary-text);
+        }
+
+        .benefit-description {
+            font-size: var(--font-size-base);
+            color: var(--secondary-text);
+            line-height: 1.5;
+        }
+
+        .new-badge {
+            position: absolute;
+            top: var(--spacing-md);
+            right: var(--spacing-md);
+            background: var(--success-green);
+            color: var(--white);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .sale-badge {
+            position: absolute;
+            top: var(--spacing-md);
+            left: var(--spacing-md);
+            background: var(--error-red);
+            color: var(--white);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 768px) {
+            .store-title {
+                font-size: var(--font-size-4xl);
+            }
+
+            .product-categories {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Professional Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index-pro.html">TechPhone</a>
+            </div>
+
+            <div class="nav-links">
+                <a href="store.html" class="nav-link active">Store</a>
+                <a href="iphone.html" class="nav-link">iPhone</a>
+                <a href="watch.html" class="nav-link">Watch</a>
+                <a href="airpods.html" class="nav-link">AirPods</a>
+                <a href="accessories.html" class="nav-link">Accessories</a>
+                <a href="support.html" class="nav-link">Support</a>
+            </div>
+
+            <div class="nav-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="Search techphone.com" class="search-input">
+                    <span class="search-icon">🔍</span>
+                </div>
+
+                <div class="bag-icon" id="bag-icon">
+                    <span>🛍️</span>
+                    <span class="bag-count">0</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Store Hero -->
+    <section class="store-hero">
+        <div class="container">
+            <div class="store-header">
+                <h1 class="store-title">TechPhone Store</h1>
+                <p class="store-subtitle">Discover the latest innovations and find the perfect products for your lifestyle.</p>
+            </div>
+
+            <!-- Product Categories -->
+            <div class="product-categories">
+                <div class="category-card" onclick="navigateToPage('iphone.html')">
+                    <div class="category-image">
+                        <img src="https://picsum.photos/seed/iphone15family/400/300.jpg" alt="iPhone">
+                    </div>
+                    <div class="category-content">
+                        <h2 class="category-name">iPhone</h2>
+                        <p class="category-description">The ultimate iPhone experience</p>
+                        <a href="iphone.html" class="category-link">Shop iPhone →</a>
+                    </div>
+                </div>
+
+                <div class="category-card" onclick="navigateToPage('watch.html')">
+                    <div class="category-image">
+                        <img src="https://picsum.photos/seed/applewatchfamily/400/300.jpg" alt="Apple Watch">
+                    </div>
+                    <div class="category-content">
+                        <h2 class="category-name">Apple Watch</h2>
+                        <p class="category-description">Your essential companion</p>
+                        <a href="watch.html" class="category-link">Shop Watch →</a>
+                    </div>
+                </div>
+
+                <div class="category-card" onclick="navigateToPage('airpods.html')">
+                    <div class="category-image">
+                        <img src="https://picsum.photos/seed/airpodsfamily/400/300.jpg" alt="AirPods">
+                    </div>
+                    <div class="category-content">
+                        <h2 class="category-name">AirPods</h2>
+                        <p class="category-description">Wireless. Effortless. Magical.</p>
+                        <a href="airpods.html" class="category-link">Shop AirPods →</a>
+                    </div>
+                </div>
+
+                <div class="category-card" onclick="navigateToPage('accessories.html')">
+                    <div class="category-image">
+                        <img src="https://picsum.photos/seed/accessoriesfamily/400/300.jpg" alt="Accessories">
+                    </div>
+                    <div class="category-content">
+                        <h2 class="category-name">Accessories</h2>
+                        <p class="category-description">Everything you need</p>
+                        <a href="accessories.html" class="category-link">Shop Accessories →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Products -->
+            <div class="featured-products">
+                <div class="featured-header">
+                    <h2 class="featured-title">Featured Products</h2>
+                </div>
+
+                <div class="featured-grid">
+                    <div class="product-card">
+                        <div class="new-badge">New</div>
+                        <div class="product-image">
+                            <img src="https://picsum.photos/seed/iphone15pro/400/300.jpg" alt="iPhone 15 Pro">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-name">iPhone 15 Pro</h3>
+                            <div class="product-price">From $999</div>
+                            <p class="product-description">Titanium design with A17 Pro chip. The ultimate iPhone experience.</p>
+                            <div class="product-actions">
+                                <button class="btn-primary" onclick="addToCart('iPhone 15 Pro', 999)">Add to Cart</button>
+                                <button class="btn-secondary" onclick="navigateToPage('iphone-15-pro.html')">Learn More</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="sale-badge">Sale</div>
+                        <div class="product-image">
+                            <img src="https://picsum.photos/seed/iphone15/400/300.jpg" alt="iPhone 15">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-name">iPhone 15</h3>
+                            <div class="product-price">From $799</div>
+                            <p class="product-description">New camera system and Dynamic Island. Now in vibrant colors.</p>
+                            <div class="product-actions">
+                                <button class="btn-primary" onclick="addToCart('iPhone 15', 799)">Add to Cart</button>
+                                <button class="btn-secondary" onclick="navigateToPage('iphone-15.html')">Learn More</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://picsum.photos/seed/applewatch9/400/300.jpg" alt="Apple Watch Series 9">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-name">Apple Watch Series 9</h3>
+                            <div class="product-price">From $399</div>
+                            <p class="product-description">Your essential companion for a healthy life. Advanced health features.</p>
+                            <div class="product-actions">
+                                <button class="btn-primary" onclick="addToCart('Apple Watch Series 9', 399)">Add to Cart</button>
+                                <button class="btn-secondary" onclick="navigateToPage('apple-watch-series-9.html')">Learn More</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://picsum.photos/seed/airpodspro2/400/300.jpg" alt="AirPods Pro (2nd generation)">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-name">AirPods Pro (2nd gen)</h3>
+                            <div class="product-price">$249</div>
+                            <p class="product-description">Adaptive Audio. Now playing. Up to 2x more Active Noise Cancellation.</p>
+                            <div class="product-actions">
+                                <button class="btn-primary" onclick="addToCart('AirPods Pro (2nd gen)', 249)">Add to Cart</button>
+                                <button class="btn-secondary" onclick="navigateToPage('airpods-pro.html')">Learn More</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="new-badge">New</div>
+                        <div class="product-image">
+                            <img src="https://picsum.photos/seed/airpodsmax/400/300.jpg" alt="AirPods Max">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-name">AirPods Max</h3>
+                            <div class="product-price">$549</div>
+                            <p class="product-description">Premium over-ear headphones. High-fidelity audio in a stunning design.</p>
+                            <div class="product-actions">
+                                <button class="btn-primary" onclick="addToCart('AirPods Max', 549)">Add to Cart</button>
+                                <button class="btn-secondary" onclick="navigateToPage('airpods-max.html')">Learn More</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://picsum.photos/seed/macbookairm3/400/300.jpg" alt="MacBook Air M3">
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-name">MacBook Air M3</h3>
+                            <div class="product-price">From $1,099</div>
+                            <p class="product-description">Incredibly thin and light. With the powerful M3 chip. Perfect for everyday tasks.</p>
+                            <div class="product-actions">
+                                <button class="btn-primary" onclick="addToCart('MacBook Air M3', 1099)">Add to Cart</button>
+                                <button class="btn-secondary" onclick="navigateToPage('macbook-air.html')">Learn More</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Store Benefits -->
+            <div class="store-benefits">
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🚚</div>
+                        <h3 class="benefit-title">Free Shipping</h3>
+                        <p class="benefit-description">On all orders over $50. Fast, reliable delivery to your doorstep.</p>
+                    </div>
+
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🔄</div>
+                        <h3 class="benefit-title">30-Day Returns</h3>
+                        <p class="benefit-description">Not satisfied? Return your items within 30 days for a full refund.</p>
+                    </div>
+
+                    <div class="benefit-item">
+                        <div class="benefit-icon">💳</div>
+                        <h3 class="benefit-title">Secure Payment</h3>
+                        <p class="benefit-description">Your payment information is encrypted and secure. Multiple payment options.</p>
+                    </div>
+
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🛡️</div>
+                        <h3 class="benefit-title">Warranty Included</h3>
+                        <p class="benefit-description">One-year limited warranty and 90 days of complimentary support.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3 class="footer-heading">Shop and Learn</h3>
+                    <ul class="footer-links">
+                        <li><a href="index-pro.html">Store</a></li>
+                        <li><a href="iphone.html">iPhone</a></li>
+                        <li><a href="watch.html">Watch</a></li>
+                        <li><a href="airpods.html">AirPods</a></li>
+                        <li><a href="accessories.html">Accessories</a></li>
+                        <li><a href="gift-cards.html">Gift Cards</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-heading">Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://music.apple.com" target="_blank">Apple Music</a></li>
+                        <li><a href="https://tv.apple.com" target="_blank">Apple TV+</a></li>
+                        <li><a href="https://fitness.apple.com" target="_blank">Apple Fitness+</a></li>
+                        <li><a href="https://icloud.com" target="_blank">iCloud</a></li>
+                        <li><a href="https://apps.apple.com" target="_blank">App Store</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-heading">TechPhone Store</h3>
+                    <ul class="footer-links">
+                        <li><a href="find-a-store.html">Find a Store</a></li>
+                        <li><a href="genius-bar.html">Genius Bar</a></li>
+                        <li><a href="today-at-apple.html">Today at Apple</a></li>
+                        <li><a href="apple-trade-in.html">Apple Trade In</a></li>
+                        <li><a href="order-status.html">Order Status</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-heading">Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="support.html">Get Help</a></li>
+                        <li><a href="warranty.html">Warranty</a></li>
+                        <li><a href="returns.html">Returns & Exchanges</a></li>
+                        <li><a href="shipping.html">Shipping Info</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-heading">About TechPhone</h3>
+                    <ul class="footer-links">
+                        <li><a href="newsroom.html">Newsroom</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="investors.html">Investors</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="contact-apple.html">Contact TechPhone</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>Copyright © 2024 TechPhone Inc. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms-of-use.html">Terms of Use</a>
+                    <a href="sales-and-refunds.html">Sales and Refunds</a>
+                    <a href="legal.html">Legal</a>
+                    <a href="site-map.html">Site Map</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://twitter.com/techphone" target="_blank" title="Twitter/X">🐦</a>
+                    <a href="https://facebook.com/techphone" target="_blank" title="Facebook">📘</a>
+                    <a href="https://instagram.com/techphone" target="_blank" title="Instagram">📷</a>
+                    <a href="https://youtube.com/techphone" target="_blank" title="YouTube">📺</a>
+                    <a href="https://linkedin.com/company/techphone" target="_blank" title="LinkedIn">💼</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Store page specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeStorePage();
+        });
+
+        function initializeStorePage() {
+            setupNavigation();
+            updateCartCount();
+            setupAnimations();
+        }
+
+        function setupNavigation() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const bagIcon = document.querySelector('.bag-icon');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+
+                    if (href && !href.startsWith('#') && !href.startsWith('http')) {
+                        e.preventDefault();
+                        navigateToPage(href);
+                    }
+                });
+            });
+
+            if (bagIcon) {
+                bagIcon.addEventListener('click', function() {
+                    navigateToPage('cart.html');
+                });
+            }
+        }
+
+        function setupAnimations() {
+            // Animate cards on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all product and category cards
+            const cards = document.querySelectorAll('.product-card, .category-card');
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+        }
+
+        function navigateToPage(url) {
+            document.body.style.opacity = '0.7';
+            document.body.style.transform = 'translateY(10px)';
+
+            setTimeout(() => {
+                window.location.href = url;
+            }, 200);
+        }
+
+        function addToCart(productName, price) {
+            const cartItems = JSON.parse(localStorage.getItem('techphone-cart') || '[]');
+
+            cartItems.push({
+                name: productName,
+                price: price,
+                added: new Date().toISOString()
+            });
+
+            localStorage.setItem('techphone-cart', JSON.stringify(cartItems));
+            updateCartCount();
+
+            // Show success notification
+            showNotification(`${productName} added to cart!`, 'success');
+        }
+
+        function updateCartCount() {
+            const cartCount = document.querySelector('.bag-count');
+            if (cartCount) {
+                const cartItems = JSON.parse(localStorage.getItem('techphone-cart') || '[]');
+                const count = cartItems.length;
+
+                cartCount.textContent = count;
+                cartCount.style.display = count > 0 ? 'block' : 'none';
+
+                if (count > 0) {
+                    cartCount.style.animation = 'pulse 0.3s ease';
+                    setTimeout(() => {
+                        cartCount.style.animation = '';
+                    }, 300);
+                }
+            }
+        }
+
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 80px;
+                right: 20px;
+                background: ${type === 'success' ? '#34c759' : '#007aff'};
+                color: white;
+                padding: 16px 24px;
+                border-radius: 12px;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+                z-index: 10000;
+                font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+                font-size: 14px;
+                max-width: 300px;
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+            `;
+
+            notification.textContent = message;
+            document.body.appendChild(notification);
+
+            // Animate in
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    if (document.body.contains(notification)) {
+                        document.body.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        // Search functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.querySelector('.search-input');
+            if (searchInput) {
+                searchInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        const searchTerm = this.value.trim();
+                        if (searchTerm) {
+                            navigateToPage(`search.html?q=${encodeURIComponent(searchTerm)}`);
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

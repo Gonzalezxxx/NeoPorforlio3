@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechPhone Website Test</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            padding: 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .link-card {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .link-card a {
+            color: #0066cc;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .link-card a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🍎 TechPhone Website Test Page</h1>
+        <p>This page tests all the website files to ensure they're working properly.</p>
+
+        <div id="status"></div>
+
+        <h2>Website Pages</h2>
+        <div class="links">
+            <div class="link-card">
+                <h3>Main Page</h3>
+                <a href="index-apple-style.html">index-apple-style.html</a>
+            </div>
+            <div class="link-card">
+                <h3>Contact Page</h3>
+                <a href="contact.html">contact.html</a>
+            </div>
+            <div class="link-card">
+                <h3>Privacy Policy</h3>
+                <a href="privacy-policy.html">privacy-policy.html</a>
+            </div>
+            <div class="link-card">
+                <h3>Store Page</h3>
+                <a href="store.html">store.html</a>
+            </div>
+            <div class="link-card">
+                <h3>Product Details</h3>
+                <a href="product-detail.html">product-detail.html</a>
+            </div>
+            <div class="link-card">
+                <h3>Shopping Cart</h3>
+                <a href="cart.html">cart.html</a>
+            </div>
+            <div class="link-card">
+                <h3>Checkout</h3>
+                <a href="checkout.html">checkout.html</a>
+            </div>
+            <div class="link-card">
+                <h3>Professional Demo</h3>
+                <a href="demo-professional.html">demo-professional.html</a>
+            </div>
+        </div>
+
+        <h2>Features Test</h2>
+        <div id="test-results"></div>
+
+        <script>
+            // Test if files are accessible
+            const testFiles = [
+                'index-apple-style.html',
+                'contact.html',
+                'privacy-policy.html',
+                'store.html',
+                'styles-apple-style.css',
+                'script-apple-style.js'
+            ];
+
+            const statusDiv = document.getElementById('status');
+            const testResultsDiv = document.getElementById('test-results');
+
+            // Test file accessibility
+            testFiles.forEach(file => {
+                fetch(file, { method: 'HEAD' })
+                    .then(response => {
+                        if (response.ok) {
+                            statusDiv.innerHTML += `<div class="success">✅ ${file} - Accessible</div>`;
+                        } else {
+                            statusDiv.innerHTML += `<div class="error">❌ ${file} - Not accessible (Status: ${response.status})</div>`;
+                        }
+                    })
+                    .catch(error => {
+                        statusDiv.innerHTML += `<div class="error">❌ ${file} - Error: ${error.message}</div>`;
+                    });
+            });
+
+            // Test browser features
+            const features = [
+                { name: 'Local Storage', test: () => typeof(Storage) !== "undefined" },
+                { name: 'Fetch API', test: () => typeof(fetch) !== "undefined" },
+                { name: 'CSS Grid', test: () => CSS.supports('display', 'grid') },
+                { name: 'Flexbox', test: () => CSS.supports('display', 'flex') },
+                { name: 'ES6 Modules', test: () => 'noModule' in document.createElement('script') }
+            ];
+
+            features.forEach(feature => {
+                const result = feature.test();
+                testResultsDiv.innerHTML += `
+                    <div class="${result ? 'success' : 'error'}">
+                        ${result ? '✅' : '❌'} ${feature.name}: ${result ? 'Supported' : 'Not Supported'}
+                    </div>
+                `;
+            });
+        </script>
+    </div>
+</body>
+</html>

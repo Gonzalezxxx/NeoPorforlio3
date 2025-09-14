@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechPhone Demo - Apple Style Interface</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background: #ffffff;
+            color: #1d1d1f;
+            line-height: 1.4;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 60px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            margin: -20px -20px 40px -20px;
+        }
+
+        .header h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .header p {
+            font-size: 24px;
+            opacity: 0.9;
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .demo-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+        }
+
+        .demo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .demo-card h3 {
+            font-size: 24px;
+            color: #1d1d1f;
+            margin-bottom: 16px;
+        }
+
+        .demo-card p {
+            color: #6c757d;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .demo-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #0066cc;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .demo-btn:hover {
+            background: #0052a3;
+            transform: translateY(-2px);
+        }
+
+        .demo-btn.secondary {
+            background: #6c757d;
+        }
+
+        .demo-btn.secondary:hover {
+            background: #5a6268;
+        }
+
+        .features {
+            background: #f8f9fa;
+            padding: 60px 0;
+            margin: 60px -20px -20px -20px;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: #1d1d1f;
+        }
+
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .feature-item h4 {
+            font-size: 20px;
+            color: #1d1d1f;
+            margin-bottom: 8px;
+        }
+
+        .feature-item p {
+            color: #6c757d;
+            font-size: 16px;
+        }
+
+        .status {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 1px solid #c3e6cb;
+        }
+
+        .status.warning {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+
+        .cart-demo {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #0066cc;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            z-index: 1000;
+            transition: all 0.2s ease;
+        }
+
+        .cart-demo:hover {
+            background: #0052a3;
+            transform: scale(1.05);
+        }
+
+        .cart-count {
+            background: #ff4757;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            margin-left: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .demo-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .header p {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Shopping Cart Demo -->
+    <div class="cart-demo" onclick="addToCart()">
+        Cart <span class="cart-count" id="cartCount">0</span>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>TechPhone Demo</h1>
+            <p>Apple-style user experience with no popup alerts</p>
+        </div>
+
+        <!-- Demo Status -->
+        <div class="status">
+            <strong>✅ Demo Status:</strong> All interactive elements are working without popup alerts. Try the buttons below!
+        </div>
+
+        <!-- Demo Cards -->
+        <div class="demo-grid">
+            <div class="demo-card">
+                <h3>🚫 No More Alerts</h3>
+                <p>Experience clean navigation without annoying popup windows. All interactions are smooth and direct.</p>
+                <button class="demo-btn" onclick="testNavigation()">Test Navigation</button>
+            </div>
+
+            <div class="demo-card">
+                <h3>🛒 Shopping Cart</h3>
+                <p>Add items to cart with smooth animations. Watch the cart counter update in real-time.</p>
+                <button class="demo-btn secondary" onclick="addToCart()">Add to Cart</button>
+            </div>
+
+            <div class="demo-card">
+                <h3>🎨 Apple Style Design</h3>
+                <p>Clean interface with smooth animations and professional typography. Inspired by Apple.com</p>
+                <button class="demo-btn" onclick="testAnimation()">Test Animations</button>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="features">
+            <div class="container">
+                <h2>Key Features</h2>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <div class="feature-icon">⚡</div>
+                        <h4>Fast Response</h4>
+                        <p>Immediate feedback without delays</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🎯</div>
+                        <h4>Direct Navigation</h4>
+                        <p>Go directly where you want to go</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📱</div>
+                        <h4>Mobile Friendly</h4>
+                        <p>Works perfectly on all devices</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🎨</div>
+                        <h4>Beautiful Design</h4>
+                        <p>Professional Apple-style interface</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Demo JavaScript
+        let cartItemCount = 0;
+        const cartCountElement = document.getElementById('cartCount');
+
+        // Add to cart function
+        function addToCart() {
+            cartItemCount++;
+            cartCountElement.textContent = cartItemCount;
+
+            // Animation effect
+            cartCountElement.style.transform = 'scale(1.3)';
+            setTimeout(() => {
+                cartCountElement.style.transform = 'scale(1)';
+            }, 200);
+
+            console.log('Item added to cart. Total items:', cartItemCount);
+        }
+
+        // Test navigation
+        function testNavigation() {
+            console.log('Navigation test triggered');
+
+            // Create temporary notification
+            const notification = document.createElement('div');
+            notification.innerHTML = '🎯 Navigation test successful!';
+            notification.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: #0066cc;
+                color: white;
+                padding: 20px 40px;
+                border-radius: 10px;
+                font-size: 18px;
+                font-weight: 600;
+                z-index: 9999;
+                animation: fadeInOut 2s ease;
+            `;
+
+            // Add animation keyframes
+            if (!document.querySelector('#notification-styles')) {
+                const style = document.createElement('style');
+                style.id = 'notification-styles';
+                style.textContent = `
+                    @keyframes fadeInOut {
+                        0%, 100% { opacity: 0; }
+                        20%, 80% { opacity: 1; }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+
+            document.body.appendChild(notification);
+
+            // Remove notification after animation
+            setTimeout(() => {
+                document.body.removeChild(notification);
+            }, 2000);
+        }
+
+        // Test animations
+        function testAnimation() {
+            console.log('Animation test triggered');
+
+            // Animate all demo cards
+            const cards = document.querySelectorAll('.demo-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.transform = 'translateY(-10px) scale(1.02)';
+                    card.style.boxShadow = '0 15px 40px rgba(0,0,0,0.15)';
+
+                    setTimeout(() => {
+                        card.style.transform = 'translateY(-5px) scale(1)';
+                        card.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
+                    }, 300);
+                }, index * 100);
+            });
+        }
+
+        // Add hover effects to demo cards
+        document.querySelectorAll('.demo-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px)';
+            });
+
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Add click effects to buttons
+        document.querySelectorAll('.demo-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 100);
+            });
+        });
+
+        // Console welcome message
+        console.log('🎉 TechPhone Demo Loaded Successfully!');
+        console.log('📝 Available functions:');
+        console.log('  - addToCart(): Add item to shopping cart');
+        console.log('  - testNavigation(): Test navigation system');
+        console.log('  - testAnimation(): Test animation effects');
+
+        // Page load animation
+        window.addEventListener('load', function() {
+            const elements = document.querySelectorAll('.demo-card');
+            elements.forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.6s ease';
+
+                setTimeout(() => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, index * 150);
+            });
+        });
+    </script>
+</body>
+</html>

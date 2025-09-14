@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechPhone Professional Demo - Apple-Style Website</title>
+    <meta name="description" content="Professional demonstration of TechPhone's Apple-style website with complete multi-page structure, overseas social media integration, and premium user experience.">
+    <link rel="stylesheet" href="styles-pro.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .demo-hero {
+            background: linear-gradient(135deg, #1d1d1f 0%, #2d2d2d 50%, #3a3a3a 100%);
+            color: var(--white);
+            padding: var(--spacing-6xl) 0 var(--spacing-4xl);
+            margin-top: 48px;
+        }
+
+        .demo-header {
+            text-align: center;
+            margin-bottom: var(--spacing-4xl);
+        }
+
+        .demo-title {
+            font-size: var(--font-size-6xl);
+            font-weight: 700;
+            margin-bottom: var(--spacing-lg);
+            background: linear-gradient(135deg, #ffffff, #a1a1a6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .demo-subtitle {
+            font-size: var(--font-size-xl);
+            color: #f5f5f7;
+            max-width: 800px;
+            margin: 0 auto var(--spacing-2xl);
+            line-height: 1.5;
+        }
+
+        .demo-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-2xl);
+            margin: var(--spacing-4xl) 0;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-2xl);
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all var(--transition-normal);
+        }
+
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .feature-title {
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+            color: var(--white);
+        }
+
+        .feature-description {
+            color: #f5f5f7;
+            line-height: 1.6;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .feature-link {
+            color: var(--link-blue);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color var(--transition-fast);
+        }
+
+        .feature-link:hover {
+            color: var(--link-hover);
+            text-decoration: underline;
+        }
+
+        .demo-showcase {
+            background: var(--white);
+            margin: var(--spacing-4xl) 0;
+            padding: var(--spacing-4xl) 0;
+        }
+
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--spacing-2xl);
+            max-width: var(--container-xl);
+            margin: 0 auto;
+        }
+
+        .showcase-item {
+            background: var(--gray);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: all var(--transition-normal);
+            border: 1px solid var(--border-gray);
+        }
+
+        .showcase-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .showcase-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 48px;
+        }
+
+        .showcase-content {
+            padding: var(--spacing-lg);
+        }
+
+        .showcase-title {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+            color: var(--primary-text);
+        }
+
+        .showcase-description {
+            font-size: var(--font-size-base);
+            color: var(--secondary-text);
+            margin-bottom: var(--spacing-md);
+            line-height: 1.5;
+        }
+
+        .demo-navigation {
+            background: var(--gray);
+            padding: var(--spacing-3xl) 0;
+        }
+
+        .nav-demo {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-lg);
+            flex-wrap: wrap;
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .nav-demo-link {
+            background: var(--white);
+            color: var(--primary-text);
+            padding: var(--spacing-md) var(--spacing-xl);
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all var(--transition-fast);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-demo-link:hover {
+            background: var(--link-blue);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .demo-footer {
+            background: linear-gradient(135deg, #1d1d1f 0%, #2d2d2d 100%);
+            color: var(--white);
+            padding: var(--spacing-4xl) 0 var(--spacing-3xl);
+            margin-top: var(--spacing-4xl);
+        }
+
+        .improvement-list {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-2xl);
+            margin: var(--spacing-2xl) 0;
+        }
+
+        .improvement-list h3 {
+            color: var(--white);
+            margin-bottom: var(--spacing-lg);
+            font-size: var(--font-size-xl);
+        }
+
+        .improvement-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .improvement-list li {
+            color: #f5f5f7;
+            margin-bottom: var(--spacing-sm);
+            padding-left: var(--spacing-lg);
+            position: relative;
+        }
+
+        .improvement-list li::before {
+            content: '✨';
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: var(--spacing-3xl) 0;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #007aff, #5AC8FA);
+            color: var(--white);
+            padding: var(--spacing-lg) var(--spacing-3xl);
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            text-decoration: none;
+            display: inline-block;
+            margin: var(--spacing-sm);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 122, 255, 0.4);
+        }
+
+        .tech-stack {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-2xl);
+            margin: var(--spacing-2xl) 0;
+        }
+
+        .tech-stack h3 {
+            color: var(--white);
+            margin-bottom: var(--spacing-lg);
+            text-align: center;
+        }
+
+        .tech-items {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-xl);
+            flex-wrap: wrap;
+        }
+
+        .tech-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-sm);
+            font-family: 'Courier New', monospace;
+            font-size: var(--font-size-sm);
+            color: #f5f5f7;
+        }
+
+        @media (max-width: 768px) {
+            .demo-title {
+                font-size: var(--font-size-4xl);
+            }
+
+            .demo-features {
+                grid-template-columns: 1fr;
+            }
+
+            .showcase-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-demo {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .tech-items {
+                flex-direction: column;
+                align-items: center;
+                gap: var(--spacing-sm);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Professional Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index-pro.html">TechPhone</a>
+            </div>
+
+            <div class="nav-links">
+                <a href="index-pro.html" class="nav-link">Home</a>
+                <a href="store.html" class="nav-link">Store</a>
+                <a href="iphone.html" class="nav-link">iPhone</a>
+                <a href="watch.html" class="nav-link">Watch</a>
+                <a href="support.html" class="nav-link">Support</a>
+            </div>
+
+            <div class="nav-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="Search techphone.com" class="search-input">
+                    <span class="search-icon">🔍</span>
+                </div>
+
+                <div class="bag-icon" id="bag-icon">
+                    <span>🛍️</span>
+                    <span class="bag-count">0</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Demo Hero -->
+    <section class="demo-hero">
+        <div class="container">
+            <div class="demo-header">
+                <h1 class="demo-title">TechPhone Professional</h1>
+                <p class="demo-subtitle">
+                    A complete Apple-style website experience with professional multi-page structure,
+                    overseas social media integration, and premium user interactions.
+                </p>
+            </div>
+
+            <div class="demo-features">
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3 class="feature-title">Global Ready</h3>
+                    <p class="feature-description">
+                        Complete overseas social media integration with Twitter, Facebook, Instagram, YouTube, LinkedIn, and TikTok.
+                    </p>
+                    <a href="#social" class="feature-link">View Social Integration →</a>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📄</div>
+                    <h3 class="feature-title">Multi-Page Architecture</h3>
+                    <p class="feature-description">
+                        Professional multi-page structure with proper navigation, contact forms, privacy policy, and support pages.
+                    </p>
+                    <a href="#navigation" class="feature-link">Explore Pages →</a>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3 class="feature-title">Apple-Style Design</h3>
+                    <p class="feature-description">
+                        Deep-level Apple design patterns with premium animations, transitions, and user experience.
+                    </p>
+                    <a href="#design" class="feature-link">See Design System →</a>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3 class="feature-title">Professional JavaScript</h3>
+                    <p class="feature-description">
+                        Advanced JavaScript core library with shopping cart, animations, accessibility, and error handling.
+                    </p>
+                    <a href="#tech" class="feature-link">View Tech Stack →</a>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🛍️</div>
+                    <h3 class="feature-title">E-Commerce Ready</h3>
+                    <p class="feature-description">
+                        Complete shopping cart system, product pages, checkout process, and order management.
+                    </p>
+                    <a href="store.html" class="feature-link">Visit Store →</a>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">♿</div>
+                    <h3 class="feature-title">Accessibility First</h3>
+                    <p class="feature-description">
+                        WCAG compliant with keyboard navigation, screen reader support, and focus management.
+                    </p>
+                    <a href="#accessibility" class="feature-link">Learn More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation Demo -->
+    <section class="demo-navigation" id="navigation">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: var(--spacing-2xl); font-size: var(--font-size-4xl); color: var(--primary-text);">
+                Complete Multi-Page Structure
+            </h2>
+            <p style="text-align: center; margin-bottom: var(--spacing-3xl); font-size: var(--font-size-lg); color: var(--secondary-text);">
+                Every link leads to a real, fully-functional page with Apple-style navigation
+            </p>
+
+            <div class="nav-demo">
+                <a href="index-pro.html" class="nav-demo-link">🏠 Homepage</a>
+                <a href="store.html" class="nav-demo-link">🛒 Store</a>
+                <a href="contact.html" class="nav-demo-link">📞 Contact Us</a>
+                <a href="privacy-policy.html" class="nav-demo-link">🔒 Privacy Policy</a>
+                <a href="products.html" class="nav-demo-link">📱 All Products</a>
+                <a href="cart.html" class="nav-demo-link">🛍️ Shopping Cart</a>
+                <a href="checkout.html" class="nav-demo-link">💳 Checkout</a>
+                <a href="product-detail.html" class="nav-demo-link">📄 Product Details</a>
+            </div>
+
+            <div class="showcase-grid">
+                <div class="showcase-item">
+                    <div class="showcase-image">📞</div>
+                    <div class="showcase-content">
+                        <h3 class="showcase-title">Contact Page</h3>
+                        <p class="showcase-description">
+                            Professional contact form with live chat, phone support, email support, and FAQ section.
+                        </p>
+                        <a href="contact.html" class="feature-link">Visit Contact Page →</a>
+                    </div>
+                </div>
+
+                <div class="showcase-item">
+                    <div class="showcase-image">🔒</div>
+                    <div class="showcase-content">
+                        <h3 class="showcase-title">Privacy Policy</h3>
+                        <p class="showcase-description">
+                            Comprehensive privacy policy with professional legal language and user rights information.
+                        </p>
+                        <a href="privacy-policy.html" class="feature-link">Read Privacy Policy →</a>
+                    </div>
+                </div>
+
+                <div class="showcase-item">
+                    <div class="showcase-image">🛒</div>
+                    <div class="showcase-content">
+                        <h3 class="showcase-title">Online Store</h3>
+                        <p class="showcase-description">
+                            Complete e-commerce experience with product categories, shopping cart, and checkout.
+                        </p>
+                        <a href="store.html" class="feature-link">Shop Now →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Integration -->
+    <section class="demo-showcase" id="social">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: var(--spacing-2xl); font-size: var(--font-size-4xl);">
+                Overseas Social Media Integration
+            </h2>
+            <p style="text-align: center; margin-bottom: var(--spacing-3xl); font-size: var(--font-size-lg); color: var(--secondary-text);">
+                Connected to all major international social platforms
+            </p>
+
+            <div style="text-align: center; margin-bottom: var(--spacing-3xl);">
+                <div style="display: flex; justify-content: center; gap: var(--spacing-xl); flex-wrap: wrap;">
+                    <a href="https://twitter.com/techphone" target="_blank" style="text-decoration: none;">
+                        <div style="text-align: center; padding: var(--spacing-lg); border-radius: var(--radius-md); background: var(--gray); transition: all var(--transition-fast);">
+                            <div style="font-size: 48px; margin-bottom: var(--spacing-sm);">🐦</div>
+                            <div style="font-weight: 600; color: var(--primary-text);">Twitter/X</div>
+                            <div style="font-size: var(--font-size-sm); color: var(--secondary-text);">@techphone</div>
+                        </div>
+                    </a>
+
+                    <a href="https://facebook.com/techphone" target="_blank" style="text-decoration: none;">
+                        <div style="text-align: center; padding: var(--spacing-lg); border-radius: var(--radius-md); background: var(--gray); transition: all var(--transition-fast);">
+                            <div style="font-size: 48px; margin-bottom: var(--spacing-sm);">📘</div>
+                            <div style="font-weight: 600; color: var(--primary-text);">Facebook</div>
+                            <div style="font-size: var(--font-size-sm); color: var(--secondary-text);">techphone</div>
+                        </div>
+                    </a>
+
+                    <a href="https://instagram.com/techphone" target="_blank" style="text-decoration: none;">
+                        <div style="text-align: center; padding: var(--spacing-lg); border-radius: var(--radius-md); background: var(--gray); transition: all var(--transition-fast);">
+                            <div style="font-size: 48px; margin-bottom: var(--spacing-sm);">📷</div>
+                            <div style="font-weight: 600; color: var(--primary-text);">Instagram</div>
+                            <div style="font-size: var(--font-size-sm); color: var(--secondary-text);">@techphone</div>
+                        </div>
+                    </a>
+
+                    <a href="https://youtube.com/techphone" target="_blank" style="text-decoration: none;">
+                        <div style="text-align: center; padding: var(--spacing-lg); border-radius: var(--radius-md); background: var(--gray); transition: all var(--transition-fast);">
+                            <div style="font-size: 48px; margin-bottom: var(--spacing-sm);">📺</div>
+                            <div style="font-weight: 600; color: var(--primary-text);">YouTube</div>
+                            <div style="font-size: var(--font-size-sm); color: var(--secondary-text);">TechPhone</div>
+                        </div>
+                    </a>
+
+                    <a href="https://linkedin.com/company/techphone" target="_blank" style="text-decoration: none;">
+                        <div style="text-align: center; padding: var(--spacing-lg); border-radius: var(--radius-md); background: var(--gray); transition: all var(--transition-fast);">
+                            <div style="font-size: 48px; margin-bottom: var(--spacing-sm);">💼</div>
+                            <div style="font-weight: 600; color: var(--primary-text);">LinkedIn</div>
+                            <div style="font-size: var(--font-size-sm); color: var(--secondary-text);">TechPhone Inc.</div>
+                        </div>
+                    </a>
+
+                    <a href="https://tiktok.com/@techphone" target="_blank" style="text-decoration: none;">
+                        <div style="text-align: center; padding: var(--spacing-lg); border-radius: var(--radius-md); background: var(--gray); transition: all var(--transition-fast);">
+                            <div style="font-size: 48px; margin-bottom: var(--spacing-sm);">🎵</div>
+                            <div style="font-weight: 600; color: var(--primary-text);">TikTok</div>
+                            <div style="font-size: var(--font-size-sm); color: var(--secondary-text);">@techphone</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Improvements -->
+    <section class="demo-hero" id="improvements">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: var(--spacing-2xl); font-size: var(--font-size-4xl);">
+                Major Improvements Made
+            </h2>
+
+            <div class="improvement-list">
+                <h3>🎯 Complete Multi-Page Architecture</h3>
+                <ul>
+                    <li>Created professional standalone pages for Contact, Privacy Policy, Store, etc.</li>
+                    <li>Every footer link now leads to a real, functional page</li>
+                    <li>Proper page hierarchy and navigation structure</li>
+                    <li>Apple-style page transitions and navigation</li>
+                </ul>
+            </div>
+
+            <div class="improvement-list">
+                <h3>🌍 Full Overseas Social Media Integration</h3>
+                <ul>
+                    <li>Integrated all major international platforms: Twitter/X, Facebook, Instagram, YouTube, LinkedIn, TikTok</li>
+                    <li>Professional social media presence in all footers and contact pages</li>
+                    <li>Social sharing and follow buttons throughout the site</li>
+                    <li>Links open in new tabs for better user experience</li>
+                </ul>
+            </div>
+
+            <div class="improvement-list">
+                <h3>🎨 Deep Apple Design System Implementation</h3>
+                <ul>
+                    <li>Authentic Apple color palette and typography system</li>
+                    <li>Professional SF Pro font stack and spacing system</li>
+                    <li>Apple-style animations, transitions, and micro-interactions</li>
+                    <li>Premium visual hierarchy and design patterns</li>
+                </ul>
+            </div>
+
+            <div class="tech-stack">
+                <h3>🚀 Professional Technology Stack</h3>
+                <div class="tech-items">
+                    <div class="tech-item">HTML5</div>
+                    <div class="tech-item">CSS3</div>
+                    <div class="tech-item">Vanilla JavaScript</div>
+                    <div class="tech-item">Local Storage</div>
+                    <div class="tech-item">CSS Grid</div>
+                    <div class="tech-item">Flexbox</div>
+                    <div class="tech-item">Web APIs</div>
+                    <div class="tech-item">Accessibility</div>
+                </div>
+            </div>
+
+            <div class="cta-section">
+                <h2 style="color: var(--white); margin-bottom: var(--spacing-lg); font-size: var(--font-size-3xl);">
+                    Ready to Experience the Professional Version?
+                </h2>
+                <p style="color: #f5f5f7; margin-bottom: var(--spacing-2xl); max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Explore the complete professional website with all pages fully functional and ready for deployment.
+                </p>
+                <a href="index-pro.html" class="cta-button">🚀 Visit Professional Site</a>
+                <a href="store.html" class="cta-button">🛒 Go to Store</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Footer -->
+    <footer class="footer demo-footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3 class="footer-heading">Professional Demo</h3>
+                    <ul class="footer-links">
+                        <li><a href="index-pro.html">Main Site</a></li>
+                        <li><a href="store.html">Store</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="privacy-policy.html">Privacy</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-heading">Social Media</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://twitter.com/techphone" target="_blank">Twitter/X</a></li>
+                        <li><a href="https://facebook.com/techphone" target="_blank">Facebook</a></li>
+                        <li><a href="https://instagram.com/techphone" target="_blank">Instagram</a></li>
+                        <li><a href="https://youtube.com/techphone" target="_blank">YouTube</a></li>
+                        <li><a href="https://linkedin.com/company/techphone" target="_blank">LinkedIn</a></li>
+                        <li><a href="https://tiktok.com/@techphone" target="_blank">TikTok</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-heading">Technology</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Design System</a></li>
+                        <li><a href="#">JavaScript Core</a></li>
+                        <li><a href="#">Accessibility</a></li>
+                        <li><a href="#">Performance</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-heading">Features</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Multi-Page</a></li>
+                        <li><a href="#">E-Commerce</a></li>
+                        <li><a href="#">Responsive</a></li>
+                        <li><a href="#">Professional</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-heading">Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Help Center</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>TechPhone Professional Demo v2.0 - Complete Apple-Style Website Solution</p>
+                <div class="footer-legal">
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms-of-use.html">Terms of Use</a>
+                    <a href="#">Documentation</a>
+                    <a href="#">GitHub</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://twitter.com/techphone" target="_blank" title="Twitter/X">🐦</a>
+                    <a href="https://facebook.com/techphone" target="_blank" title="Facebook">📘</a>
+                    <a href="https://instagram.com/techphone" target="_blank" title="Instagram">📷</a>
+                    <a href="https://youtube.com/techphone" target="_blank" title="YouTube">📺</a>
+                    <a href="https://linkedin.com/company/techphone" target="_blank" title="LinkedIn">💼</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- TechPhone Core JavaScript -->
+    <script src="techphone-core.js"></script>
+</body>
+</html>

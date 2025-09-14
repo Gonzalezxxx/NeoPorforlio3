@@ -16,6 +16,9 @@ function initializeAppleStyleInteractions() {
     // Smooth scroll behavior
     document.documentElement.style.scrollBehavior = 'smooth';
 
+    // Scroll effects
+    setupScrollEffects();
+
     // Navigation
     setupNavigation();
 
@@ -37,14 +40,27 @@ function initializeAppleStyleInteractions() {
     console.log('✅ Apple-style interactions initialized');
 }
 
+// Scroll effects for navigation
+function setupScrollEffects() {
+    const nav = document.querySelector('.nav');
+
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+    });
+}
+
 // Navigation - Apple style smooth transitions
 function setupNavigation() {
     const navLinks = document.querySelectorAll('.nav-link');
-    const cartIcon = document.querySelector('.cart-icon');
+    const cartIcon = document.querySelector('.bag-icon');
 
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            e.preventDefault();
+            const href = this.getAttribute('href');
             const linkText = this.textContent.trim();
 
             // Add subtle feedback
@@ -53,15 +69,42 @@ function setupNavigation() {
                 this.style.opacity = '1';
             }, 150);
 
-            // Direct navigation
-            if (linkText === 'Home' || linkText === '首页') {
-                window.location.href = 'index.html';
-            } else if (linkText === 'iPhone' || linkText.includes('Phone')) {
-                window.location.href = 'index.html#iphone-section';
-            } else if (linkText === 'Accessories' || linkText.includes('配件')) {
-                window.location.href = 'index.html#accessories-section';
-            } else if (linkText === 'Watch' || linkText.includes('穿戴')) {
-                window.location.href = 'index.html#watch-section';
+            // Handle different types of navigation
+            if (href.startsWith('#')) {
+                // Internal anchor link - smooth scroll
+                e.preventDefault();
+                const targetElement = document.querySelector(href);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            } else if (href.includes('#')) {
+                // Page with anchor - navigate to page then scroll
+                e.preventDefault();
+                const [pageUrl, anchorId] = href.split('#');
+                if (pageUrl === window.location.pathname || pageUrl === '') {
+                    // Same page, just scroll
+                    const targetElement = document.querySelector('#' + anchorId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                } else {
+                    // Different page - navigate and let page handle scroll
+                    window.location.href = href;
+                }
+            } else {
+                // External page - normal navigation
+                // Let the browser handle the navigation
+                // Only prevent default if we want custom handling
+                if (linkText === 'Products') {
+                    e.preventDefault();
+                    window.location.href = 'product-detail.html';
+                }
             }
         });
     });
@@ -84,7 +127,9 @@ function setupNavigation() {
 // Product interactions - no alerts, direct navigation
 function setupProductInteractions() {
     const productCards = document.querySelectorAll('.product-card');
+    const accessoryCards = document.querySelectorAll('.accessory-card');
 
+    // Handle product cards
     productCards.forEach(card => {
         // Product card click - direct to product detail
         card.addEventListener('click', function(e) {
@@ -139,6 +184,26 @@ function setupProductInteractions() {
                     window.location.href = `product-detail.html?product=${encodeURIComponent(name)}`;
                 }
             });
+        });
+    });
+
+    // Handle accessory cards
+    accessoryCards.forEach(card => {
+        card.addEventListener('click', function(e) {
+            // Don't navigate if clicking the learn more link
+            if (e.target.closest('.accessory-link')) {
+                return;
+            }
+
+            const accessoryName = this.querySelector('.accessory-name');
+            const name = accessoryName ? accessoryName.textContent.trim() : 'Accessory';
+
+            // Add subtle lift effect
+            this.style.transform = 'translateY(-4px)';
+            setTimeout(() => {
+                this.style.transform = 'translateY(0)';
+                window.location.href = `product-detail.html?product=${encodeURIComponent(name)}`;
+            }, 200);
         });
     });
 }
@@ -239,10 +304,11 @@ function setupCategories() {
 
 // Main buttons (Buy Now, Learn More)
 function setupMainButtons() {
-    const mainButtons = document.querySelectorAll('.btn-primary, .btn-secondary');
+    const mainButtons = document.querySelectorAll('.link-primary, .link-secondary');
 
     mainButtons.forEach(btn => {
-        btn.addEventListener('click', function() {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
             const buttonText = this.textContent.trim();
 
             // Apple-style button feedback
@@ -255,6 +321,16 @@ function setupMainButtons() {
             if (buttonText.includes('Buy') || buttonText.includes('购买')) {
                 window.location.href = 'checkout.html';
             } else if (buttonText.includes('Learn') || buttonText.includes('了解更多')) {
+                // Extract product name from parent context for navigation
+                const parentSection = this.closest('.product-section, .hero, .accessories-section');
+                if (parentSection) {
+                    const titleElement = parentSection.querySelector('.hero-title, .product-title, .accessory-name');
+                    if (titleElement) {
+                        const productName = titleElement.textContent.trim();
+                        window.location.href = `product-detail.html?product=${encodeURIComponent(productName)}`;
+                        return;
+                    }
+                }
                 window.location.href = 'product-detail.html';
             }
         });

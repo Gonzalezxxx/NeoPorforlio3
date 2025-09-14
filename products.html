@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Products - TechPhone</title>
+    <meta name="description" content="Browse our complete collection of iPhone, Apple Watch, and premium accessories.">
+    <link rel="stylesheet" href="styles-apple-style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .products-header {
+            background: var(--gray);
+            padding: var(--spacing-3xl) 0;
+            text-align: center;
+            margin-top: 48px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-xl);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--spacing-3xl) var(--spacing-lg);
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all var(--transition-normal);
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .product-card-image {
+            width: 100%;
+            height: 250px;
+            background: var(--gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .product-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-card-content {
+            padding: var(--spacing-lg);
+        }
+
+        .product-card-title {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+            color: var(--primary-text);
+        }
+
+        .product-card-description {
+            font-size: var(--font-size-base);
+            color: var(--secondary-text);
+            margin-bottom: var(--spacing-md);
+            line-height: 1.5;
+        }
+
+        .product-card-price {
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            color: var(--link-blue);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .product-card-actions {
+            display: flex;
+            gap: var(--spacing-sm);
+        }
+
+        .filter-sidebar {
+            width: 250px;
+            background: var(--white);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-md);
+            height: fit-content;
+            position: sticky;
+            top: 80px;
+        }
+
+        .filter-section {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .filter-title {
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+            color: var(--primary-text);
+        }
+
+        .filter-options {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+        }
+
+        .filter-option {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .filter-option input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+        }
+
+        .products-container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: var(--spacing-xl);
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: var(--spacing-3xl) var(--spacing-lg);
+        }
+
+        @media (max-width: 768px) {
+            .products-container {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-sidebar {
+                position: static;
+                width: 100%;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: var(--spacing-lg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index-global.html">TechPhone</a>
+            </div>
+
+            <div class="nav-links">
+                <a href="index-global.html#iphone" class="nav-link">iPhone</a>
+                <a href="index-global.html#watch" class="nav-link">Watch</a>
+                <a href="index-global.html#accessories" class="nav-link">Accessories</a>
+                <a href="products.html" class="nav-link active">All Products</a>
+            </div>
+
+            <div class="nav-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="Search products..." class="search-input">
+                    <span class="search-icon">🔍</span>
+                </div>
+
+                <div class="bag-icon" id="bag-icon">
+                    <span>🛍️</span>
+                    <span class="bag-count">0</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Products Header -->
+    <div class="products-header">
+        <h1 class="section-title">All Products</h1>
+        <p class="section-subtitle">Discover our complete collection of premium devices and accessories</p>
+    </div>
+
+    <!-- Products Container -->
+    <div class="products-container">
+        <!-- Filter Sidebar -->
+        <div class="filter-sidebar">
+            <div class="filter-section">
+                <h3 class="filter-title">Categories</h3>
+                <div class="filter-options">
+                    <label class="filter-option">
+                        <input type="checkbox" checked>
+                        <span>iPhone</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" checked>
+                        <span>Apple Watch</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" checked>
+                        <span>AirPods</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" checked>
+                        <span>Accessories</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <h3 class="filter-title">Price Range</h3>
+                <div class="filter-options">
+                    <label class="filter-option">
+                        <input type="checkbox">
+                        <span>Under $100</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox">
+                        <span>$100 - $500</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox">
+                        <span>$500 - $1000</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox">
+                        <span>Over $1000</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <h3 class="filter-title">Features</h3>
+                <div class="filter-options">
+                    <label class="filter-option">
+                        <input type="checkbox">
+                        <span>5G Compatible</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox">
+                        <span>Wireless Charging</span>
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox">
+                        <span>Water Resistant</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="products-grid">
+            <!-- iPhone 15 Pro -->
+            <div class="product-card" onclick="window.location.href='product-detail.html?product=iPhone%2015%20Pro'">
+                <div class="product-card-image">
+                    <img src="https://picsum.photos/seed/iphone15pro/400/300.jpg" alt="iPhone 15 Pro">
+                </div>
+                <div class="product-card-content">
+                    <h3 class="product-card-title">iPhone 15 Pro</h3>
+                    <p class="product-card-description">Titanium design with A17 Pro chip. The ultimate iPhone experience.</p>
+                    <div class="product-card-price">From $999</div>
+                    <div class="product-card-actions">
+                        <button class="link-primary">Learn More</button>
+                        <button class="link-secondary">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- iPhone 15 -->
+            <div class="product-card" onclick="window.location.href='product-detail.html?product=iPhone%2015'">
+                <div class="product-card-image">
+                    <img src="https://picsum.photos/seed/iphone15/400/300.jpg" alt="iPhone 15">
+                </div>
+                <div class="product-card-content">
+                    <h3 class="product-card-title">iPhone 15</h3>
+                    <p class="product-card-description">New camera system and Dynamic Island. Now in vibrant colors.</p>
+                    <div class="product-card-price">From $799</div>
+                    <div class="product-card-actions">
+                        <button class="link-primary">Learn More</button>
+                        <button class="link-secondary">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Apple Watch Series 9 -->
+            <div class="product-card" onclick="window.location.href='product-detail.html?product=Apple%20Watch%20Series%209'">
+                <div class="product-card-image">
+                    <img src="https://picsum.photos/seed/applewatch9/400/300.jpg" alt="Apple Watch Series 9">
+                </div>
+                <div class="product-card-content">
+                    <h3 class="product-card-title">Apple Watch Series 9</h3>
+                    <p class="product-card-description">Your essential companion for a healthy life. Advanced health features.</p>
+                    <div class="product-card-price">From $399</div>
+                    <div class="product-card-actions">
+                        <button class="link-primary">Learn More</button>
+                        <button class="link-secondary">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AirPods Pro -->
+            <div class="product-card" onclick="window.location.href='product-detail.html?product=AirPods%20Pro'">
+                <div class="product-card-image">
+                    <img src="https://picsum.photos/seed/airpodspro/400/300.jpg" alt="AirPods Pro">
+                </div>
+                <div class="product-card-content">
+                    <h3 class="product-card-title">AirPods Pro</h3>
+                    <p class="product-card-description">Adaptive Audio and Conversation Awareness. Magic like you've never heard.</p>
+                    <div class="product-card-price">$249</div>
+                    <div class="product-card-actions">
+                        <button class="link-primary">Learn More</button>
+                        <button class="link-secondary">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AirPods Max -->
+            <div class="product-card" onclick="window.location.href='product-detail.html?product=AirPods%20Max'">
+                <div class="product-card-image">
+                    <img src="https://picsum.photos/seed/airpodsmax/400/300.jpg" alt="AirPods Max">
+                </div>
+                <div class="product-card-content">
+                    <h3 class="product-card-title">AirPods Max</h3>
+                    <p class="product-card-description">Premium over-ear headphones. High-fidelity audio in a stunning design.</p>
+                    <div class="product-card-price">$549</div>
+                    <div class="product-card-actions">
+                        <button class="link-primary">Learn More</button>
+                        <button class="link-secondary">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MagSafe Charger -->
+            <div class="product-card" onclick="window.location.href='product-detail.html?product=MagSafe%20Charger'">
+                <div class="product-card-image">
+                    <img src="https://picsum.photos/seed/magsafe/400/300.jpg" alt="MagSafe Charger">
+                </div>
+                <div class="product-card-content">
+                    <h3 class="product-card-title">MagSafe Charger</h3>
+                    <p class="product-card-description">Wireless charging made simple. Magnetically snaps into place.</p>
+                    <div class="product-card-price">$39</div>
+                    <div class="product-card-actions">
+                        <button class="link-primary">Learn More</button>
+                        <button class="link-secondary">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Global Footer -->
+    <footer class="footer global-footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3 class="footer-heading">Shop and Learn</h3>
+                    <ul class="footer-links">
+                        <li><a href="index-global.html">Store</a></li>
+                        <li><a href="index-global.html#iphone">iPhone</a></li>
+                        <li><a href="index-global.html#watch">Apple Watch</a></li>
+                        <li><a href="index-global.html#accessories">Accessories</a></li>
+                        <li><a href="products.html">All Products</a></li>
+                        <li><a href="#">Gift Cards</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-heading">Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://music.apple.com" target="_blank">Apple Music</a></li>
+                        <li><a href="https://tv.apple.com" target="_blank">Apple TV+</a></li>
+                        <li><a href="https://fitness.apple.com" target="_blank">Apple Fitness+</a></li>
+                        <li><a href="https://news.apple.com" target="_blank">Apple News+</a></li>
+                        <li><a href="https://icloud.com" target="_blank">iCloud</a></li>
+                        <li><a href="https://apps.apple.com" target="_blank">App Store</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-heading">Account & Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="cart.html">Your Cart</a></li>
+                        <li><a href="checkout.html">Checkout</a></li>
+                        <li><a href="#">Order Tracking</a></li>
+                        <li><a href="#">Customer Support</a></li>
+                        <li><a href="#">Warranty</a></li>
+                        <li><a href="#">Returns & Exchanges</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-heading">About TechPhone</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Newsroom</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Investors</a></li>
+                        <li><a href="#">Ethics & Compliance</a></li>
+                        <li><a href="#">Events</a></li>
+                        <li><a href="#">Contact TechPhone</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-heading">Policies</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Accessibility</a></li>
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>Copyright © 2024 TechPhone Inc. All rights reserved. | Serving customers worldwide since 2024</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Use</a>
+                    <a href="#">Sales and Refunds</a>
+                    <a href="#">Legal</a>
+                    <a href="#">Site Map</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://twitter.com/techphone" target="_blank" title="Twitter/X">🐦</a>
+                    <a href="https://facebook.com/techphone" target="_blank" title="Facebook">📘</a>
+                    <a href="https://instagram.com/techphone" target="_blank" title="Instagram">📷</a>
+                    <a href="https://youtube.com/techphone" target="_blank" title="YouTube">📺</a>
+                    <a href="https://tiktok.com/@techphone" target="_blank" title="TikTok">🎵</a>
+                    <a href="https://linkedin.com/company/techphone" target="_blank" title="LinkedIn">💼</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script-apple-style.js"></script>
+</body>
+</html>

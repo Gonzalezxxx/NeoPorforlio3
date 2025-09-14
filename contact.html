@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - TechPhone</title>
+    <meta name="description" content="Contact TechPhone customer support, find store locations, or get help with your products.">
+    <link rel="stylesheet" href="styles-pro.css">
+    <style>
+        .contact-hero {
+            background: linear-gradient(135deg, #f5f5f7 0%, #ffffff 100%);
+            padding: var(--spacing-6xl) 0 var(--spacing-4xl);
+            margin-top: 48px;
+        }
+
+        .contact-container {
+            max-width: var(--container-lg);
+            margin: 0 auto;
+            padding: 0 var(--spacing-lg);
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: var(--spacing-5xl);
+        }
+
+        .contact-title {
+            font-size: var(--font-size-5xl);
+            font-weight: 600;
+            margin-bottom: var(--spacing-lg);
+            color: var(--primary-text);
+        }
+
+        .contact-subtitle {
+            font-size: var(--font-size-xl);
+            color: var(--secondary-text);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-3xl);
+            margin-bottom: var(--spacing-5xl);
+        }
+
+        .contact-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-2xl);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-gray);
+            transition: all var(--transition-normal);
+        }
+
+        .contact-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .contact-icon {
+            font-size: 48px;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .contact-card h3 {
+            font-size: var(--font-size-2xl);
+            margin-bottom: var(--spacing-md);
+            color: var(--primary-text);
+        }
+
+        .contact-card p {
+            color: var(--secondary-text);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .contact-link {
+            color: var(--link-blue);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color var(--transition-fast);
+        }
+
+        .contact-link:hover {
+            color: var(--link-hover);
+            text-decoration: underline;
+        }
+
+        .contact-form {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-3xl);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-gray);
+            max-width: 800px;
+            margin: 0 auto var(--spacing-5xl);
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .form-label {
+            display: block;
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+            color: var(--primary-text);
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            width: 100%;
+            padding: var(--spacing-md);
+            border: 1px solid var(--border-gray);
+            border-radius: var(--radius-md);
+            font-size: var(--font-size-base);
+            font-family: var(--font-primary);
+            transition: all var(--transition-fast);
+        }
+
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: var(--link-blue);
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-lg);
+        }
+
+        .form-submit {
+            background: var(--link-blue);
+            color: var(--white);
+            padding: var(--spacing-md) var(--spacing-2xl);
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .form-submit:hover {
+            background: var(--link-hover);
+            transform: translateY(-1px);
+        }
+
+        .social-section {
+            text-align: center;
+            padding: var(--spacing-4xl) 0;
+            background: var(--gray);
+        }
+
+        .social-title {
+            font-size: var(--font-size-3xl);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            color: var(--secondary-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color var(--transition-fast);
+        }
+
+        .social-link:hover {
+            color: var(--link-blue);
+        }
+
+        .faq-section {
+            max-width: var(--container-lg);
+            margin: 0 auto var(--spacing-5xl);
+        }
+
+        .faq-title {
+            font-size: var(--font-size-3xl);
+            text-align: center;
+            margin-bottom: var(--spacing-3xl);
+        }
+
+        .faq-item {
+            background: var(--white);
+            border: 1px solid var(--border-gray);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--spacing-md);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: var(--spacing-lg);
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background var(--transition-fast);
+        }
+
+        .faq-question:hover {
+            background: var(--gray);
+        }
+
+        .faq-answer {
+            padding: 0 var(--spacing-lg);
+            max-height: 0;
+            overflow: hidden;
+            transition: all var(--transition-normal);
+        }
+
+        .faq-answer.active {
+            padding: var(--spacing-lg);
+            max-height: 200px;
+        }
+
+        .faq-icon {
+            transition: transform var(--transition-normal);
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-xl);
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+                gap: var(--spacing-md);
+            }
+
+            .contact-form {
+                padding: var(--spacing-xl);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Professional Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index-pro.html">TechPhone</a>
+            </div>
+
+            <div class="nav-links">
+                <a href="store.html" class="nav-link">Store</a>
+                <a href="iphone.html" class="nav-link">iPhone</a>
+                <a href="watch.html" class="nav-link">Watch</a>
+                <a href="airpods.html" class="nav-link">AirPods</a>
+                <a href="support.html" class="nav-link">Support</a>
+            </div>
+
+            <div class="nav-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="Search techphone.com" class="search-input">
+                    <span class="search-icon">🔍</span>
+                </div>
+
+                <div class="bag-icon" id="bag-icon">
+                    <span>🛍️</span>
+                    <span class="bag-count">0</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Hero -->
+    <section class="contact-hero">
+        <div class="contact-container">
+            <div class="contact-header">
+                <h1 class="contact-title">Contact Us</h1>
+                <p class="contact-subtitle">We're here to help. Get in touch with our team for any questions or support you need.</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">💬</div>
+                    <h3>Live Chat</h3>
+                    <p>Chat with our support team in real-time. Available 24/7 for immediate assistance.</p>
+                    <a href="#" class="contact-link">Start Chat →</a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">📞</div>
+                    <h3>Phone Support</h3>
+                    <p>Speak directly with our customer service representatives.</p>
+                    <p><strong>1-800-TECHPHONE</strong><br>Mon-Fri 8AM-8PM EST</p>
+                    <a href="tel:18008324466" class="contact-link">Call Now →</a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">✉️</div>
+                    <h3>Email Support</h3>
+                    <p>Send us a detailed message and we'll get back to you within 24 hours.</p>
+                    <a href="mailto:support@techphone.com" class="contact-link">Email Us →</a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <h3>Visit a Store</h3>
+                    <p>Find your nearest TechPhone Store for hands-on support and expert advice.</p>
+                    <a href="find-a-store.html" class="contact-link">Find Stores →</a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">🔧</div>
+                    <h3>Technical Support</h3>
+                    <p>Get help with technical issues, troubleshooting, and device setup.</p>
+                    <a href="support.html" class="contact-link">Get Support →</a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">💼</div>
+                    <h3>Business Inquiries</h3>
+                    <p>For business solutions, bulk orders, and partnership opportunities.</p>
+                    <a href="mailto:business@techphone.com" class="contact-link">Business Contact →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="contact-form-section">
+        <div class="contact-container">
+            <div class="contact-form">
+                <h2 style="text-align: center; margin-bottom: var(--spacing-2xl); font-size: var(--font-size-3xl);">
+                    Send us a Message
+                </h2>
+                <form id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="firstName">First Name *</label>
+                            <input type="text" id="firstName" name="firstName" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="lastName">Last Name *</label>
+                            <input type="text" id="lastName" name="lastName" class="form-input" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="form-input">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="subject">Subject *</label>
+                        <select id="subject" name="subject" class="form-select" required>
+                            <option value="">Select a topic</option>
+                            <option value="general">General Inquiry</option>
+                            <option value="technical">Technical Support</option>
+                            <option value="sales">Sales Question</option>
+                            <option value="billing">Billing Issue</option>
+                            <option value="warranty">Warranty & Repairs</option>
+                            <option value="feedback">Feedback</option>
+                            <option value="business">Business Inquiry</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="orderNumber">Order Number (if applicable)</label>
+                        <input type="text" id="orderNumber" name="orderNumber" class="form-input">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="message">Message *</label>
+                        <textarea id="message" name="message" class="form-textarea"
+                                  placeholder="Please provide as much detail as possible so we can best assist you..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; gap: var(--spacing-sm); cursor: pointer;">
+                            <input type="checkbox" name="newsletter" style="width: auto;">
+                            <span style="font-size: var(--font-size-sm); color: var(--secondary-text);">
+                                I'd like to receive updates about new products and special offers
+                            </span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="form-submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <h2 class="faq-title">Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>What is your return policy?</span>
+                <span class="faq-icon">▼</span>
+            </div>
+            <div class="faq-answer">
+                <p>We offer a 30-day return policy for most products. Items must be in original condition with all accessories included. Some restrictions apply to personalized items and software.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>How long does shipping take?</span>
+                <span class="faq-icon">▼</span>
+            </div>
+            <div class="faq-answer">
+                <p>Standard shipping takes 3-5 business days. Express shipping is available for 1-2 business days. Free shipping is available on orders over $50.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>Do you offer international shipping?</span>
+                <span class="faq-icon">▼</span>
+            </div>
+            <div class="faq-answer">
+                <p>Yes, we ship to over 50 countries worldwide. International shipping times and costs vary by destination. Customs fees may apply.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>How can I track my order?</span>
+                <span class="faq-icon">▼</span>
+            </div>
+            <div class="faq-answer">
+                <p>Once your order ships, you'll receive a tracking number via email. You can also track your order in your account dashboard or by using our order tracking tool.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section class="social-section">
+        <div class="contact-container">
+            <h2 class="social-title">Connect With Us</h2>
+            <p style="margin-bottom: var(--spacing-2xl); color: var(--secondary-text);">
+                Follow us on social media for the latest updates, tips, and exclusive offers
+            </p>
+
+            <div class="social-links">
+                <a href="https://twitter.com/techphone" target="_blank" class="social-link">
+                    <span>🐦</span>
+                    <span>Twitter/X</span>
+                </a>
+                <a href="https://facebook.com/techphone" target="_blank" class="social-link">
+                    <span>📘</span>
+                    <span>Facebook</span>
+                </a>
+                <a href="https://instagram.com/techphone" target="_blank" class="social-link">
+                    <span>📷</span>
+                    <span>Instagram</span>
+                </a>
+                <a href="https://youtube.com/techphone" target="_blank" class="social-link">
+                    <span>📺</span>
+                    <span>YouTube</span>
+                </a>
+                <a href="https://linkedin.com/company/techphone" target="_blank" class="social-link">
+                    <span>💼</span>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="https://tiktok.com/@techphone" target="_blank" class="social-link">
+                    <span>🎵</span>
+                    <span>TikTok</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3 class="footer-heading">Shop and Learn</h3>
+                    <ul class="footer-links">
+                        <li><a href="index-pro.html">Store</a></li>
+                        <li><a href="iphone.html">iPhone</a></li>
+                        <li><a href="watch.html">Watch</a></li>
+                        <li><a href="airpods.html">AirPods</a></li>
+                        <li><a href="accessories.html">Accessories</a></li>
+                        <li><a href="gift-cards.html">Gift Cards</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-heading">Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://music.apple.com" target="_blank">Apple Music</a></li>
+                        <li><a href="https://tv.apple.com" target="_blank">Apple TV+</a></li>
+                        <li><a href="https://fitness.apple.com" target="_blank">Apple Fitness+</a></li>
+                        <li><a href="https://icloud.com" target="_blank">iCloud</a></li>
+                        <li><a href="https://apps.apple.com" target="_blank">App Store</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-heading">TechPhone Store</h3>
+                    <ul class="footer-links">
+                        <li><a href="find-a-store.html">Find a Store</a></li>
+                        <li><a href="genius-bar.html">Genius Bar</a></li>
+                        <li><a href="today-at-apple.html">Today at Apple</a></li>
+                        <li><a href="apple-trade-in.html">Apple Trade In</a></li>
+                        <li><a href="order-status.html">Order Status</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-heading">Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="support.html">Get Help</a></li>
+                        <li><a href="warranty.html">Warranty</a></li>
+                        <li><a href="returns.html">Returns & Exchanges</a></li>
+                        <li><a href="shipping.html">Shipping Info</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-heading">About TechPhone</h3>
+                    <ul class="footer-links">
+                        <li><a href="newsroom.html">Newsroom</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="investors.html">Investors</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="contact-apple.html">Contact TechPhone</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>Copyright © 2024 TechPhone Inc. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms-of-use.html">Terms of Use</a>
+                    <a href="sales-and-refunds.html">Sales and Refunds</a>
+                    <a href="legal.html">Legal</a>
+                    <a href="site-map.html">Site Map</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://twitter.com/techphone" target="_blank" title="Twitter/X">🐦</a>
+                    <a href="https://facebook.com/techphone" target="_blank" title="Facebook">📘</a>
+                    <a href="https://instagram.com/techphone" target="_blank" title="Instagram">📷</a>
+                    <a href="https://youtube.com/techphone" target="_blank" title="YouTube">📺</a>
+                    <a href="https://linkedin.com/company/techphone" target="_blank" title="LinkedIn">💼</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Contact page specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeContactPage();
+        });
+
+        function initializeContactPage() {
+            setupContactForm();
+            setupFAQ();
+            setupNavigation();
+        }
+
+        function setupContactForm() {
+            const form = document.getElementById('contactForm');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+
+                    // Get form data
+                    const formData = new FormData(form);
+                    const data = Object.fromEntries(formData);
+
+                    // Simulate form submission
+                    console.log('Form submitted:', data);
+
+                    // Show success message
+                    showNotification('Thank you for your message! We\'ll get back to you within 24 hours.', 'success');
+
+                    // Reset form
+                    form.reset();
+                });
+            }
+        }
+
+        function setupFAQ() {
+            const faqItems = document.querySelectorAll('.faq-item');
+
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                const answer = item.querySelector('.faq-answer');
+
+                question.addEventListener('click', function() {
+                    const isActive = item.classList.contains('active');
+
+                    // Close all items
+                    faqItems.forEach(faqItem => {
+                        faqItem.classList.remove('active');
+                        faqItem.querySelector('.faq-answer').classList.remove('active');
+                    });
+
+                    // Open clicked item if it wasn't active
+                    if (!isActive) {
+                        item.classList.add('active');
+                        answer.classList.add('active');
+                    }
+                });
+            });
+        }
+
+        function setupNavigation() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const bagIcon = document.querySelector('.bag-icon');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+
+                    if (href && !href.startsWith('#') && !href.startsWith('http')) {
+                        e.preventDefault();
+                        window.location.href = href;
+                    }
+                });
+            });
+
+            if (bagIcon) {
+                bagIcon.addEventListener('click', function() {
+                    window.location.href = 'cart.html';
+                });
+            }
+        }
+
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === 'success' ? '#34c759' : '#007aff'};
+                color: white;
+                padding: 16px 24px;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                z-index: 10000;
+                font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+                font-size: 14px;
+                max-width: 300px;
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+            `;
+
+            notification.textContent = message;
+            document.body.appendChild(notification);
+
+            // Animate in
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+
+            // Remove after 5 seconds
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 5000);
+        }
+
+        // Initialize shared functionality
+        function updateCartCount() {
+            const cartCount = document.querySelector('.bag-count');
+            if (cartCount) {
+                const cartItems = JSON.parse(localStorage.getItem('techphone-cart') || '[]');
+                cartCount.textContent = cartItems.length;
+                cartCount.style.display = cartItems.length > 0 ? 'block' : 'none';
+            }
+        }
+
+        updateCartCount();
+    </script>
+</body>
+</html>

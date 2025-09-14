@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechPhone - Premium Smartphones & Accessories</title>
+    <meta name="description" content="Discover the latest iPhone, Apple Watch, and premium accessories. Shop now with free shipping worldwide.">
+    <meta name="keywords" content="iPhone, Apple Watch, AirPods, smartphone, accessories, techphone">
+    <link rel="stylesheet" href="styles-apple-style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Global specific styles */
+        .nav-logo a {
+            background: linear-gradient(135deg, #007AFF, #5AC8FA);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #2d2d2d 100%);
+        }
+
+        .price-original {
+            text-decoration: line-through;
+            color: #86868b;
+            font-size: 14px;
+        }
+
+        .price-sale {
+            color: #FF3B30;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .international-shipping {
+            background: linear-gradient(135deg, #34C759, #30D158);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+
+        .country-selector {
+            position: relative;
+            margin-left: var(--spacing-md);
+        }
+
+        .country-flag {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
+        .social-banner {
+            background: var(--gray);
+            padding: var(--spacing-md) 0;
+            text-align: center;
+            border-bottom: 1px solid #d2d2d7;
+        }
+
+        .social-links-inline {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-sm);
+        }
+
+        .social-links-inline a {
+            color: var(--secondary-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color var(--transition-fast);
+        }
+
+        .social-links-inline a:hover {
+            color: var(--link-blue);
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-xl);
+            margin: var(--spacing-lg) 0;
+            flex-wrap: wrap;
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            color: var(--secondary-text);
+            font-size: var(--font-size-sm);
+        }
+
+        .global-footer {
+            background: linear-gradient(135deg, #1d1d1f 0%, #2d2d2d 100%);
+            color: #f5f5f7;
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all var(--transition-fast);
+            font-size: 18px;
+        }
+
+        .footer-social a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .social-banner {
+                padding: var(--spacing-sm) 0;
+            }
+
+            .social-links-inline {
+                gap: var(--spacing-md);
+                font-size: var(--font-size-sm);
+            }
+
+            .trust-badges {
+                gap: var(--spacing-md);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Social Banner -->
+    <div class="social-banner">
+        <p>Follow us for latest updates and exclusive deals!</p>
+        <div class="social-links-inline">
+            <a href="https://twitter.com/techphone" target="_blank">Twitter/X</a>
+            <a href="https://facebook.com/techphone" target="_blank">Facebook</a>
+            <a href="https://instagram.com/techphone" target="_blank">Instagram</a>
+            <a href="https://youtube.com/techphone" target="_blank">YouTube</a>
+            <a href="https://tiktok.com/@techphone" target="_blank">TikTok</a>
+            <a href="https://linkedin.com/company/techphone" target="_blank">LinkedIn</a>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index-global.html">TechPhone</a>
+            </div>
+
+            <div class="nav-links">
+                <a href="index-global.html#iphone" class="nav-link">iPhone</a>
+                <a href="index-global.html#watch" class="nav-link">Watch</a>
+                <a href="index-global.html#accessories" class="nav-link">Accessories</a>
+                <a href="product-detail.html" class="nav-link">All Products</a>
+            </div>
+
+            <div class="nav-actions">
+                <div class="country-selector">
+                    <span>🇺🇸</span>
+                    <span>USD</span>
+                </div>
+
+                <div class="search-box">
+                    <input type="text" placeholder="Search products..." class="search-input">
+                    <span class="search-icon">🔍</span>
+                </div>
+
+                <div class="bag-icon" id="bag-icon">
+                    <span>🛍️</span>
+                    <span class="bag-count">0</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section - iPhone 15 Pro -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">iPhone 15 Pro</h1>
+                <p class="hero-subtitle">Titanium. So strong. So light. So Pro.</p>
+                <div class="hero-links">
+                    <a href="product-detail.html?product=iPhone%2015%20Pro" class="link-primary">Learn more ></a>
+                    <a href="checkout.html" class="link-secondary">Buy ></a>
+                </div>
+                <div class="trust-badges">
+                    <div class="trust-badge">
+                        <span>🚚</span>
+                        <span>Free Worldwide Shipping</span>
+                    </div>
+                    <div class="trust-badge">
+                        <span>💳</span>
+                        <span>Secure Payment</span>
+                    </div>
+                    <div class="trust-badge">
+                        <span>🔄</span>
+                        <span>30-Day Returns</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://picsum.photos/seed/iphone15pro-titanium/600/400.jpg" alt="iPhone 15 Pro">
+            </div>
+        </div>
+        <div class="hero-gradient"></div>
+    </section>
+
+    <!-- iPhone 15 Section -->
+    <section class="product-section" id="iphone">
+        <div class="product-content reverse">
+            <div class="product-image">
+                <img src="https://picsum.photos/seed/iphone15-colors/500/600.jpg" alt="iPhone 15">
+            </div>
+            <div class="product-text">
+                <h2 class="product-title">iPhone 15</h2>
+                <p class="product-description">New camera. New design. Newphoria.</p>
+                <div class="price-info">
+                    <span class="price-original">$899</span>
+                    <span class="price-sale">$799</span>
+                    <span class="international-shipping">Free Shipping</span>
+                </div>
+                <div class="product-links">
+                    <a href="product-detail.html?product=iPhone%2015" class="link-primary">Learn more ></a>
+                    <a href="checkout.html" class="link-secondary">Buy ></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Apple Watch Section -->
+    <section class="product-section watch-section" id="watch">
+        <div class="product-content">
+            <div class="product-image">
+                <img src="https://picsum.photos/seed/apple-watch-series9/500/400.jpg" alt="Apple Watch Series 9">
+            </div>
+            <div class="product-text">
+                <h2 class="product-title">Apple Watch Series 9</h2>
+                <p class="product-description">Smarter. Brighter. Mightier.</p>
+                <div class="price-info">
+                    <span class="price-sale">$399</span>
+                    <span class="international-shipping">Free Shipping</span>
+                </div>
+                <div class="product-links">
+                    <a href="product-detail.html?product=Apple%20Watch%20Series%209" class="link-primary">Learn more ></a>
+                    <a href="checkout.html" class="link-secondary">Buy ></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accessories Section -->
+    <section class="accessories-section" id="accessories">
+        <div class="section-header">
+            <h2 class="section-title">Essential Accessories</h2>
+            <p class="section-subtitle">Everything you need to elevate your experience</p>
+        </div>
+
+        <div class="accessories-grid">
+            <div class="accessory-card">
+                <div class="accessory-image">
+                    <img src="https://picsum.photos/seed/airpods-pro/300/300.jpg" alt="AirPods Pro">
+                </div>
+                <h3 class="accessory-name">AirPods Pro</h3>
+                <p class="accessory-price">$249 <span class="international-shipping">Free Ship</span></p>
+                <a href="product-detail.html?product=AirPods%20Pro" class="accessory-link">Learn more ></a>
+            </div>
+
+            <div class="accessory-card">
+                <div class="accessory-image">
+                    <img src="https://picsum.photos/seed/mag-safe-charger/300/300.jpg" alt="MagSafe Charger">
+                </div>
+                <h3 class="accessory-name">MagSafe Charger</h3>
+                <p class="accessory-price">$39 <span class="international-shipping">Free Ship</span></p>
+                <a href="product-detail.html?product=MagSafe%20Charger" class="accessory-link">Learn more ></a>
+            </div>
+
+            <div class="accessory-card">
+                <div class="accessory-image">
+                    <img src="https://picsum.photos/seed/iphone-case/300/300.jpg" alt="iPhone Case">
+                </div>
+                <h3 class="accessory-name">iPhone Cases</h3>
+                <p class="accessory-price">From $49 <span class="international-shipping">Free Ship</span></p>
+                <a href="product-detail.html?product=iPhone%20Cases" class="accessory-link">Learn more ></a>
+            </div>
+
+            <div class="accessory-card">
+                <div class="accessory-image">
+                    <img src="https://picsum.photos/seed/lightning-cable/300/300.jpg" alt="Lightning Cable">
+                </div>
+                <h3 class="accessory-name">Lightning Cables</h3>
+                <p class="accessory-price">From $19 <span class="international-shipping">Free Ship</span></p>
+                <a href="product-detail.html?product=Lightning%20Cables" class="accessory-link">Learn more ></a>
+            </div>
+        </div>
+
+        <div class="section-footer">
+            <a href="product-detail.html" class="link-primary">Shop all accessories ></a>
+        </div>
+    </section>
+
+    <!-- Global Footer -->
+    <footer class="footer global-footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3 class="footer-heading">Shop and Learn</h3>
+                    <ul class="footer-links">
+                        <li><a href="index-global.html">Store</a></li>
+                        <li><a href="index-global.html#iphone">iPhone</a></li>
+                        <li><a href="index-global.html#watch">Apple Watch</a></li>
+                        <li><a href="index-global.html#accessories">Accessories</a></li>
+                        <li><a href="product-detail.html">All Products</a></li>
+                        <li><a href="#">Gift Cards</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-heading">Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://music.apple.com" target="_blank">Apple Music</a></li>
+                        <li><a href="https://tv.apple.com" target="_blank">Apple TV+</a></li>
+                        <li><a href="https://fitness.apple.com" target="_blank">Apple Fitness+</a></li>
+                        <li><a href="https://news.apple.com" target="_blank">Apple News+</a></li>
+                        <li><a href="https://icloud.com" target="_blank">iCloud</a></li>
+                        <li><a href="https://apps.apple.com" target="_blank">App Store</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-heading">Account & Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="cart.html">Your Cart</a></li>
+                        <li><a href="checkout.html">Checkout</a></li>
+                        <li><a href="#">Order Tracking</a></li>
+                        <li><a href="#">Customer Support</a></li>
+                        <li><a href="#">Warranty</a></li>
+                        <li><a href="#">Returns & Exchanges</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-heading">About TechPhone</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Newsroom</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Investors</a></li>
+                        <li><a href="#">Ethics & Compliance</a></li>
+                        <li><a href="#">Events</a></li>
+                        <li><a href="#">Contact TechPhone</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-heading">Policies</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Accessibility</a></li>
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>Copyright © 2024 TechPhone Inc. All rights reserved. | Serving customers worldwide since 2024</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Use</a>
+                    <a href="#">Sales and Refunds</a>
+                    <a href="#">Legal</a>
+                    <a href="#">Site Map</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://twitter.com/techphone" target="_blank" title="Twitter/X">🐦</a>
+                    <a href="https://facebook.com/techphone" target="_blank" title="Facebook">📘</a>
+                    <a href="https://instagram.com/techphone" target="_blank" title="Instagram">📷</a>
+                    <a href="https://youtube.com/techphone" target="_blank" title="YouTube">📺</a>
+                    <a href="https://tiktok.com/@techphone" target="_blank" title="TikTok">🎵</a>
+                    <a href="https://linkedin.com/company/techphone" target="_blank" title="LinkedIn">💼</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script-apple-style.js"></script>
+</body>
+</html>

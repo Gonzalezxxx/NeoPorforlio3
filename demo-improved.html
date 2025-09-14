@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechPhone 改进版 - 优质智能手机与配件</title>
+    <meta name="description" content="发现最新的iPhone、Apple Watch和优质配件。立即购买，享受免费配送。">
+    <link rel="stylesheet" href="styles-apple-style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* 改进的样式 */
+        .nav-logo a {
+            background: linear-gradient(135deg, #007AFF, #5AC8FA);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #2d2d2d 100%);
+        }
+
+        .accessory-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .accessory-card:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            transform: translateY(-8px) scale(1.02);
+        }
+
+        .badge-new {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: linear-gradient(135deg, #FF3B30, #FF6B6B);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .price-tag {
+            background: linear-gradient(135deg, #34C759, #30D158);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 8px;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .floating-support {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #007AFF, #5AC8FA);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0, 122, 255, 0.4);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .floating-support:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(0, 122, 255, 0.6);
+        }
+
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #d2d2d7, transparent);
+            margin: var(--spacing-3xl) 0;
+        }
+
+        .improved-footer {
+            background: linear-gradient(135deg, #1d1d1f 0%, #2d2d2d 100%);
+            color: #f5f5f7;
+        }
+    </style>
+</head>
+<body>
+    <!-- 改进的导航 -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="#hero">TechPhone</a>
+            </div>
+
+            <div class="nav-links">
+                <a href="#iphone" class="nav-link">iPhone</a>
+                <a href="#watch" class="nav-link">Watch</a>
+                <a href="#accessories" class="nav-link">配件</a>
+                <a href="#support" class="nav-link">支持</a>
+            </div>
+
+            <div class="nav-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="搜索产品" class="search-input">
+                    <span class="search-icon">🔍</span>
+                </div>
+
+                <div class="bag-icon" id="bag-icon">
+                    <span>🛍️</span>
+                    <span class="bag-count">0</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 改进的英雄区域 -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="badge-new">新品上市</div>
+                <h1 class="hero-title">iPhone 15 Pro</h1>
+                <p class="hero-subtitle">钛金属设计。强劲性能。轻巧便携。</p>
+                <div class="hero-links">
+                    <a href="#iphone" class="link-primary">了解更多 ></a>
+                    <a href="#buy" class="link-secondary">立即购买 ></a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://picsum.photos/seed/iphone15pro-titanium/600/400.jpg" alt="iPhone 15 Pro">
+            </div>
+        </div>
+        <div class="hero-gradient"></div>
+    </section>
+
+    <!-- iPhone 15 区域 -->
+    <section class="product-section" id="iphone">
+        <div class="product-content reverse">
+            <div class="product-image">
+                <img src="https://picsum.photos/seed/iphone15-colors/500/600.jpg" alt="iPhone 15">
+            </div>
+            <div class="product-text">
+                <h2 class="product-title">iPhone 15</h2>
+                <p class="product-description">全新摄像头。全新设计。全新体验。</p>
+                <div class="product-links">
+                    <a href="#" class="link-primary">了解更多 ></a>
+                    <a href="#" class="link-secondary">立即购买 ></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Apple Watch 区域 -->
+    <section class="product-section watch-section" id="watch">
+        <div class="product-content">
+            <div class="product-image">
+                <img src="https://picsum.photos/seed/apple-watch-series9/500/400.jpg" alt="Apple Watch Series 9">
+            </div>
+            <div class="product-text">
+                <h2 class="product-title">Apple Watch Series 9</h2>
+                <p class="product-description">更智能。更明亮。更强大。</p>
+                <div class="product-links">
+                    <a href="#" class="link-primary">了解更多 ></a>
+                    <a href="#" class="link-secondary">立即购买 ></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 配件区域 -->
+    <section class="accessories-section" id="accessories">
+        <div class="section-header">
+            <h2 class="section-title">精选配件</h2>
+            <p class="section-subtitle">提升您的使用体验</p>
+        </div>
+
+        <div class="accessories-grid">
+            <div class="accessory-card">
+                <div class="badge-new">热销</div>
+                <div class="accessory-image">
+                    <img src="https://picsum.photos/seed/airpods-pro/300/300.jpg" alt="AirPods Pro">
+                </div>
+                <h3 class="accessory-name">AirPods Pro</h3>
+                <p class="accessory-price"><span class="price-tag">¥1,999</span></p>
+                <a href="#" class="accessory-link">了解更多 ></a>
+            </div>
+
+            <div class="accessory-card">
+                <div class="accessory-image">
+                    <img src="https://picsum.photos/seed/mag-safe-charger/300/300.jpg" alt="MagSafe充电器">
+                </div>
+                <h3 class="accessory-name">MagSafe充电器</h3>
+                <p class="accessory-price"><span class="price-tag">¥329</span></p>
+                <a href="#" class="accessory-link">了解更多 ></a>
+            </div>
+
+            <div class="accessory-card">
+                <div class="accessory-image">
+                    <img src="https://picsum.photos/seed/iphone-case/300/300.jpg" alt="iPhone保护壳">
+                </div>
+                <h3 class="accessory-name">iPhone保护壳</h3>
+                <p class="accessory-price"><span class="price-tag">¥399</span></p>
+                <a href="#" class="accessory-link">了解更多 ></a>
+            </div>
+
+            <div class="accessory-card">
+                <div class="accessory-image">
+                    <img src="https://picsum.photos/seed/lightning-cable/300/300.jpg" alt="Lightning数据线">
+                </div>
+                <h3 class="accessory-name">Lightning数据线</h3>
+                <p class="accessory-price"><span class="price-tag">¥145</span></p>
+                <a href="#" class="accessory-link">了解更多 ></a>
+            </div>
+        </div>
+
+        <div class="section-footer">
+            <a href="#" class="link-primary">查看所有配件 ></a>
+        </div>
+    </section>
+
+    <!-- 改进的页脚 -->
+    <footer class="footer improved-footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3 class="footer-heading">购物与了解</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">商店</a></li>
+                        <li><a href="#">Mac</a></li>
+                        <li><a href="#">iPad</a></li>
+                        <li><a href="#">iPhone</a></li>
+                        <li><a href="#">Watch</a></li>
+                        <li><a href="#">AirPods</a></li>
+                        <li><a href="#">家居</a></li>
+                        <li><a href="#">配件</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-heading">服务</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Apple Music</a></li>
+                        <li><a href="#">Apple TV+</a></li>
+                        <li><a href="#">Apple Fitness+</a></li>
+                        <li><a href="#">Apple News+</a></li>
+                        <li><a href="#">Apple Arcade</a></li>
+                        <li><a href="#">iCloud</a></li>
+                        <li><a href="#">Apple One</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-heading">Apple Store</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">查找零售店</a></li>
+                        <li><a href="#">在线购物</a></li>
+                        <li><a href="#">配送方式</a></li>
+                        <li><a href="#">账户管理</a></li>
+                        <li><a href="#">订单状态</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-heading">关于TechPhone</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">新闻中心</a></li>
+                        <li><a href="#">招聘信息</a></li>
+                        <li><a href="#">投资者</a></li>
+                        <li><a href="#">联系我们</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>Copyright © 2024 TechPhone Inc. 保留所有权利。</p>
+                <div class="footer-legal">
+                    <a href="#">隐私政策</a>
+                    <a href="#">使用条款</a>
+                    <a href="#">销售政策</a>
+                    <a href="#">法律信息</a>
+                    <a href="#">网站地图</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 浮动客服按钮 -->
+    <div class="floating-support" title="联系客服">
+        💬
+    </div>
+
+    <script src="script-apple-style.js"></script>
+</body>
+</html>
